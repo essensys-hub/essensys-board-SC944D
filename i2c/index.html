@@ -1,0 +1,1065 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation technique du module SC944D (Projet Essensys).">
+      
+      
+        <meta name="author" content="Essensys Team">
+      
+      
+        <link rel="canonical" href="https://essensys-hub.github.io/essensys-board-SC944D/i2c/">
+      
+      
+        <link rel="prev" href="../firmware/">
+      
+      
+        <link rel="next" href="../downloads/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Protocoles I2C - Documentation SC944D</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#protocole-i2c-inter-board" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href=".." title="Documentation SC944D" class="md-header__button md-logo" aria-label="Documentation SC944D" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Documentation SC944D
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Protocoles I2C
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/essensys-hub/essensys-board-SC944D/" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    essensys-board-SC944D
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Documentation SC944D" class="md-nav__button md-logo" aria-label="Documentation SC944D" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Documentation SC944D
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/essensys-hub/essensys-board-SC944D/" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    essensys-board-SC944D
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firmware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Firmware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocoles I2C
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocoles I2C
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-physique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Physique
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strategie-de-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stratégie de Communication
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stratégie de Communication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#algo-maitre-sc944d-send-on-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Algo Maître (SC944D) : "Send on Change"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algo-esclave-cartes-filles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Algo Esclave (Cartes Filles)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#format-des-trames" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Format des Trames
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Format des Trames">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ecriture-master-slave" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Écriture (Master -&gt; Slave)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-lecture-master-slave" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Lecture (Master &lt;- Slave)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types-de-trames" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types de Trames
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Types de Trames">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uc_trame_ba_actions-0x01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        uc_TRAME_BA_ACTIONS (0x01)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uc_trame_ba_forcage_sorties-0x02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        uc_TRAME_BA_FORCAGE_SORTIES (0x02)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recuperation-des-valeurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Récupération des Valeurs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faq-technique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ FAQ Technique
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="❓ FAQ Technique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#peut-on-forcer-la-lecture-de-letat-dun-relais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Peut-on forcer la lecture de l'état d'un relais ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../downloads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Téléchargements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-physique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Physique
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strategie-de-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stratégie de Communication
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stratégie de Communication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#algo-maitre-sc944d-send-on-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Algo Maître (SC944D) : "Send on Change"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algo-esclave-cartes-filles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Algo Esclave (Cartes Filles)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#format-des-trames" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Format des Trames
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Format des Trames">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ecriture-master-slave" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Écriture (Master -&gt; Slave)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-lecture-master-slave" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Lecture (Master &lt;- Slave)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types-de-trames" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types de Trames
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Types de Trames">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uc_trame_ba_actions-0x01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        uc_TRAME_BA_ACTIONS (0x01)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uc_trame_ba_forcage_sorties-0x02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        uc_TRAME_BA_FORCAGE_SORTIES (0x02)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recuperation-des-valeurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Récupération des Valeurs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faq-technique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ FAQ Technique
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="❓ FAQ Technique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#peut-on-forcer-la-lecture-de-letat-dun-relais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Peut-on forcer la lecture de l'état d'un relais ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="protocole-i2c-inter-board">📡 Protocole I2C (Inter-Board)</h1>
+<p>Cette page détaille le protocole de communication entre la carte principale <strong>SC944D</strong> (Maître) et les cartes filles auxiliaires <strong>SC940, SC941, SC942, SC943</strong> (Esclaves).</p>
+<h2 id="architecture-physique">Architecture Physique</h2>
+<ul>
+<li><strong>Bus</strong> : I2C</li>
+<li><strong>Vitesse</strong> : Standard (100 kHz) ou Fast Mode (selon config).</li>
+<li><strong>Maître</strong> : SC944D (<code>BA_TASK</code>).</li>
+<li><strong>Esclaves</strong> : Modules déportés, adressés par configuration matérielle (Adresses 0 à <code>uc_NB_BOITIER_AUXILIAIRE - 1</code>).</li>
+</ul>
+<h2 id="strategie-de-communication">Stratégie de Communication</h2>
+<h3 id="algo-maitre-sc944d-send-on-change">Algo Maître (SC944D) : "Send on Change"</h3>
+<p>Le SC944D n'envoie pas les commandes en continu pour ne pas saturer le bus. Il utilise une stratégie d'<strong>envoi sur changement</strong>.</p>
+<pre class="mermaid"><code>graph TD
+    Start((Start Loop)) --&gt; CheckChange{Nouvelle Consigne ?}
+    CheckChange -- OUI --&gt; PrepareFrame[Préparer Trame ACTIONS]
+    CheckChange -- NON --&gt; CheckForce{Forçage ?}
+    CheckForce -- OUI --&gt; SendForce[Envoyer Trame FORCAGE]
+    CheckForce -- NON --&gt; Next[Boîtier Suivant]
+    PrepareFrame --&gt; SendI2C[Appel sl_fct_write_polled]
+    SendForce --&gt; SendI2C
+    SendI2C --&gt; VerifyAck{ACK Reçu ?}
+    VerifyAck -- OUI --&gt; UpdateStatus[Mise à jour Tb_Actions_Ack]
+    VerifyAck -- NON --&gt; Retry[Incrémenter Compteur Erreur]
+    UpdateStatus --&gt; Next
+    Retry --&gt; Next</code></pre>
+<ol>
+<li><strong>Boucle de Surveillance</strong> : La tâche <code>BA_TASK</code> tourne en permanence (toutes les 50ms).</li>
+<li><strong>Comparaison</strong> : Pour chaque boîtier esclave, elle compare :<ul>
+<li>L'état <em>désiré</em> (calculé par les scénarios ou commandes serveur dans <code>Tb_Echange</code>).</li>
+<li>L'état <em>dernièrement acquitté</em> (mémorisé localement dans <code>Tb_Actions_Ack_BA</code>).</li>
+</ul>
+</li>
+<li><strong>Décision</strong> :<ul>
+<li><strong>Si Différent</strong> : Une trame <code>uc_TRAME_BA_ACTIONS</code> est générée avec <strong>toutes</strong> les actions du boîtier (sous forme d'octets/masques).</li>
+<li><strong>Si Identique</strong> : Rien n'est envoyé (silence sur le bus).</li>
+<li><strong>Exception</strong> : Si un mode "Secouru" ou "Reset" est activé, une trame est forcée.</li>
+</ul>
+</li>
+</ol>
+<h3 id="algo-esclave-cartes-filles">Algo Esclave (Cartes Filles)</h3>
+<p>Les cartes filles sont passives. Elles attendent les ordres I2C, appliquent les états aux relais/sorties, et répondent à la requête de lecture du Maître pour acquitter.</p>
+<h2 id="format-des-trames">Format des Trames</h2>
+<p>Le protocole utilise un échange atomique <strong>Écriture puis Lecture</strong> (Repeated Start).</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Master as SC944D
+    participant Slave as Carte Fille
+
+    Master-&gt;&gt;Slave: I2C START
+    Master-&gt;&gt;Slave: ADDR + WRITE
+    Master-&gt;&gt;Slave: CMD (1 Octet)
+    Master-&gt;&gt;Slave: DATA (n Octets)
+    Master-&gt;&gt;Slave: CRC (2 Octets)
+
+    Master-&gt;&gt;Slave: I2C REPEATED START
+    Master-&gt;&gt;Slave: ADDR + READ
+
+    Slave--&gt;&gt;Master: ECHO CMD (1 Octet)
+    Slave--&gt;&gt;Master: ECHO CRC (2 Octets)
+    Slave--&gt;&gt;Master: RESPONSE CRC (2 Octets)
+
+    Master-&gt;&gt;Slave: I2C STOP</code></pre>
+<h3 id="1-ecriture-master-slave">1. Écriture (Master -&gt; Slave)</h3>
+<p>Le Maître envoie la commande et les nouvelles consignes.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Octet</th>
+<th style="text-align: left;">Contenu</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;"><code>CMD</code></td>
+<td style="text-align: left;">Code commande (ex: <code>uc_TRAME_BA_ACTIONS</code> = 1)</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;"><code>DATA</code></td>
+<td style="text-align: left;">Données (Masque des relais, valeurs, etc.)</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>CRC_LSB</code></td>
+<td style="text-align: left;">CRC-16 (Poids faible) calculé sur CMD+DATA</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>CRC_MSB</code></td>
+<td style="text-align: left;">CRC-16 (Poids fort)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-lecture-master-slave">2. Lecture (Master &lt;- Slave)</h3>
+<p>Immédiatement après l'écriture, le Maître lit 5 octets pour vérifier que l'Esclave a bien reçu la commande.
+<strong>Important</strong> : Cette lecture sert d'<strong>acquittement protocolaire</strong>, elle ne remonte PAS l'état physique des entrées/sorties (pas de lecture de capteur).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Octet</th>
+<th style="text-align: left;">Contenu</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;"><code>ECHO_CMD</code></td>
+<td style="text-align: left;">L'esclave renvoie le code commande reçu (<code>CMD</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;"><code>ECHO_CRC_LSB</code></td>
+<td style="text-align: left;">L'esclave renvoie le CRC qu'il a reçu (pour vérification intégrité)</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>ECHO_CRC_MSB</code></td>
+<td style="text-align: left;">L'esclave renvoie le CRC qu'il a reçu</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>RESP_CRC_LSB</code></td>
+<td style="text-align: left;">CRC-16 de la réponse (calculé sur octets 0-2)</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;"><code>RESP_CRC_MSB</code></td>
+<td style="text-align: left;">CRC-16 de la réponse</td>
+</tr>
+</tbody>
+</table>
+<p>Le Maître vérifie :
+1.  Que <code>ECHO_CMD</code> correspond à la commande envoyée.
+2.  Que <code>ECHO_CRC</code> correspond au CRC envoyé (preuve que l'esclave a reçu les données sans corruption).
+3.  Que <code>RESP_CRC</code> est valide (preuve que la réponse n'est pas corrompue).</p>
+<h2 id="types-de-trames">Types de Trames</h2>
+<h3 id="uc_trame_ba_actions-0x01"><code>uc_TRAME_BA_ACTIONS</code> (0x01)</h3>
+<ul>
+<li><strong>Usage</strong> : Mise à jour standard des sorties (Lumières, Volets).</li>
+<li><strong>Contenu</strong> : Un octet concaténant les flags d'activation.</li>
+</ul>
+<h3 id="uc_trame_ba_forcage_sorties-0x02"><code>uc_TRAME_BA_FORCAGE_SORTIES</code> (0x02)</h3>
+<ul>
+<li><strong>Usage</strong> : Actions prioritaires ou massives.</li>
+<li><strong>Déclenchement</strong> : Via Message Queue (non cyclique).</li>
+</ul>
+<h2 id="recuperation-des-valeurs">Récupération des Valeurs</h2>
+<p>⚠️ <strong>Point d'attention</strong> :
+Le système est en <strong>"Boucle Ouverte"</strong> au niveau I2C.
+*   Le SC944D <strong>sait</strong> ce qu'il a demandé (mémoire <code>Tb_Echange</code>).
+*   Il <strong>sait</strong> que le message est bien arrivé (Acquittement CRC).
+*   Il <strong>ne lit pas</strong> l'état réel du relais (pas de retour d'information "Lumière réellement allumée" si le relais est collé ou l'ampoule grillée).</p>
+<p>C'est pourquoi, lorsque le Serveur demande l'état des lumières, le SC944D renvoie la valeur de sa mémoire (l'état commandé).</p>
+<h2 id="faq-technique">❓ FAQ Technique</h2>
+<h3 id="peut-on-forcer-la-lecture-de-letat-dun-relais">Peut-on forcer la lecture de l'état d'un relais ?</h3>
+<p><strong>Analyse du code (<code>ba_i2c.c</code>)</strong> :
+*   <strong>NON</strong>, il n'existe pas de fonction ou de commande I2C dédiée à la "Lecture Seule" ou "Lecture d'Etat Physique" dans le protocole actuel.
+*   La seule lecture (<code>fread</code>) est effectuée systématiquement après une écriture (<code>write</code>) dans la fonction <code>sl_fct_write_polled</code>.
+*   Cette lecture récupère des données de protocole (Echo, CRC) et non des données fonctionnelles (Etat relais, Intensité courant, etc.).</p>
+<p><strong>Conclusion</strong> : Pour savoir si une lumière est allumée, le SC944D se fie uniquement au fait qu'il a envoyé l'ordre et reçu un acquittement valide. Il n'y a pas de double vérification matérielle via le bus I2C.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.expand", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
