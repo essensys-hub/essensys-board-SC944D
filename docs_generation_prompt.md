@@ -66,3 +66,4 @@ Mon objectif est de créer un site statique **MkDocs** (thème Material) pour pe
     *   Reste factuel et technique.
 
 ---
+tu peux me faire la doc détaillé du SC944D/Prog/099-37/BP_MQX_ETH/C dans mkdocs. il faut algorimite de demarrage du client SC944D et comment il communique les les autres board SC940, SC941, SC942, SC942 et comment il se connecter au server essensys et recupère les firmware pour lui et les autres board, comment il mest à jour la table de refrence avec les action demander par le server et comment il envoie les status des action au serveur. 

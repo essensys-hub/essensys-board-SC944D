@@ -1,0 +1,4 @@
+SC944D.zip
+SC944D/SC944D.zip
+*.zip
+!docs/assets/manufacturing/*.zip
