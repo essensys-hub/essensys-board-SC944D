@@ -8,10 +8,10 @@ Ce module est une carte électronique conçue pour [Insérer description brève 
 
 Voici un aperçu des pages clés du schéma électronique :
 
-![MCU](assets/images/schematic-02.png)
+![MCU](assets/images/schematic-05.png)
 *Microcontrôleur*
 
-![Connecteurs](assets/images/schematic-08.png)
+![Connecteurs](assets/images/schematic-014.png)
 *Connecteurs*
 
 > [!TIP]
