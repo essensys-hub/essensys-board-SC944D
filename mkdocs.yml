@@ -31,6 +31,7 @@ nav:
   - Architecture: architecture.md
   - Hardware: hardware.md
   - Firmware: firmware.md
+  - Protocoles I2C: i2c.md
   - Téléchargements: downloads.md
 
 markdown_extensions:
