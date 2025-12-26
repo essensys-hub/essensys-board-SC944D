@@ -1,0 +1,57 @@
+"./C/reveil_c.obj"
+"./C/main_c.obj"
+"./C/crc_c.obj"
+"./C/bootloader_c.obj"
+"./C/ba_i2c_c.obj"
+"./C/ba_c.obj"
+"./C/arrosage_c.obj"
+"./C/anemo_c.obj"
+"./C/adcdirect_c.obj"
+"./C/TeleInfo_c.obj"
+"./C/TableEchangeFlash_c.obj"
+"./C/TableEchangeAcces_c.obj"
+"./C/Scenario_c.obj"
+"./C/Hard_c.obj"
+"./C/GestionDateHeure_c.obj"
+"./C/FilPilote_c.obj"
+"./C/EspionRS_c.obj"
+"./C/Eepromspi_c.obj"
+"./C/EepromSoft_c.obj"
+"./C/EepromAdresseMac_c.obj"
+"./C/Ecran_c.obj"
+"./C/Chauffage_c.obj"
+"./C/Alarme_c.obj"
+"./Ethernet/www_c.obj"
+"./Ethernet/Json_c.obj"
+"./Ethernet/GestionSocket_c.obj"
+"./Ethernet/Download_c.obj"
+"./Ethernet/Cryptagerijndael_mode_c.obj"
+"./Ethernet/Cryptagemd5_c.obj"
+"./Ethernet/Cryptagecencode_c.obj"
+"./Ethernet/Cryptage_c.obj"
+-sym full
+-msgstyle parseable
+-proc 52259
+-lavender model=ewl ,print=int ,scan=int ,io=raw
+-nostdlib
+"$(BSP)/intflash.lcf"
+-m ___boot
+-L"$(DEBUG)/rtcs"
+-L"$(MCUToolsBaseDirEnv)/ColdFire_Support/ewl/lib"
+-L"$(DEBUG)/bsp"
+-L"$(DEBUG)/psp"
+-L"$(PWM)/mcf5225"
+-L"$(IO)/pwm"
+-L"$(ProjDirPath)/C"
+-L"$(ProjDirPath)/H"
+-L"$(ProjDirPath)/Ethernet"
+-application
+-map
+-map closure
+-srec
+-sreclength 80
+-sreceol dos
+-w off 
+-l"psp.a"
+-l"bsp.a"
+-l"rtcs.a"

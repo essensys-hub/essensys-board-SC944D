@@ -1,0 +1,106 @@
+﻿,Name,Description,Designator,Part Number,Price,Qty
+,C_0603_X7R_10%_100N-50V,"Condensateur céramique, X7R, 10%, CMS 0603, 100nF/50V","C4, C18, C20, C21, C22, C24, C31, C32, C33, C36, C37, C38, C39, C40, C41, C42, C43, C44, C45, C46, C48, C50, C55, C56, C57, C59, C60, C61, C62, C67, C68, C69, C71, C72, C84, C97, C103, C104, C106, C107, C111, C112, C119, C138, C143","KEMET C0603C104K5RACTU, ",1.82834,45
+,C_0805_X5R_10%_10U-16V,"Condensateur céramique, X5R, 10%, CMS 0805, 10uF/16V","C6, C34, C35, C54, C58, C101, C105",,,7
+,C_0603_X7R_10%_10N-50V,"Condensateur céramique, X7R, 10%, CMS 0603","C12, C73","KEMET C0603C103K5RACTU, ",0.25791,2
+,C_ELE_3900U_35V_UHE1V392MD,Condensateurs électrolytiques aluminium traversant 35volts 3900uF 105c 18x40 P7.5,"C13, C14, C15","Nichicon UHE1V392MHD, ",9.03,3
+,C_0603_NPO_5%_1N-50V,"Condensateur céramique, NPO, 5%, CMS 0603","C16, C77, C96","KYOCERA AVX 06035A102JAT2A, ",0.33,3
+,C_1210_X5R_10%_10U-35V,"Condensateur céramique, X5R, 10%, CMS 1210","C17, C19, C47",,,3
+,C_0805_X7R_10%_470N-50V,"Condensateur céramique, X7R, 10%, CMS 0805, 470nF/50V",C23,KEMET C0805C471K5RACTU,0.1,1
+,C_0603_NPO_5%_18P-50V,"Condensateur céramique, NPO, 5%, CMS 0603, 18pF/50V","C25, C26, C27, C28, C64, C65","KEMET C0603C180J5GACTU, ",0.27087,6
+,C_0805_X5R_10%_1U-25V,"Condensateur céramique, X5R, 10%, CMS 0805","C29, C30, C66, C95, C98, C108, C120","KYOCERA AVX 08053D105KAT2A, ",1.6405,7
+,C_1206_X5R_20%_22U-25V,"Condensateur céramique, X5R, 20%, CMS 1206, 22uF/25V","C51, C52, C70, C83, C110, C118","TDK C3216X5R1E226M160AB, ",3.9,6
+,C_0603_NPO_5%_390P-50V,"Condensateur céramique, NPO, 5%, CMS 0603",C53,KEMET C0603C391J5GACTU,0.37215,1
+,C_1206_X7R_10%_1N-2KV,"Condensateur céramique, X7R, 10%, CMS 1206",C63,,,1
+,C_0603_X7R_10%_10N-50V,"Condensateur céramique, X7R, 10%, CMS 0603","C85, C102","KEMET C0603C103K5RACTU, ",0.25791,2
+,C_X2_GEN_100NF-275Vac_(4KVmax),"Condensateur polypropylene métallisé X2, 20%,100nF/275Vac,-40/+110°C, radial",C99,Panasonic ECQ-UAAF104M,0.51818,1
+,C_ELE_GEN_20%_1000U-25V,"Condensateur Electro, ultra Low ESR (31mR@100kHz), +/-20%, 7000h, 1.9ARms, -40/+105°C",C109,Nichicon UHE1E102MPD,1.19,1
+,BAT54C,"Diode Schottky double, BAT54 cathode com, Vrrm=30V, If=300mA, Vf=0.4Vmax, CMS","D5, D14, D15, D46, D48, D56","Nexperia BAT54C,215, ",1.54747,6
+,SMAJ16A,"Diode Transil/TVS unidirectionnelle (A), Transzorb, 400W, 16V, CMS","D8, D63","Bourns SMAJ16A, ",0.69718,2
+,PMEG2020AEA,"Diode Schottky, Vrrm=20V, If=2A, Vf=0.45V, CMS","D12, D65",,,2
+,BAT54S,"Diode Schottky double, BAT54 en série, Vrrm=30V, If=200mA, Vf=0.4Vmax, CMS","D16, D30, D43, D47","Nexperia BAT54S,215, ",0.8597,4
+,PMEG4050EP,"Diode Schottky, Vrrm=30V, If=5A(aver), Vf=0.315V, CMS","D28, D29, D39, D40, D45, D67","Nexperia PMEG4050EP,115, ",6.06,6
+,MBRS360T3G,"Diode Schottky, Vrrm=60V, If=3A, Vf=0.74V, -65 à +175°C, CMS",D44,onsemi MBRS360T3G,1.8784,1
+,MMBD1203,"Diode de Redressement double, en série, Vrrm=100V, If=200mA, Vf=1V, rapide (trr=4ns), CMS",D50,onsemi MMBD1203,1.09524,1
+,BZX84A6V2,"Diode Zener, série BZX84A, 0.3W, +/-5%, 6.2V, CMS",D58,"Nexperia BZX84-A6V2,215",0.64,1
+,LED_0805_VERT_KP2012,"LED CMS 0805, Vert, Vf 2.5V@20mA (4-15mCd), 525nm, vue 120°",DL7,Kingbright KP-2012SGC,1.12468,1
+,DOCUMENT_FAB_CARTE_SDFC,Document de Fabrication pour la Carte SC{Num SC}-{Version SC},DOC1,,,1
+,FUSIBLE_UMT250_0.315A_T,"Fusible CMS, série UMT250, à souder sur CI, 250Vca/125Vdc, 0.315A, Temporisé","F2, F4","Schurter 3403.0161.11, ",2.78,2
+,FUSIBLE_POLY_240Vac_0.25A_LVR,"Fusible Polyswitch série LVR, Vmax=265Vac, Ihold=0.25A, Itrip=0.56A, 1.5W",F3,Littelfuse LVR025K,0.77491,1
+,FUSIBLE_POLY_30V_4A_MF-R400,"Fusible Polyswitch, 30Vcc, Ihold=4A, Itrip=8A",F5,Bourns MF-R400,2.97952,1
+,MF-RX012/250,Resettable Fuses - PPTC 0.12A 60V 4ohm Hold .12 Trip .16,"F6, F7, F8, F9",,,4
+,BRESS_CI_D_7.62_01_FFKDSA/V2,"Bornier à connexion par ressorts/déconnexion par levier, série FFKDSA/V2, e7.62, 1x1pts, droit, juxtaposable, 500V/17.5A, AWG22~16, Vert/Orange","J1, J34, J35, J36, J37, J38, J39, J40, J41, J42, J43, J44, J45, J46, J47, J48, J49, J50",,,18
+,BRESS_CI_D_7.62_01_FFKDSA1/V2,"Bornier à connexion par ressorts/déconnexion par levier, série FFKDSA1/V2, e7.62, 1x1pts, droit, juxtaposable, 500V/17.5A, AWG22~16, Vert/Orange","J2, J51",,,2
+,61202621621,"26 Positions Header, Shrouded Connector 0.100"" (2.54mm) Through Hole Gold",J3,Wurth Elektronik 61202621621,1.0128,1
+,PORT_ETH_10-100-BT_RJ45-8_B_D_LED_TR_74990101210,"Embase RJ45 avec transformateur, 8/8 contacts + Led verte et jaune, blindée, droit, Viso 1.5kV",J32,,,1
+,BARRETTE_2.54_M_D_2X05_L6_G,"Barrette, e2.54, mâle, 2x5 picots 0.635², droit, long. contact 6, isol. 2.6mm, doré",J33,,,1
+,EMB_4.20_M_D_1X02_Oval_PAD,"Connecteur Wurth, pas 4.2mm, 1x2 picots, 9A, 600V","J52, J53","Wurth Elektronik 64900211122, ",2.32945,2
+,EMB_4.20_M_D_1X04_Oval_Pad,"Connecteur Wurth, pas 4.2mm, 1x4 picots, 8A",J56,,,1
+,CAVALIER_EMBASE_2PTS_E2.54,"Barrette, e2.54, mâle, 1x2 picots 0.635², droit, long. contact 6, isol. 2.6mm, doré",J58,,,1
+,CAVALIER_2.54_BLEU_DORE_LANGUETTE_14mm,"Cavalier (Jumper) doré 2 points pour barrette au pas de 2.54mm, BLEU, avec languette, Hauteur globale 14mm, 3A, 250V",JC2,Harwin M7683-05,4.60472,1
+,RELAY_12VDC_1RT_32.21,"Relais 1RT, 12Vdc, série 32.21, Rc=720R, Sw:250Vac/6A, Ron=? (AgCdO)","K2, K3, K5","Finder 32.21.7.012.2000, ",20.56225,3
+,IND_FERRITE_1812_74279226101,"Inductance à ferrite multicouches CMS, imp=100R@>100MHz, +/-25%, Rdc=6mR, I=8A","L1, L11","Wurth Elektronik 74279226101, ",1.36,2
+,IND_FERRITE_WE-SL2_2X10UH,"Filtre double ferrite, 2x10uH, 42Vac/80Vdc, 1.6A, serie WE-SL2, -40/+125°C, CMS",L2,Wurth Elektronik 744226,2.96775,1
+,IND_FERRITE_1206_74279218,"Inductance à ferrite multicouches CMS, imp=600R@100MHz, +/-25%, Rdc=100mR, I=2A","L3, L13",,,2
+,SELF_15UH_6.5A_7447709150,"Inductance bobinée CMS, 15uH +/- 20%, I=6.5A, Rdc=0.026R, SRF=17MHz, -40/+85°C","L10, L29","Wurth Elektronik 7447709150, ",5.12,2
+,IND_FERRITE_0603_742792643,"Inductance à ferrite multicouches CMS, imp=700R@250MHz, +/-25%, Rdc=350mR, I=400mA","L12, L15, L16, L24, L25, L26, L27, L28, L42",,,9
+,SELF_10UH_1.19A_744043100,"Inductance bobinée CMS, 10uH +/- 10%, I=1.19A, Rdc=0.095R, SRF=40MHz, -40/+85°C",L14,,,1
+,IND_FERRITE_PM3700_80_RC_2X20mH,"Filtre double ferrite, 2x20mH, 250Vac, 1A, serie PM3700, -55/+125°C, CMS",L37,Bourns PM3700-80-RC,2.76,1
+,MIRE_PICK-N-PLACE,"Mire pour machine de placement CMS ""Pick'n Place""","MIR1, MIR2, MIR3",,,3
+,NOTE_POUR_NOMENCLATURE_COMP,Coucher F5 pour limiter la hauteur,NOTE1,,,1
+,NOTE_POUR_NOMENCLATURE_COMP,Incliner VR1 pour limiter la hauteur,NOTE2,,,1
+,NOTE_POUR_NOMENCLATURE_COMP,Coucher F3 pour limiter la hauteur,NOTE3,,,1
+,QUARTZ_HC49/4HSMX_25M,"Quartz CMS série HCM49 (équiv HC49/US), -10/+60°C, +/-30ppm, 18pF","Q1, Q3","Citizen Finedevice HCM49 25.000MABJ-UT, ",1.11879,2
+,QUARTZ_2X6MM_CMS_32.768KHZ,"Quartz CMS type Montre (cylindrique 2x6mm), -40/+85°C, +/-20ppm, 7pF, 32.768KHz",Q2,Citizen Finedevice CMR200T32.768KDZY-UT,1267.18084,1
+,RES_0603_1%_100PPM_1K,"Résistance, 0.100W, 1%, 100ppm, 75V, 1K","R5, R38, R41, R44, R58, R60, R80, R88, R89, R90, R93, R94, R97, R160, R161","Vishay CRCW06031K00FKEA, ",0.27028,15
+,RES_0603_1%_100PPM_115R,"Résistance, 0.100W, 1%, 100ppm, 75V, 115R","R6, R66","Vishay CRCW0603115RFKEA, ",0.18,2
+,RES_0603_1%_100PPM_680R,"Résistance, 0.100W, 1%, 100ppm, 75V, 680R","R10, R16, R87, R108, R121, R137, R153","Vishay CRCW0603680RFKEA, ",0.19196,7
+,RES_0603_1%_100PPM_4.7K,"Résistance, 0.100W, 1%, 100ppm, 75V, 4.7K","R13, R32, R36, R39, R51, R55, R57, R59, R71, R74, R171, R176, R205","Vishay CRCW06034K70FKEA, ",0.28017,13
+,RES_1206_1%_100PPM_220K,"Résistance, 0.25W, 1%, 100ppm, 200V, 220K","R19, R20","Vishay CRCW1206220KFKEA, ",0.22,2
+,RES_0603_1%_100PPM_0R,"Résistance, 0.100W, 1%, 100ppm, 75V, 0R","R22, R204","Vishay CRCW06030000Z0EA, ",0.13543,2
+,RES_0603_1%_100PPM_680R,"Résistance, 0.100W, 1%, 100ppm, 75V, 680R",R27,Vishay CRCW0603680RFKEA,0.19196,1
+,RES_0603_1%_100PPM_51R,"Résistance, 0.100W, 1%, 100ppm, 75V, 51R","R31, R72, R76, R77, R78, R79","Vishay CRCW060351R0FKEA, ",0.23554,6
+,RES_0603_1%_100PPM_10K,"Résistance, 0.100W, 1%, 100ppm, 75V, 10K","R35, R45, R50, R52, R81, R82, R83, R86, R92, R96, R98, R99, R103, R104, R105, R106, R107, R113, R115, R129, R141","Vishay CRCW060310K0FKEA, ",0.40807,21
+,RES_0603_1%_100PPM_33K,"Résistance, 0.100W, 1%, 100ppm, 75V, 33K",R43,Vishay CRCW060333K0FKEA,0.19196,1
+,RES_0603_1%_100PPM_7.5K,"Résistance, 0.100W, 1%, 100ppm, 75V, 7.5K",R46,Vishay CRCW06037K50FKEA,0.22965,1
+,RES_0603_1%_100PPM_22R,"Résistance, 0.100W, 1%, 100ppm, 75V, 22R","R47, R75, R112","Vishay CRCW060322R0FKEA, ",0.21551,3
+,RES_0603_1%_100PPM_1M,"Résistance, 0.100W, 1%, 100ppm, 75V, 1M","R48, R84","Vishay CRCW06031M00FKEA, ",0.27675,2
+,RES_0603_1%_100PPM_2.2K,"Résistance, 0.100W, 1%, 100ppm, 75V, 2.2K","R54, R170","Vishay CRCW06032K20FKEA, ",0.20374,2
+,RES_0603_1%_100PPM_68K,"Résistance, 0.100W, 1%, 100ppm, 75V, 68K","R56, R61, R190, R207, R208","Vishay CRCW060368K0FKEA, ",0.19,5
+,RES_0603_1%_100PPM_47K,"Résistance, 0.100W, 1%, 100ppm, 75V, 47K","R63, R64, R116, R125, R145","Vishay CRCW060347K0FKEA, ",0.21551,5
+,RES_0603_1%_100PPM_9.1K,"Résistance, 0.100W, 1%, 100ppm, 75V, 9.1K","R65, R67, R168","Vishay CRCW06039K10FKEA, ",0.17,3
+,RES_0603_1%_100PPM_604K,"Résistance, 0.100W, 1%, 100ppm, 75V, 604K",R68,Vishay CRCW0603604KFKEA,0.1,1
+,RES_0603_1%_100PPM_1.15K,"Résistance, 0.100W, 1%, 100ppm, 75V, 1.15K",R69,Vishay CRCW06031K15FKEA,0.1,1
+,RES_0603_1%_100PPM_2.49M,"Résistance, 0.100W, 1%, 100ppm, 75V, 2.49M",R70,Vishay CRCW06032M49FKEA,0.1,1
+,RES_0603_1%_100PPM_1.5K,"Résistance, 0.100W, 1%, 100ppm, 75V, 1.5K",R73,Vishay CRCW06031K50FKEA,0.25085,1
+,RES_0603_1%_100PPM_4.87K,"Résistance, 0.100W, 1%, 100ppm, 75V, 4.87K",R85,Vishay CRCW06034K87FKEA,0.23554,1
+,RES_0603_1%_100PPM_237K,"Résistance, 0.100W, 1%, 100ppm, 75V, 237K",R91,Vishay CRCW0603237KFKEA,0.1,1
+,RES_0603_1%_100PPM_9.76K,"Résistance, 0.100W, 1%, 100ppm, 75V, 9.76K",R95,Vishay CRCW06039K76FKEA,0.1,1
+,RES_0603_1%_100PPM_1.69K,"Résistance, 0.100W, 1%, 100ppm, 75V, 1.69K",R100,Vishay CRCW06031K69FKEA,0.23554,1
+,RES_0603_1%_100PPM_4.7K,"Résistance, 0.100W, 1%, 100ppm, 75V, 4.7K",R101,Vishay CRCW06034K70FKEA,0.21551,1
+,RES_0805_5%_300PPM_18M,"Résistance, 0.125W, 5%, 300ppm, 150V, 18M",R111,Yageo Group RC0805JR-0718ML,0.46047,1
+,RES_0603_1%_100PPM_100K,"Résistance, 0.100W, 1%, 100ppm, 75V, 100K","R184, R185","Vishay CRCW0603100KFKEA, ",0.1637,2
+,RES_1206_1%_100PPM_2.7R,"Résistance, 0.25W, 1%, 100ppm, 200V, 2.7R",R186,,,1
+,RES_0603_1%_100PPM_12K,"Résistance, 0.100W, 1%, 100ppm, 75V, 12K",R189,Vishay CRCW060312K0FKEA,0.1,1
+,RES_0603_1%_100PPM_56K,"Résistance, 0.100W, 1%, 100ppm, 75V, 56K",R202,Vishay CRCW060356K0FKEA,0.1,1
+,RES_4XR0603_IND_5%_22R*,"Réseau de 4 résistances 0603 individuels, 63mW, 5%, CONCAVE / CONVEXE, CMS 1206","RR1, RR2, RR3","Yageo Group YC164-JR-0722RL, ",0.47343,3
+,SI944D,Circuit Imprimé Seccom,SI1,,,1
+,BC847C,"Transistor NPN, Vce=50V, Ic=0.1A, hfe=420~800, 0.25W, CMS","T3, T7, T8, T9, T11, T12, T15, T16, T18, T23, T25, T28, T33, T34, T64, T65, T66","Nexperia BC847C,215, ",3.16324,17
+,T405-600B,TRIAC SENS GATE 600V 4A DPAK,"T13, T17, T19, T20","STMicroelectronics T405-600B-TR, ",4.47517,4
+,NTD2955G,"Transistor Mosfet P, Vdss=60V, Id=12A, Rdson=0.155R, -55/+175°C, CMS","T14, T32",,,2
+,NTMS4801N,"Transistor MOSN logique, Vdss=30V, Id=12A, Rdson=0.012R, CMS","T27, T29",,,2
+,NJD1718T4G,"Transistor PNP, Vce=50V, Ic=3A, 15W, hfe=40~240, -65/+150°C, CMS",T35,onsemi NJD1718T4G,0.99,1
+,MMBT5551LT1G,"Transistor NPN, Vce=160V, Ic=60mA, 0.225W, hfe=30~250, -55/+150°C, CMS","T37, T50, T58, T59","onsemi MMBT5551LT1G, ",0.81849,4
+,DRV8801PWP,"Brushed DC Motor Driver with Current Sense, 2.8A, CMS",U1,Texas Instruments DRV8801PWP,3.22,1
+,LMR12010YMK,"Régulateur ajustable step down, 0.8~20V, 1A, Vin=3~20V, -40/+125°C, CMS",U2,Texas Instruments LMR12010YMKE/NOPB,3.58,1
+,OPTO_FOD817BS,"Optocouleur simple, IR GaAs, Viso=5kVrms, If=50mA, Vce=70V, Ic=50mA, CTR=130-260, CMS","U3, U6, U7, U14, U15","onsemi FOD817BS, ",2.25,5
+,DCDC_+12V_1W_R12P12S,"Convertisseur DC/DC, 1W, Vin=12V, Vout=+12V/84mA, boitier SIP4, isol 6.4kV",U4,Recom Power R12P12S,13.72,1
+,74LVC1G57DCKR,"Porte logique multifonction, AND/OR/NAND/NOR/XNOR/INV/BUFFER, LVC, CMS SC70_6",U5,Texas Instruments SN74LVC1G57DCKR,0.19,1
+,74HC1G125GW,"Buffer driver de ligne non-inverseur simple, 3 états, CMOS, Picogate, CMS",U8,"Nexperia 74HC1G125GW,125",0.23,1
+,25AA02E48T-I/OT,"EEPROM, avec identifiant EUI-48 (adresse MAC), 2kbits, Vs=1.8~5.5V, 10MHz, CMS",U9,,,1
+,MCF52259CAG80,"Microcontrôleur 32bit, COLDFIRE, 80Mhz, 512Ko Flash, 64Ko RAM, CMS",U10,NXP Semiconductors MCF52259CAG80,26.20332,1
+,MCP6L91T-E/OT,"Comparateur de tension, simple, Vs=+1.8~5.5V, CMOS, I/O Rail-to-Rail, CMS",U11,Microchip MCP6L91T-E/OT,0.59,1
+,LM3150,"Syncronous Buck Controller,  Vin=6~42V, -40/+125°C, CMS",U12,Texas Instruments LM3150MH/NOPB,4.55,1
+,DP83640TVV,DP83640 Precision PHYTER - IEEE 1588 Precision Time Protocol Transceiver,U13,,,1
+,LD1117STR-E,"Régulateur de tension ajustable positif, 1.25~15V, 0.8A, LDO (1V), Vin=15Vmax, CMS","U16, U17",,,2
+,SST25VF016B-50-4I-S2AF,"Mémoire Flash SPI, 2MBit, 50MHz, Vs=2.7~3.6V, -40/+85°C, CMS",U28,Microchip SST25VF016B-50-4I-S2AF,2.19878,1
+,VDR_V300LA10P,"Varistance disque 300Vac, 46J, Vbreak=420V@1mA, Vclamp=775V@50A, Ipeak=4500A",VR1,Littelfuse V300LA10P,0.40512,1

@@ -1,0 +1,17 @@
+################################################################################
+# These macros are used by makefiles and argument files.
+# When a space is included in the path and quotes (") cannot be used,
+# a _ESCAPE version of the macro is added that escapes the space with backslash (\).
+################################################################################
+
+export M52259EVB_CW10=C:/Freescale/Freescale_MQX_4_0/lib/m52259evb.cw10
+export HC08ToolsEnv=$(CWInstallLocationEnv)/MCU/prog
+export GNU_Make_Install_DirEnv=$(CWInstallLocationEnv)/gnu/bin
+export ProjDirPath=H:/cw_workspace/BP_MQX_ETH
+export CWInstallLocationEnv=C:/Freescale/CW MCU v10.4
+export IO=C:/Freescale/Freescale_MQX_4_0/mqx/source/io
+export PWM=C:/Freescale/Freescale_MQX_4_0/mqx/source/io/pwm
+export MCUToolsBaseDirEnv=$(CWInstallLocationEnv)/MCU
+export BSP=C:/Freescale/Freescale_MQX_4_0/lib/m52259evb.cw10/debug/bsp
+export CF_ToolsDirEnv=$(CWInstallLocationEnv)/MCU/ColdFire_Tools/Command_Line_Tools
+export DEBUG=C:/Freescale/Freescale_MQX_4_0/lib/m52259evb.cw10/debug

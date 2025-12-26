@@ -1,0 +1,65 @@
+-sym full
+-msgstyle parseable
+-proc 52259
+-lavender model=ewl ,print=int ,scan=int ,io=raw
+-c
+-nostdinc
+-nosyspath
+-enc ascii
+-i
+"$(DEBUG)/bsp"
+-i
+"$(DEBUG)/psp"
+-i
+"$(M52259EVB_CW10)/debug"
+-i
+"$(DEBUG)/rtcs"
+-i
+"$(PWM)/mcf5225"
+-i
+"$(IO)/pwm"
+-i
+"$(ProjDirPath)/C"
+-i
+"$(ProjDirPath)/H"
+-i
+"$(ProjDirPath)/Ethernet"
+-I-
+-I"$(MCUToolsBaseDirEnv)/ColdFire_Support/ewl/EWL_C/include"
+-I-
+-I"$(MCUToolsBaseDirEnv)/ColdFire_Support/ewl/EWL_C/include/sys"
+-I-
+-I"$(MCUToolsBaseDirEnv)/ColdFire_Support/ewl/EWL_Runtime/Runtime_ColdFire/Source"
+-DDEBUG
+-warn illpragmas
+-warn unwanted
+-warn extended
+-warn hidevirtual
+-warn implicitconv
+-warn unusedvar
+-warn extracomma
+-warn emptydecl
+-warn structclass
+-opt level=0
+-opt space
+-ipa off
+-inline off
+-align coldfire
+-model farCode
+-model farData
+-fp soft
+-a6
+-nocoloring
+-noscheduling
+-nopeephole
+-sdata 0
+-requireprotos
+-bool off
+-Cpp_Exceptions off
+-RTTI off
+-wchar_t off
+-char signed
+-str nopool
+-str reuse
+-define __CODEWARRIOR__=1
+-define _DEBUG=1

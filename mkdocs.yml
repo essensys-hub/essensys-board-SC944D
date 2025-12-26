@@ -1,0 +1,42 @@
+site_name: Documentation SC944D
+site_url: https://essensys-hub.github.io/essensys-board-SC944D/
+site_description: Documentation technique du module SC944D (Projet Essensys).
+site_author: Essensys Team
+
+repo_name: essensys-board-SC944D
+repo_url: https://github.com/essensys-hub/essensys-board-SC944D/
+
+theme:
+  name: material
+  language: fr
+  features:
+    - navigation.expand
+    - content.code.copy
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+nav:
+  - Accueil: index.md
+  - Architecture: architecture.md
+  - Hardware: hardware.md
+  - Firmware: firmware.md
+  - Téléchargements: downloads.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
