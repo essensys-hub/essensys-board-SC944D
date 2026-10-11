@@ -1,0 +1,17 @@
+schema: spec-driven
+
+context: |
+  Language: fr
+  All artifacts must be written in fr.
+  Keep OpenSpec structural headings and SHALL/MUST keywords in English.
+
+  Essensys — carte Boîtier Principal SC944D (ColdFire MCF52259, MQX, Altium Designer 16), maître I2C 50 kHz
+  des boîtiers auxiliaires SC940D / SC941C / SC942C (PIC16F946) par un câble 4 fils (SDA, SCL, 0 V, +15 V)
+  sur J31 (BP) et J1/J2 (BA). Matériel open source publié dans des dépôts PUBLICS : aucune information
+  personnelle (adresse, numéro de série, IP, installateur) dans les artefacts.
+  Firmware BP : client-essensys-legacy (production 099-37, ne jamais reflasher un nouveau build sans pilote I2C
+  reconstitué) ; firmware BA v1.7 dans essensys-board-SC94x/Prog. Le protocole HTTP legacy IoT ne doit jamais
+  être modifié. TBTS : jamais de liaison 0 V–PE.
+  Gouvernance : essensys-feature-lifecycle/claude/GOVERNANCE.md (ticket GitHub Project #6, OpenSpec,
+  /checkup, tests NR-*, essais sur banc uniquement, jamais d'armoire réelle en test). Conventional commits
+  référençant l'issue (#n). Français.
