@@ -1,5 +1,4 @@
-## 1. Diagnostic et remise en service de l'installation touchée
-
+## 1. Diagnostic et remise en service de l'installation touchée (#2)
 Les tâches de ce groupe sont des opérations de maintenance manuelles, faites sur l'installation touchée par le propriétaire, un mainteneur ou une personne habilitée. Aucun harnais, script NR ni stimulus automatisé ne vise cette armoire. Toute publication sur l'issue #1 (dépôt public) se fait après accord, sous forme anonymisée.
 
 - [ ] 1.1 Avant toute intervention, faire mesurer par une personne habilitée (BR ou BE Mesurage), avec le 230 V présent et sans toucher les cartes, la tension alternative entre un point 0 V TBT accessible et le PE, en mode basse impédance (LoZ). Vérification : quelques volts qui s'effondrent en LoZ. Sinon, arrêt et appel d'un électricien. La valeur est consignée dans le dossier privé de l'installation.
@@ -44,8 +43,7 @@ Les tâches de ce groupe sont des opérations de maintenance manuelles, faites s
 - [ ] 1.12 Renvoyer la configuration de **tous** les BA : modifier chaque paramètre (modes des variateurs, temps d'extinction, temps des volets), puis revenir à sa valeur. Corriger le mode des variateurs dont le PIC a été remplacé. Vérification : chaque BA acquitte une commande ; pendant 24 h, au moins une commande par BA chaque heure est envoyée et consignée, et `(index 12 & 0x1C)` reste à 0. Une synthèse anonymisée est publiée sur l'issue #1 après accord.
 - [ ] 1.13 Transmettre à l'électricien et à l'installateur PV la liste des contrôles hors du périmètre Essensys : parafoudre de tête et sa cartouche, parafoudre AC du coffret PV, journal de l'onduleur, équipotentialité, départs 230 V extérieurs. Ces contrôles ne bloquent pas la remise en service. Livrable : leur compte rendu, archivé dans le dossier privé.
 
-## 2. Retouches des boîtiers auxiliaires (SC940D, SC941C, SC942C)
-
+## 2. Retouches des boîtiers auxiliaires (SC940D, SC941C, SC942C) (#3)
 - [ ] 2.1 Mesurer à l'établi, sous 15,0 V et relais monostables collés, le courant d'entrée de chaque type de BA, puis la résistance de chaque tronçon de bus, contacts compris. En déduire l'écart de 0 V attendu au BA le plus éloigné. Appliquer la règle D1 du design, confirmée par la mesure de ΔVg en 1.11 :
   - jusqu'à 0,1 V : 47 Ω ;
   - de 0,1 à 0,12 V : 47 Ω, si le niveau bas au MCF reste sous 0,85 V ;
@@ -76,8 +74,7 @@ Les tâches de ce groupe sont des opérations de maintenance manuelles, faites s
 - [ ] 2.10 Étiqueter chaque BA retouché : « retouche foudre », valeur de la résistance série et option renforcée éventuelle. Vérification : l'étiquette est contrôlée visuellement à la remise en place.
 - [ ] 2.11 Relever sur les fichiers de fabrication de la révision D des SC940D, SC941C, SC942C et SC944D les distances entre conducteurs 230 V et TBT, notamment entre J1/J2 et K1 ou VR1. Vérification : les distances sont consignées ; toute distance inférieure à 6 mm reçoit une mesure compensatoire documentée (barrière isolante, vernis) ou une restriction d'usage reprise en 8.4, avant la remise en service d'une carte retouchée de ce type.
 
-## 3. Retouches du boîtier principal (SC944D)
-
+## 3. Retouches du boîtier principal (SC944D) (#4)
 - [ ] 3.1 Sauvegarder la flash du BP par BDM avant toute retouche, puis la comparer au `.S19` 099-37 de `SC944D/Prog/099-37/`. Vérification : la sauvegarde est archivée, et l'identité ou l'écart est documenté.
 - [ ] 3.2 Remplacer D33/D34 par des SMF5V0A-E3-08. Remplacer aussi U19 si son test de 1.8 a échoué ou si D33/D34 ont claqué. Vérification : J31 débranché, écart entre +5VS et chaque ligne d'au plus 50 mV (fuite ≤ 50 µA sous la pull-up de 1 kΩ), EN de U19 entre 3,6 et 4,4 V, et test fonctionnel réussi dans les deux sens.
 - [ ] 3.3 Protéger le +15 V de J31 de l'une des deux façons suivantes :
@@ -107,8 +104,7 @@ Les tâches de ce groupe sont des opérations de maintenance manuelles, faites s
 - [ ] 3.9 Publier dans ce dépôt la variante de BOM « retouche foudre » du SC944D et une note de schéma (risque résiduel sur U19 sans option, exceptions de marge assumées), par une PR qui contient `Feature: i2c-surge-protection-2026-10-007` et `Refs #1`. Vérification : la PR est mergée, la variante est ajoutée sans modifier la BOM d'origine, et `/checkup essensys-board-SC944D` est vert.
 - [ ] 3.10 Étiqueter le BP retouché : « retouche foudre » et option éventuelle, ou « sans option ». Vérification : l'étiquette est contrôlée visuellement à la remise en place.
 
-## 4. Étoile 0 V et isolation de l'Ethernet du BP
-
+## 4. Étoile 0 V et isolation de l'Ethernet du BP (#5)
 - [ ] 4.1 Concevoir la carte passive N2, montée sur support DIN. Elle comprend :
   - un plan 0 V ;
   - deux embases par BA (J1 et J2) et une embase pour J31 ;
@@ -150,8 +146,7 @@ Les tâches de ce groupe sont des opérations de maintenance manuelles, faites s
   Livrable : la check-list remplie dans le dossier privé, et une synthèse anonymisée sur l'issue #1, publiée après accord.
 - [ ] 4.9 Après 4.7, vérifier le fonctionnement de l'installation. Vérification : chaque BA acquitte une commande ; pendant 24 h, au moins une commande par BA chaque heure est envoyée et consignée, et `(index 12 & 0x1C)` reste à 0.
 
-## 5. Firmware : récupération de bus, resynchronisation, télémétrie, watchdog BA
-
+## 5. Firmware : récupération de bus, resynchronisation, télémétrie, watchdog BA (#6)
 - [ ] 5.1 Mesurer sur banc l'étirement d'horloge maximal d'un BA 1.7 (CKP = 0 en émission, latence de l'interruption) à l'analyseur logique. Réécrire ensuite dans essensys-gcc le pilote I2C MQX du BP, avec des attentes bornées en temps : 2 ms au plus par attente (deux fois l'étirement mesuré s'il dépasse 1 ms), 20 ms au plus par transaction. Le BP reste en 099-37 jusqu'à la tâche 5.12. Vérification : la mesure est consignée ; un test hôte `NR-gcc-<n>` sur bus simulé (ligne collée, retour en erreur en 20 ms au plus) passe dans la CI d'essensys-gcc, puis `NR-board-sc944d-3` passe sur banc ; la PR contient `Feature: i2c-surge-protection-2026-10-007` et `Refs essensys-hub/essensys-board-SC944D#1`.
 - [ ] 5.2 Ajouter la récupération de bus :
   - PAS0/PAS1 passent en GPIO pour lire les niveaux ;
@@ -187,8 +182,7 @@ Les tâches de ce groupe sont des opérations de maintenance manuelles, faites s
   - pendant 72 h, au moins une commande par BA chaque heure est envoyée et consignée, et `(index 12 & 0x1C)` reste à 0 ;
   - le retour arrière vers le `.S19` 099-37 a été essayé sur banc.
 
-## 6. Révision E et carte d'interconnexion équipotentielle
-
+## 6. Révision E et carte d'interconnexion équipotentielle (#7)
 - [ ] 6.1 Rédiger les règles de conception communes de la révision E :
   - zones Z1 « bus », Z2 « TBTS locale » et Z3 « 230 V » ;
   - pour une carte à isolation intégrée seulement, au moins 8 mm sans cuivre entre Z1 et Z2 ; sur une carte non isolée, SDA, SCL et le 0 V passent de Z1 à Z2 par le chemin protégé ;
@@ -242,8 +236,7 @@ Les tâches de ce groupe sont des opérations de maintenance manuelles, faites s
   - relais enclenchés à 11 V et à chaud.
 - [ ] 6.8 Rédiger l'ADR de la génération 3 en RS-485 isolé. Il compare le CAN isolé et l'I2C isolé, et traite deux contraintes : le signal DE est absent sur le SC941C, et la console Espion doit être déplacée sur telnet. Vérification : l'ADR est relu et mergé.
 
-## 7. Plan d'essais et non-régression sur banc
-
+## 7. Plan d'essais et non-régression sur banc (#8)
 - [ ] 7.1 Monter le banc d'essai :
   - un BP et trois BA, un de chaque type, plus des échantillons dédiés aux injections, jamais destinés à une installation ;
   - des câbles de 3 × 33 cm en cat. 5e AWG26, de 1 m et de 3 m ;
@@ -288,8 +281,7 @@ Les tâches de ce groupe sont des opérations de maintenance manuelles, faites s
 - [ ] 7.19 Pousser deux ou trois échantillons de chaque configuration jusqu'à la défaillance. Vérification : en révision E avec carte d'interconnexion, le premier composant défaillant est un élément de protection ; sur les cartes retouchées, la défaillance reste confinée à une seule carte et se détecte au repos ; dans les deux cas, les autres BA communiquent après déconnexion du port défaillant.
 - [ ] 7.20 Lancer `/checkup` sur la feature `i2c-surge-protection-2026-10-007` : build, lint, NR et gates `feature-gate` et `security-gate`, avec les JUnit XML du banc joints. Vérification : tout est vert, et le rapport est posté sur l'issue #1 après accord.
 
-## 8. Documentation (retour d'expérience, essensys-memory, écarts de la doc matériel)
-
+## 8. Documentation (retour d'expérience, essensys-memory, écarts de la doc matériel) (#9)
 - [ ] 8.1 Publier dans essensys-doc la page de retour d'expérience, partie synthèse exécutive (une page) :
   - « une installation touchée le 9 août 2026 » ;
   - les symptômes ;
