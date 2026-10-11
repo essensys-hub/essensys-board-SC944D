@@ -245,7 +245,7 @@ Les tâches de ce groupe sont des opérations de maintenance manuelles, faites s
   - un réseau isolé, sans accès au serveur de production, avec un serveur legacy local qui capture le trafic HTTP.
 
   Livrable : la fiche du banc. Vérification : chaque BA acquitte une commande sur le banc, et le serveur de banc capture les échanges du BP.
-- [ ] 7.2 Écrire le harnais pytest dans `tests/bench/` de ce dépôt : pilotage des instruments, marqueur `@pytest.mark.nr("NR-board-sc944d-<n>", "#1")` et JUnit XML. Sans banc déclaré, les tests de banc sont marqués « skipped » ; avec un banc déclaré mais non reconnu, le harnais s'arrête en erreur. Vérification :
+- [x] 7.2 Écrire le harnais pytest dans `tests/bench/` de ce dépôt : pilotage des instruments, marqueur `@pytest.mark.nr("NR-board-sc944d-<n>", "#1")` et JUnit XML. Sans banc déclaré, les tests de banc sont marqués « skipped » ; avec un banc déclaré mais non reconnu, le harnais s'arrête en erreur. Vérification :
   - le test de garde passe : sans banc déclaré, les tests sont « skipped » et aucun stimulus n'est appliqué ; avec un banc inconnu, le harnais sort en erreur sans stimulus ;
   - `nonreg_report.py --sources tests/bench` consolide le JUnit XML avec le code 0 et reconnaît les identifiants `NR-board-sc944d-1` à `-13`.
 - [ ] 7.3 Écrire `NR-board-sc944d-1`, sur les niveaux I2C à 50 kHz avec 33 cm, 1 m et 3 m de câble, à consommation maximale. Vérification :
@@ -323,7 +323,7 @@ Les tâches de ce groupe sont des opérations de maintenance manuelles, faites s
   - règles **BREAKING** de 8.3 et restrictions d'usage issues de 2.11.
 
   Vérification : les règles PE et parafoudre sont validées par un électricien ; le guide est relu, chaque règle renvoie à l'exigence correspondante d'`aux-box-interconnect`, et la PR porte les lignes `Feature:` et `Refs`.
-- [ ] 8.5 Consigner dans essensys-memory une note anonymisée : décisions, valeurs de référence sans aucune identification du site, liens vers ce change et vers le retour d'expérience. Vérification : même contrôle de données personnelles qu'en 8.1, et la PR porte les lignes `Feature:` et `Refs`.
+- [x] 8.5 Consigner dans essensys-memory une note anonymisée : décisions, valeurs de référence sans aucune identification du site, liens vers ce change et vers le retour d'expérience. Vérification : même contrôle de données personnelles qu'en 8.1, et la PR porte les lignes `Feature:` et `Refs`.
 - [ ] 8.6 Corriger `essensys-doc/archi/hardware-sc944d.md` et `hardware-overview.md` : la liaison BA passe par J31, et non par J3 ou la « feuille 17 ». Vérification : la PR est relue, porte les lignes `Feature:` et `Refs`, et les affirmations sont recoupées avec le schéma du SC944D.
 - [ ] 8.7 Corriger `essensys-doc/archi/hardware-sc94{0d,1c,2c}.md` :
   - J3 porte les entrées TOR, et le bus passe par J1/J2 ;

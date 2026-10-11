@@ -32,6 +32,9 @@ nav:
   - Hardware: hardware.md
   - Firmware: firmware.md
   - Protocoles I2C: i2c.md
+  - Retouche foudre: retouche-foudre.md
+  - Décisions (ADR): adr/0001-generation-3-rs485-isole.md
+  - Règles rév. E: rev-e-regles-conception.md
   - Téléchargements: downloads.md
 
 markdown_extensions:
