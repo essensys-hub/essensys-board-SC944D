@@ -1,0 +1,1885 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation technique du module SC944D (Projet Essensys).">
+      
+      
+        <meta name="author" content="Essensys Team">
+      
+      
+        <link rel="canonical" href="https://essensys-hub.github.io/essensys-board-SC944D/rev-e-regles-conception/">
+      
+      
+        <link rel="prev" href="../adr/0001-generation-3-rs485-isole/">
+      
+      
+        <link rel="next" href="../downloads/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Règles rév. E - Documentation SC944D</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#revision-e-regles-de-conception-communes" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href=".." title="Documentation SC944D" class="md-header__button md-logo" aria-label="Documentation SC944D" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Documentation SC944D
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Règles rév. E
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/essensys-hub/essensys-board-SC944D/" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    essensys-board-SC944D
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Documentation SC944D" class="md-nav__button md-logo" aria-label="Documentation SC944D" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Documentation SC944D
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/essensys-hub/essensys-board-SC944D/" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    essensys-board-SC944D
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firmware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Firmware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../i2c/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocoles I2C
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../retouche-foudre/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retouche foudre
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/0001-generation-3-rs485-isole/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Décisions (ADR)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Règles rév. E
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Règles rév. E
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-objet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Objet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-zones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Zones
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-distances-entre-zones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Distances entre zones
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Distances entre zones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-entre-z1-et-z2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Entre Z1 et Z2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-entre-z2-et-z3-et-entre-z1-et-z3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Entre Z2 et Z3, et entre Z1 et Z3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-distance-disolement-renforce-calcul-a-faire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Distance d'isolement renforcé : calcul à faire
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-composants-de-barriere" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Composants de barrière
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-ordre-des-protections-sur-une-ligne-de-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Ordre des protections sur une ligne de bus
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Ordre des protections sur une ligne de bus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-chaine-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Chaîne type
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-sur-un-ba-pic16f946" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Sur un BA (PIC16F946)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-sur-le-bp-mcf52259-et-u19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Sur le BP (MCF52259 et U19)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-cartes-sans-circuit-integre-sur-la-ligne" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Cartes sans circuit intégré sur la ligne
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-placement-et-routage-des-lignes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Placement et routage des lignes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-alimentation-15-v-du-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Alimentation +15 V du bus
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-masses-retour-des-tvs-et-plot-0-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Masses, retour des TVS et plot 0 V
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Masses, retour des TVS et plot 0 V">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-gnd_bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 GND_BUS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-courant-de-surtension-hors-du-plan-logique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Courant de surtension hors du plan logique
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-plot-0-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Plot 0 V
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-carte-a-isolation-integree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Carte à isolation intégrée
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-regles-propres-au-bp-ports-qui-sortent-de-la-carte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Règles propres au BP : ports qui sortent de la carte
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-regles-de-faisceau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Règles de faisceau
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-saisie-dans-la-cao-altium" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Saisie dans la CAO (Altium)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Saisie dans la CAO (Altium)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-classes-et-rooms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Classes et rooms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-regles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Règles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-controles-hors-drc-relecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Contrôles hors DRC (relecture)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-tracabilite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Traçabilité
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-reste-a-faire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Reste à faire
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../downloads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Téléchargements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-objet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Objet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-zones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Zones
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-distances-entre-zones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Distances entre zones
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Distances entre zones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-entre-z1-et-z2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Entre Z1 et Z2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-entre-z2-et-z3-et-entre-z1-et-z3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Entre Z2 et Z3, et entre Z1 et Z3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-distance-disolement-renforce-calcul-a-faire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Distance d'isolement renforcé : calcul à faire
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-composants-de-barriere" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Composants de barrière
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-ordre-des-protections-sur-une-ligne-de-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Ordre des protections sur une ligne de bus
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Ordre des protections sur une ligne de bus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-chaine-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Chaîne type
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-sur-un-ba-pic16f946" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Sur un BA (PIC16F946)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-sur-le-bp-mcf52259-et-u19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Sur le BP (MCF52259 et U19)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-cartes-sans-circuit-integre-sur-la-ligne" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Cartes sans circuit intégré sur la ligne
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-placement-et-routage-des-lignes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Placement et routage des lignes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-alimentation-15-v-du-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Alimentation +15 V du bus
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-masses-retour-des-tvs-et-plot-0-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Masses, retour des TVS et plot 0 V
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Masses, retour des TVS et plot 0 V">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-gnd_bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 GND_BUS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-courant-de-surtension-hors-du-plan-logique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Courant de surtension hors du plan logique
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-plot-0-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Plot 0 V
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-carte-a-isolation-integree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Carte à isolation intégrée
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-regles-propres-au-bp-ports-qui-sortent-de-la-carte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Règles propres au BP : ports qui sortent de la carte
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-regles-de-faisceau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Règles de faisceau
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-saisie-dans-la-cao-altium" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Saisie dans la CAO (Altium)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Saisie dans la CAO (Altium)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-classes-et-rooms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Classes et rooms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-regles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Règles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-controles-hors-drc-relecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Contrôles hors DRC (relecture)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-tracabilite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Traçabilité
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-reste-a-faire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Reste à faire
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="revision-e-regles-de-conception-communes">Révision E : règles de conception communes</h1>
+<div class="admonition warning">
+<p class="admonition-title">Statut : brouillon. Saisie dans la CAO et relecture à faire</p>
+<p>Ce document est le livrable rédactionnel de la tâche 6.1 du change OpenSpec <code>i2c-surge-protection-2026-10-007</code>. <strong>Les règles ci-dessous ne sont pas encore saisies dans les projets de CAO, et le document n'a pas encore été relu.</strong> Restent à faire :</p>
+<ul>
+<li>le calcul de la distance d'isolement renforcé (§ 3.3) ;</li>
+<li>la saisie des règles dans les projets Altium Designer 16 des SC940D, SC941C, SC942C et SC944D, puis dans l'outil retenu pour la carte d'interconnexion et le MIB ;</li>
+<li>la relecture, tracée sur la sub-issue <a href="https://github.com/essensys-hub/essensys-board-SC944D/issues/7">#7</a>.</li>
+</ul>
+<p>Les valeurs marquées <em>proposé</em> sont des points de départ. La relecture les confirme ou les corrige avant la saisie.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Feature</td>
+<td><code>i2c-surge-protection-2026-10-007</code></td>
+</tr>
+<tr>
+<td>Ticket</td>
+<td><a href="https://github.com/essensys-hub/essensys-board-SC944D/issues/1">essensys-hub/essensys-board-SC944D#1</a></td>
+</tr>
+<tr>
+<td>Sources</td>
+<td><code>openspec/changes/i2c-surge-protection-2026-10-007/</code> : <code>design.md</code> (D1 à D6), specs <code>i2c-bus-surge-protection</code> et <code>aux-box-interconnect</code></td>
+</tr>
+<tr>
+<td>Cartes concernées</td>
+<td>SC940D, SC941C, SC942C (BA), SC944D (BP), carte d'interconnexion, MIB</td>
+</tr>
+<tr>
+<td>Décision liée</td>
+<td><a href="../adr/0001-generation-3-rs485-isole/">ADR 0001 : génération 3 en RS-485 isolé</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="1-objet">1. Objet</h2>
+<p>Le 9 août 2026, une surtension a détruit un boîtier auxiliaire (BA) d'une installation touchée, et bloqué tout le bus I2C entre le boîtier principal (BP) et les BA. L'analyse a montré des défauts communs aux cartes révision D :</p>
+<ul>
+<li>les îlots TBTS ne sont reliés que par le câble de bus ;</li>
+<li>rien ne limite le courant injecté dans les circuits intégrés ;</li>
+<li>le +15 V du bus n'est pas protégé ;</li>
+<li>la distance entre le 230 V et la TBT n'est pas démontrée près de J1/J2.</li>
+</ul>
+<p>La révision E corrige ces défauts dans le dessin des cartes. Ce document fixe les règles communes à toutes les cartes. La conception propre à chaque carte relève des tâches 6.2 (carte d'interconnexion), 6.4 (BA), 6.5 (BP) et 6.7 (MIB).</p>
+<p><strong>Principes.</strong></p>
+<ol>
+<li>Dans un coffret, rendre les 0 V équipotentiels : plot 0 V sur chaque carte, puis carte d'interconnexion.</li>
+<li>Sur chaque carte, dévier le courant de surtension avant les circuits intégrés, et hors du plan logique.</li>
+<li>Limiter le courant que reçoit chaque broche de circuit intégré.</li>
+<li>Garantir par construction l'isolement entre 230 V et TBT.</li>
+<li>Ne jamais relier le 0 V au conducteur de protection (PE) : la TBTS est conservée.</li>
+</ol>
+<p><strong>Vocabulaire.</strong> « DOIT » et « NE DOIT PAS » traduisent les SHALL et MUST NOT des specs. « Recommandé » laisse un choix argumenté au concepteur.</p>
+<p><strong>Invariants de compatibilité.</strong> Une carte révision E DOIT conserver :</p>
+<ul>
+<li>le brochage de J1/J2 (BA) et de J31 (BP) : 1 SDA, 2 SCL, 3 0 V, 4 +15 V ;</li>
+<li>les adresses 0x11 (SC940D), 0x12 (SC942C) et 0x13 (SC941C) ;</li>
+<li>le bus à 50 kHz ;</li>
+<li>les critères de niveau de la spec <code>i2c-bus-surge-protection</code>, vérifiés par <code>NR-board-sc944d-1</code> : niveau bas lu au MCF &lt; 0,85 V, niveau bas lu au PIC &lt; 1,2 V, montée de 0 à 3,45 V &lt; 4 µs, fuite ≤ 50 µA par ligne ;</li>
+<li>le protocole HTTP legacy IoT, que le matériel ne touche pas.</li>
+</ul>
+<h2 id="2-zones">2. Zones</h2>
+<p>Chaque carte est découpée en trois zones, dessinées sur une couche mécanique dédiée et reprises par des <em>rooms</em> dans la CAO (§ 9).</p>
+<table>
+<thead>
+<tr>
+<th>Zone</th>
+<th>Contenu</th>
+<th>Masse de référence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Z1 « bus »</strong></td>
+<td>Connecteurs de bus (J1/J2 d'un BA, J31 du BP, ports de la carte d'interconnexion), écrêteurs primaires (TVS) de ligne, premières résistances série, limiteur réarmable (PTC) et écrêteur du +15 V, plot 0 V. Sur une carte à isolation intégrée : côté bus de l'isolateur et entrée du convertisseur isolé.</td>
+<td><code>GND_BUS</code></td>
+</tr>
+<tr>
+<td><strong>Z2 « TBTS locale »</strong></td>
+<td>Circuits intégrés et logique (PIC16F946, MCF52259, U19, régulateurs), écrêteurs secondaires et résistances de broche, ports TBT locaux (J3 et entrées TOR, liaison IHM, Ethernet côté logique).</td>
+<td>Plan logique <code>GND</code></td>
+</tr>
+<tr>
+<td><strong>Z3 « 230 V »</strong></td>
+<td>Contacts des relais, varistances (VR1…), variateurs, borniers et pistes reliés au réseau.</td>
+<td>Aucune (230 V)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Règles.</strong></p>
+<ul>
+<li>Chaque composant appartient à une seule zone. Seuls les <strong>composants de barrière</strong> (relais, optocoupleurs, transformateur Ethernet, isolateur, convertisseur isolé) ont des broches dans deux zones (§ 3.4).</li>
+<li>Z1 est placée au bord de la carte, autour des connecteurs de bus. Elle DOIT être éloignée de Z3 d'au moins la distance du § 3.2 : sur les cartes révision D, J1/J2 sont estimés à 2 ou 3 mm du relais K1 et de VR1.</li>
+<li>Aucune piste d'une zone ne traverse une autre zone, sauf par les chemins définis aux § 4 à 6.</li>
+</ul>
+<h2 id="3-distances-entre-zones">3. Distances entre zones</h2>
+<h3 id="31-entre-z1-et-z2">3.1 Entre Z1 et Z2</h3>
+<p><strong>Carte à isolation intégrée</strong> (isolateur et convertisseur isolé sur la carte, comme le MIB ou une carte de génération 3) :</p>
+<ul>
+<li>au moins <strong>8 mm sans cuivre, sur toutes les couches</strong>, entre Z1 et Z2 ;</li>
+<li>aucun cuivre, aucune via et aucune piste sous l'isolateur et sous le convertisseur, hors de leurs propres pastilles ;</li>
+<li>barrière renforcée d'au moins 4 kVAC (spec <code>aux-box-interconnect</code>, exigence « Module d'isolement pour BA déportés ») ;</li>
+<li>un condensateur de barrière (1 nF au plus) seulement si les émissions l'exigent : il laisse passer environ 2 A pour 1 nF à 2 kV/µs.</li>
+</ul>
+<p><strong>Carte non isolée</strong> (BA et BP révision E sans isolateur intégré) : Z1 et Z2 partagent le 0 V, et aucune distance n'est imposée entre elles. En revanche :</p>
+<ul>
+<li>SDA et SCL ne passent de Z1 à Z2 <strong>que</strong> par le chemin protégé du § 4 ;</li>
+<li>le +15 V ne passe de Z1 à Z2 que par le chemin protégé du § 5 ;</li>
+<li>le 0 V ne passe de Z1 à Z2 que par le point de liaison unique du § 6.2 ;</li>
+<li>aucun autre conducteur ne franchit la frontière, et aucun signal de Z2 n'est routé sous Z1.</li>
+</ul>
+<h3 id="32-entre-z2-et-z3-et-entre-z1-et-z3">3.2 Entre Z2 et Z3, et entre Z1 et Z3</h3>
+<p>Entre tout conducteur 230 V et tout conducteur TBT (Z1 ou Z2), la carte DOIT présenter :</p>
+<ul>
+<li>au moins <strong>D_iso = max(6 mm ; distance d'isolement renforcé)</strong>, la distance d'isolement renforcé étant exigée par l'EN 60664-1 et par la norme produit applicable ;</li>
+<li>sur <strong>toutes les couches</strong>, externes et internes ;</li>
+<li>une <strong>fente fraisée</strong> le long de la frontière, partout où des conducteurs 230 V et TBT se font face.</li>
+</ul>
+<p><strong>Changement par rapport à la révision D.</strong> Les projets des SC940D, SC941C, SC942C et SC944D définissent une classe de nets <code>BT</code> et deux règles : <code>Clearance_BT_EXT</code> (5,5 mm, couches externes) et <code>Clearance_BT_MID</code> (0,7 mm, couches internes). Les cartes ont quatre couches. En révision E, une règle unique s'applique à toutes les couches avec la valeur D_iso, et la règle à 0,7 mm sur les couches internes disparaît.</p>
+<p><strong>Fente.</strong></p>
+<ul>
+<li>Largeur d'au moins 1 mm, valeur X du degré de pollution 2 de l'EN 60664-1 (à confirmer à la relecture). Valeur <em>proposée</em> : 2 mm, pour la fabrication.</li>
+<li>La ligne de fuite qui contourne la fente par ses extrémités DOIT rester supérieure ou égale à D_iso.</li>
+<li>La fente allonge la ligne de fuite. Elle ne change pas la distance dans l'air, qui DOIT respecter à elle seule la valeur calculée.</li>
+</ul>
+<p>Le vernis et la sérigraphie ne comptent pas comme isolation.</p>
+<p>Pour les BA, J1/J2 DOIVENT se trouver à D_iso au moins de K1 et des varistances, avec une fente (tâche 6.4).</p>
+<h3 id="33-distance-disolement-renforce-calcul-a-faire">3.3 Distance d'isolement renforcé : calcul à faire</h3>
+<p>La valeur exacte (6 ou 8 mm) reste une question ouverte du design. Le calcul retient :</p>
+<ul>
+<li>la tension de service : réseau 230/400 V ;</li>
+<li>la catégorie de surtension : III pour un appareil installé dans le tableau (à confirmer) ;</li>
+<li>le degré de pollution : 2 ;</li>
+<li>le groupe de matériau du stratifié, d'après l'indice CTI donné par le fabricant de circuits imprimés ;</li>
+<li>une altitude inférieure ou égale à 2000 m.</li>
+</ul>
+<p>La distance dans l'air et la ligne de fuite se calculent séparément, en isolation renforcée. La norme produit peut imposer davantage. Le résultat est consigné sur la sub-issue #7.</p>
+<p><strong>Valeur à saisir dans la DRC en attendant le calcul : 8,0 mm</strong>, la plus contraignante des deux valeurs candidates. Si le placement ne permet pas 8 mm, le calcul est fait avant toute réduction. La valeur saisie ne descend jamais sous 6,0 mm.</p>
+<h3 id="34-composants-de-barriere">3.4 Composants de barrière</h3>
+<ul>
+<li>Les relais (bobine en Z2, contacts en Z3), les optocoupleurs, le transformateur Ethernet, l'isolateur et le convertisseur isolé DOIVENT être spécifiés en <strong>isolation renforcée</strong> entre leurs deux côtés. Leur fiche technique doit couvrir la tension de service et la catégorie de surtension retenues.</li>
+<li>Leur empreinte place la frontière entre les deux groupes de broches, et la fente sous le corps du composant quand l'écart entre broches le permet.</li>
+<li>La DRC reçoit une exception <strong>par composant</strong> (§ 9.2, règle R2). Elle porte uniquement sur les broches de ce composant, et sa valeur est la distance que garantit le fabricant. L'exception est justifiée dans la relecture.</li>
+</ul>
+<h2 id="4-ordre-des-protections-sur-une-ligne-de-bus">4. Ordre des protections sur une ligne de bus</h2>
+<h3 id="41-chaine-type">4.1 Chaîne type</h3>
+<p>Chaque ligne SDA et SCL DOIT être protégée dans cet ordre, depuis le connecteur :</p>
+<div class="highlight"><pre><span></span><code>connecteur ── TVS ── Rs1 ──┬── Rs2 ── circuit intégré
+   (Z1)        │    (Z1)   │   (Z2)
+               │      écrêteur secondaire (Z2)
+           GND_BUS     vers +V et 0 V du circuit intégré
+</code></pre></div>
+<ul>
+<li><strong>TVS</strong> : écrêteur primaire, vers <code>GND_BUS</code>.</li>
+<li><strong>Rs1</strong> : résistance de ligne, anti-impulsion.</li>
+<li><strong>Écrêteur secondaire</strong> : double diode Schottky (BAT54S), cathode sur l'alimentation du circuit intégré, anode sur son 0 V.</li>
+<li><strong>Rs2</strong> : résistance de broche, entre l'écrêteur secondaire et le circuit intégré.</li>
+</ul>
+<p><strong>Règles.</strong></p>
+<ul>
+<li>Entre le connecteur et la TVS, il n'y a que du cuivre : aucun autre composant n'est raccordé à ce segment.</li>
+<li>La TVS est à <strong>10 mm de piste au plus</strong> de la broche du connecteur. Sur les cartes révision D, D1/D2 sont à plusieurs centimètres de J1/J2.</li>
+<li>Caractéristiques de la TVS de ligne :<ul>
+<li>capacité de 50 pF au plus ;</li>
+<li>tension de veille (VRWM) de 5 V au moins ;</li>
+<li>fuite telle que le total des écrêteurs reste à 50 µA au plus par ligne et par carte, sous 5 V et jusqu'à 50 °C ;</li>
+<li>Ipp en onde 8/20 de 5 à 10 A au moins (<em>proposé</em>) ;</li>
+<li>boîtier soudable à la main (SOD-323 ou SOD-123).</li>
+</ul>
+</li>
+<li>Rs1 et Rs2 sont des résistances anti-impulsion (familles ERJ-P ou CRCW-HP).</li>
+<li>Rs2 limite le courant de broche à <strong>20 mA au plus</strong>, pour une ligne portée à +12 V puis à −2,5 V au connecteur. Ce courant se mesure sur un échantillon de banc instrumenté (shunt entre l'écrêteur secondaire et la broche), ou s'estime par V(broche) − VDD sur une courbe de diode caractérisée.</li>
+</ul>
+<h3 id="42-sur-un-ba-pic16f946">4.2 Sur un BA (PIC16F946)</h3>
+<ul>
+<li>Rs1 correspond à R1/R2 du schéma (R1/R3 sur le SC941C), qui valent aujourd'hui 0 Ω.</li>
+<li>Le <strong>niveau bas</strong> borne la somme Rs1 + Rs2. Avec les pull-ups du BP à 2,2 kΩ, la somme ne dépasse pas <strong>100 Ω</strong> (<em>proposé</em>, même borne que l'option renforcée du design D2). La répartition, par exemple 47 Ω + 47 Ω, est fixée par le calcul du courant de broche. Elle est ensuite vérifiée par <code>NR-board-sc944d-1</code> et sur un échantillon instrumenté.</li>
+<li><strong>Point ouvert pour la relecture.</strong> Un BA dont Rs1 + Rs2 dépasse 47 Ω n'est compatible qu'avec un BP dont les pull-ups sont à 2,2 kΩ (BP révision E, ou BP retouché en option renforcée). Avec les pull-ups de 1 kΩ d'un BP révision D, environ 94 Ω en série porte le niveau bas lu au MCF vers 0,9 V, au-delà de 0,85 V. Il faut soit l'inscrire dans le tableau de cohabitation, soit prévoir une option de BOM à 47 Ω.</li>
+</ul>
+<h3 id="43-sur-le-bp-mcf52259-et-u19">4.3 Sur le BP (MCF52259 et U19)</h3>
+<p>Chaîne de chaque ligne, de J31 vers le MCF :</p>
+<ol>
+<li>TVS de 50 pF au plus, à la place de D33/D34 (1120 pF) ;</li>
+<li>résistance série de 47 Ω : la résistance mesurée hors tension entre J31 et U19 est de 44 à 50 Ω ;</li>
+<li>écrêteur secondaire (BAT54S, cathode sur +5VS), côté U19 ;</li>
+<li>U19 (PCA9306) ;</li>
+<li>résistance série vers le MCF (33 Ω au plus, <em>proposé</em>) ;</li>
+<li>protection <strong>au pied du MCF</strong>, à 10 mm au plus des broches 28/29 (<em>proposé</em>). En révision D, cette piste de 55 mm n'a aucune protection ;</li>
+<li>MCF52259, broches 28 (SCL) et 29 (SDA).</li>
+</ol>
+<p>Les pull-ups R155/R156 passent à 2,2 kΩ.</p>
+<p>Pendant une injection, les limites de la spec s'appliquent :</p>
+<ul>
+<li>côté bus de U19 : au plus +7,0 V, et au moins −0,5 V (ou courant d'entrée de 50 mA au plus en valeur absolue) ;</li>
+<li>broches I2C du MCF : au plus 4,0 V, et au moins −0,3 V.</li>
+</ul>
+<h3 id="44-cartes-sans-circuit-integre-sur-la-ligne">4.4 Cartes sans circuit intégré sur la ligne</h3>
+<p>La carte d'interconnexion n'a pas de circuit intégré sur SDA et SCL. Par port, elle porte une TVS de 50 pF au plus vers le plan 0 V, à 10 mm au plus du connecteur, <strong>sans résistance série</strong>. Une résistance de port s'ajouterait à R1 du BA : un BA retouché présenterait 94 Ω en série, soit environ 0,94 V au MCF avec les pull-ups de 1 kΩ. Les traversées IDC 26 points des nappes J3 portent une TVS par entrée vers le plan 0 V.</p>
+<h3 id="45-placement-et-routage-des-lignes">4.5 Placement et routage des lignes</h3>
+<ul>
+<li>Le segment entre le connecteur et Rs1, TVS comprise, reste sur une couche externe, sans changement de couche, et mesure 20 mm au plus (<em>proposé</em>).</li>
+<li>Après Rs1, SDA et SCL sont routées de préférence en couche interne, entre plans de masse, avec une garde de masse (recommandé).</li>
+<li>SDA et SCL ne sont jamais parallèles aux commandes de relais ni aux pistes 230 V.</li>
+<li>L'écrêteur secondaire et Rs2 sont placés près du circuit intégré : 10 mm au plus de la broche (<em>proposé</em>).</li>
+</ul>
+<h2 id="5-alimentation-15-v-du-bus">5. Alimentation +15 V du bus</h2>
+<p>Chaîne, depuis le connecteur :</p>
+<div class="highlight"><pre><span></span><code>J1-4 ∥ J2-4 (nœud de chaînage) ── PTC ── TVS 16 V ── filtre ── régulateur
+                                          │
+                                       GND_BUS
+</code></pre></div>
+<p><strong>Règles.</strong></p>
+<ul>
+<li>Limiteur réarmable (PTC) de 30 V au moins, dont le courant de maintien à 50 °C vaut au moins 1,5 fois le courant mesuré de la carte, relais monostables collés. Sur le BP, le +15 V de J31-4 passe par un eFuse à démarrage progressif.</li>
+<li>La TVS d'alimentation (16 V, SMCJ16A de référence) a une VRWM au moins égale à la tension nominale maximale du nœud. Elle est placée <strong>en aval</strong> du limiteur, jamais en amont : une TVS d'alimentation finit en court-circuit.</li>
+<li>Ni la PTC ni la TVS ne sont placées sur le <strong>nœud de chaînage partagé</strong> (+VBUS entre J1 et J2) : une TVS morte y couperait tous les BA en aval.</li>
+<li>La TVS revient vers <code>GND_BUS</code> par une piste de 5 mm au plus, ou par des vias directes (<em>proposé</em>).</li>
+<li>Tout composant en aval de la TVS a une tension assignée au moins égale à la tension d'écrêtage maximale de cette TVS. La tension assignée est la tension maximale recommandée en fonctionnement, et non le maximum absolu. En pratique :<ul>
+<li>BA : régulateur LMR16006 (4 à 60 V), C2 en 50 V, D6 en 40 V, FI1 de tenue adaptée ;</li>
+<li>BP : régulateur de +12VSP et U2 avec une entrée d'au moins 40 V.</li>
+</ul>
+</li>
+<li>La piste +15 V de chaînage (J1-4 ↔ J2-4) porte le courant de tous les BA en aval : 1,5 mm au moins en cuivre de 35 µm (<em>proposé</em>).</li>
+</ul>
+<h2 id="6-masses-retour-des-tvs-et-plot-0-v">6. Masses, retour des TVS et plot 0 V</h2>
+<h3 id="61-gnd_bus">6.1 <code>GND_BUS</code></h3>
+<ul>
+<li><code>GND_BUS</code> est un <strong>net distinct</strong> du schéma. Il réunit :<ul>
+<li>les broches 0 V des connecteurs de bus (J1-3 et J2-3, J31-3, ports de la carte d'interconnexion) ;</li>
+<li>le plot 0 V ;</li>
+<li>les retours des TVS de ligne et de la TVS +15 V.</li>
+</ul>
+</li>
+<li>Il forme un plan sous Z1, sur les deux couches externes, cousu par des vias au pas de 5 mm au plus (<em>proposé</em>). Les pastilles des TVS et les broches 0 V des connecteurs y sont reliées sans réserve thermique (<em>proposé</em>).</li>
+<li>Sur un BA, le chemin J1-3 ↔ J2-3 ↔ plot 0 V reste entièrement dans <code>GND_BUS</code>. Le courant de retour des BA en aval et le courant d'équilibrage ne traversent pas le plan logique.</li>
+</ul>
+<h3 id="62-courant-de-surtension-hors-du-plan-logique">6.2 Courant de surtension hors du plan logique</h3>
+<ul>
+<li><code>GND_BUS</code> et le plan logique <code>GND</code> sont reliés en <strong>un seul point</strong>, par un composant de liaison (<em>net tie</em>) NT1. NT1 est placé à la frontière entre Z1 et Z2, au droit des écrêteurs secondaires : le petit courant qu'ils dérivent (borné par Rs1) rejoint ainsi <code>GND_BUS</code> sans traverser le plan logique.</li>
+<li>Aucune autre liaison entre <code>GND_BUS</code> et <code>GND</code>. Le plan logique ne s'étend pas sous Z1.</li>
+<li><strong>Ports locaux</strong> (J3 et entrées TOR, capteurs extérieurs et contact de porte du BP) : leurs TVS reviennent vers une bande de retour de port, reliée à <code>GND_BUS</code> par un chemin de cuivre direct qui ne passe pas par le plan logique. <em>Recommandation à confirmer en relecture.</em> En révision D, chaque TVS d'entrée renvoie son courant dans le 0 V qui sert aussi de référence au bus.</li>
+</ul>
+<h3 id="63-plot-0-v">6.3 Plot 0 V</h3>
+<ul>
+<li>Sur un BA, le plot est placé près de J1/J2. Sur le BP, il est placé près de J31. Distance <em>proposée</em> : 20 mm au plus du connecteur.</li>
+<li>C'est un trou métallisé pour vis M3 (<em>proposé</em>, à harmoniser avec la carte d'interconnexion), avec une pastille sur les deux faces et une couronne de vias vers <code>GND_BUS</code>.</li>
+<li>Il est en Z1, à D_iso au moins de tout conducteur de Z3.</li>
+<li>La sérigraphie porte : « 0 V TBTS – NE PAS RELIER À LA TERRE ».</li>
+<li>Ce n'est pas un trou de fixation. Il NE DOIT PAS être relié au PE, au rail DIN ni à une pièce métallique du coffret. Le conducteur qui le relie à la carte d'interconnexion est isolé, et n'est ni vert-jaune ni bleu clair.</li>
+<li>Le plot conditionne les seuils de la carte d'interconnexion : environ 875 A en onde 8/20 et 292 A sur un front de 1 Ipk/µs, pour une exigence de 800 A et 250 A (spec <code>aux-box-interconnect</code>). Par J31 seul, ces valeurs sont hors d'atteinte.</li>
+</ul>
+<h3 id="64-carte-a-isolation-integree">6.4 Carte à isolation intégrée</h3>
+<p>Il y a un plan par îlot, sans recouvrement entre îlots : <code>GND_BUS</code> en Z1, <code>GND</code> en Z2, et aucune liaison NT1 entre eux. La distance du § 3.1 s'applique.</p>
+<h2 id="7-regles-propres-au-bp-ports-qui-sortent-de-la-carte">7. Règles propres au BP : ports qui sortent de la carte</h2>
+<ul>
+<li>J31 et le RJ45 J32 sont placés sur des <strong>bords opposés</strong>. En révision D, ils sont à 18 mm l'un de l'autre.</li>
+<li>J32 est éloigné de J31 et de J53 (contact de porte), qui partent aujourd'hui du même coin.</li>
+<li>Ethernet : magnétiques isolés de 2,25 à 4 kV et capacité de terminaison Bob Smith de 3 kV au moins, ou Ethernet isolé intégré.</li>
+<li>Aucune carte ne prévoit de liaison entre le 0 V et le PE : ni condensateur Y, ni varistance, ni éclateur entre une zone TBT et une borne PE.</li>
+<li>L'éventuel écran d'un câble Ethernet blindé n'est pas raccordé côté BP (spec <code>aux-box-interconnect</code>). Aucun parafoudre relié au PE n'est posé sur le port Ethernet du BP.</li>
+</ul>
+<h2 id="8-regles-de-faisceau">8. Règles de faisceau</h2>
+<p>Ces règles complètent le dessin des cartes. Les règles d'installation sont validées par un électricien avant leur publication dans le guide d'installation (tâche 8.4).</p>
+<p><strong>Dans un coffret.</strong></p>
+<ul>
+<li>Chaque liaison de bus mesure 0,5 m au plus.</li>
+<li>Le +15 V et le 0 V forment une paire dédiée. SDA et SCL sont chacune torsadées avec un 0 V de signal.</li>
+<li>SCL n'est <strong>jamais</strong> torsadée avec le +15 V : l'ondulation s'y couplerait, et un écrasement du câble porterait 15 V sur SCL.</li>
+<li>Le câble de bus et les nappes ne partagent jamais une goulotte avec des conducteurs 230 V. Ils sont sous un manchon isolant là où ils longent des bornes de phase.</li>
+<li>Le cordon Ethernet du BP sort directement du coffret.</li>
+<li>Le 0 V est renforcé par l'étoile 0 V (N2), par la carte d'interconnexion reliée aux plots 0 V, ou à défaut par le renfort N1.</li>
+<li>Faisceaux de N2 : AWG20, 15 cm au plus, sertis à l'outil, moins de 60 mΩ par conducteur, contacts compris.</li>
+<li>Tout renfort de 0 V est isolé, n'est ni vert-jaune ni bleu clair, porte à chaque extrémité le repère « 0 V TBTS – NE PAS RELIER À LA TERRE », et suit le câble de bus en lui restant plaqué.</li>
+<li>Le coffret domotique ne comporte ni borne ni raccordement PE. Le PE d'un départ 230 V qui le traverse reste gainé avec son circuit, dans les goulottes 230 V.</li>
+</ul>
+<p><strong>Pour un BA déporté</strong> (hors du coffret du BP, ou liaison de plus de 0,5 m) :</p>
+<ul>
+<li>raccordement par un MIB, avec 3 m au plus de câble AWG20. Au-delà, un tampon de bus qualifié ou la génération 3 ;</li>
+<li>connecteur côté isolé d'une autre série, et J2 du BA neutralisé, avec l'étiquette « ne pas raccorder sans module » ;</li>
+<li>écran éventuel : règle à fixer avec le MIB (tâche 6.7). Il n'est jamais relié au 0 V, ni raccordé dans le coffret domotique.</li>
+</ul>
+<h2 id="9-saisie-dans-la-cao-altium">9. Saisie dans la CAO (Altium)</h2>
+<p>Cette table traduit chaque règle en contrainte de CAO. Les requêtes suivent la syntaxe des règles existantes des projets révision D (<code>InNetClass</code>, <code>IsElectrical</code>, <code>InComponent</code>). Les valeurs en mil sont données pour la saisie : Altium les exporte en mil dans les fichiers <code>.RUL</code>.</p>
+<h3 id="91-classes-et-rooms">9.1 Classes et rooms</h3>
+<table>
+<thead>
+<tr>
+<th>Objet</th>
+<th>Nom</th>
+<th>Contenu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Classe de nets</td>
+<td><code>BT</code> (existante)</td>
+<td>Tous les nets TBT, Z1 et Z2. Convention héritée à conserver : <strong>tout net hors de <code>BT</code> est traité comme 230 V</strong>, si bien qu'un net oublié reçoit la distance la plus grande.</td>
+</tr>
+<tr>
+<td>Classe de nets</td>
+<td><code>Z1_BUS_SIG</code></td>
+<td>SDA et SCL, du connecteur jusqu'à Rs1 inclus (TVS comprise).</td>
+</tr>
+<tr>
+<td>Classe de nets</td>
+<td><code>Z1_BUS_PWR</code></td>
+<td>+15 V du connecteur jusqu'à l'entrée du régulateur (nœud de chaînage, aval de la PTC).</td>
+</tr>
+<tr>
+<td>Classe de nets</td>
+<td><code>GND_BUS</code></td>
+<td>0 V du bus (§ 6.1).</td>
+</tr>
+<tr>
+<td>Classe de nets</td>
+<td><code>Z2_I2C</code></td>
+<td>SDA et SCL, de Rs1 jusqu'au circuit intégré.</td>
+</tr>
+<tr>
+<td>Classe de nets</td>
+<td><code>RELAIS_CMD</code></td>
+<td>Commandes TBT des relais et des variateurs.</td>
+</tr>
+<tr>
+<td>Classes de nets</td>
+<td><code>ISO_BUS</code>, <code>ISO_LOC</code></td>
+<td>Cartes à isolation intégrée seulement : tous les nets de Z1, tous les nets de Z2.</td>
+</tr>
+<tr>
+<td>Classes de composants</td>
+<td><code>CC_Z1</code>, <code>CC_Z2</code>, <code>CC_Z3</code></td>
+<td>Composants de chaque zone.</td>
+</tr>
+<tr>
+<td>Classe de composants</td>
+<td><code>CC_TVS_&lt;connecteur&gt;</code></td>
+<td>TVS de ligne et TVS +15 V d'un connecteur de bus (par exemple <code>CC_TVS_J1</code>).</td>
+</tr>
+<tr>
+<td>Classe de composants</td>
+<td><code>CC_BARRIERE</code></td>
+<td>Composants de barrière (§ 3.4).</td>
+</tr>
+<tr>
+<td>Rooms</td>
+<td><code>ROOM_Z1</code>, <code>ROOM_Z2</code>, <code>ROOM_Z3</code></td>
+<td>Contours des zones.</td>
+</tr>
+<tr>
+<td>Rooms</td>
+<td><code>ROOM_TVS_&lt;connecteur&gt;</code></td>
+<td>Polygone dont tout point est à 10 mm au plus des broches 1, 2 et 4 du connecteur.</td>
+</tr>
+<tr>
+<td>Room</td>
+<td><code>ROOM_P0V</code></td>
+<td>Polygone à 20 mm au plus du connecteur de bus (<em>proposé</em>).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="92-regles">9.2 Règles</h3>
+<table>
+<thead>
+<tr>
+<th>N°</th>
+<th>Règle (§)</th>
+<th>Type de règle Altium</th>
+<th>Portée</th>
+<th>Valeur</th>
+<th>Remarque</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R1</td>
+<td>Isolement 230 V / TBT (§ 3.2)</td>
+<td>Electrical › Clearance</td>
+<td><code>IsElectrical and InNetClass('BT')</code> contre <code>IsElectrical and not InNetClass('BT')</code>, <strong>toutes couches</strong></td>
+<td>8,0 mm (315 mil) en attendant le calcul du § 3.3 ; jamais moins de 6,0 mm (236 mil)</td>
+<td>Remplace <code>Clearance_BT_EXT</code> (5,5 mm) et supprime <code>Clearance_BT_MID</code> (0,7 mm). Priorité supérieure aux règles de clearance par défaut. Les exceptions de portée héritées (par exemple <code>HasPad('K*-12')</code>) sont revues une à une.</td>
+</tr>
+<tr>
+<td>R2</td>
+<td>Composant de barrière (§ 3.4)</td>
+<td>Electrical › Clearance</td>
+<td><code>InComponent('&lt;réf&gt;') and InNetClass('BT')</code> contre <code>InComponent('&lt;réf&gt;') and not InNetClass('BT')</code>, <strong>une règle par composant</strong></td>
+<td>Distance garantie par la fiche technique</td>
+<td>Priorité supérieure à R1. Justification consignée dans la relecture.</td>
+</tr>
+<tr>
+<td>R3</td>
+<td>Z1 / Z2 isolées (§ 3.1)</td>
+<td>Electrical › Clearance</td>
+<td><code>InNetClass('ISO_BUS')</code> contre <code>InNetClass('ISO_LOC')</code>, toutes couches</td>
+<td>8,0 mm (315 mil)</td>
+<td>Cartes à isolation intégrée seulement.</td>
+</tr>
+<tr>
+<td>R4</td>
+<td>Rien sous l'isolateur ni sous le convertisseur (§ 3.1)</td>
+<td>Région de keep-out sur toutes les couches, découpes de polygone</td>
+<td>Emprise de l'isolateur et du convertisseur</td>
+<td>Aucun cuivre hors de leurs pastilles</td>
+<td>Complétée par un contrôle visuel en relecture.</td>
+</tr>
+<tr>
+<td>R5</td>
+<td>Fente (§ 3.2)</td>
+<td>Découpe de carte (<em>board cutout</em>)</td>
+<td>Frontières Z1/Z3 et Z2/Z3, et sous les composants de barrière</td>
+<td>Largeur de 1 mm au moins ; 2 mm <em>proposés</em></td>
+<td>La clearance cuivre–contour existante s'applique aux bords de la fente. Présence et contournement contrôlés en relecture.</td>
+</tr>
+<tr>
+<td>R6</td>
+<td>Zones (§ 2)</td>
+<td>Placement › Room Definition (garder à l'intérieur)</td>
+<td><code>InComponentClass('CC_Z1')</code> dans <code>ROOM_Z1</code>, de même pour Z2 et Z3</td>
+<td>—</td>
+<td>Les composants de barrière sont placés à cheval sur la frontière, hors de cette règle.</td>
+</tr>
+<tr>
+<td>R7</td>
+<td>TVS à 10 mm au plus du connecteur (§ 4.1)</td>
+<td>Placement › Room Definition (garder à l'intérieur)</td>
+<td><code>InComponentClass('CC_TVS_&lt;connecteur&gt;')</code> dans <code>ROOM_TVS_&lt;connecteur&gt;</code></td>
+<td>10 mm</td>
+<td>Une room par connecteur de bus (J1, J2, J31, ports).</td>
+</tr>
+<tr>
+<td>R8</td>
+<td>Segment connecteur → Rs1 (§ 4.5)</td>
+<td>High Speed › Length</td>
+<td><code>InNetClass('Z1_BUS_SIG')</code></td>
+<td>20 mm au plus (<em>proposé</em>)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>R9</td>
+<td><code>GND_BUS</code> à faible impédance (§ 6.1)</td>
+<td>Routing › Width</td>
+<td><code>InNetClass('GND_BUS')</code></td>
+<td>2,0 mm au moins (<em>proposé</em>)</td>
+<td>Le plan de <code>GND_BUS</code> est un polygone.</td>
+</tr>
+<tr>
+<td>R10</td>
+<td>Liaison directe à <code>GND_BUS</code> (§ 6.1)</td>
+<td>Plane › Polygon Connect Style</td>
+<td><code>InNetClass('GND_BUS')</code></td>
+<td>Connexion directe (<em>proposé</em>)</td>
+<td>Pas de réserve thermique sur les TVS ni sur les broches 0 V des connecteurs.</td>
+</tr>
+<tr>
+<td>R11</td>
+<td>+15 V de chaînage (§ 5)</td>
+<td>Routing › Width</td>
+<td><code>InNetClass('Z1_BUS_PWR')</code></td>
+<td>1,5 mm au moins (<em>proposé</em>)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>R12</td>
+<td>Liaison unique <code>GND_BUS</code> – <code>GND</code> (§ 6.2)</td>
+<td>Electrical › Short-Circuit</td>
+<td>Court-circuit autorisé seulement pour <code>InComponent('NT1')</code></td>
+<td>—</td>
+<td>La règle <code>ShortCircuit</code> existante (aucun court-circuit autorisé) reste valable partout ailleurs. NT1 est un composant de type <em>net tie</em>.</td>
+</tr>
+<tr>
+<td>R13</td>
+<td>Pas de parallélisme avec les commandes de relais (§ 4.5)</td>
+<td>High Speed › Parallel Segment</td>
+<td><code>InNetClass('Z1_BUS_SIG') or InNetClass('Z2_I2C')</code> contre <code>InNetClass('RELAIS_CMD')</code>, même couche et couches adjacentes</td>
+<td>5 mm de parallélisme au plus, pour un écart inférieur à 2 mm (<em>proposé</em>)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>R14</td>
+<td>Plot 0 V (§ 6.3)</td>
+<td>Placement › Room Definition (garder à l'intérieur)</td>
+<td><code>InComponent('P0V')</code> dans <code>ROOM_P0V</code></td>
+<td>20 mm au plus du connecteur (<em>proposé</em>)</td>
+<td>La distance à Z3 est couverte par R1.</td>
+</tr>
+<tr>
+<td>R15</td>
+<td>BP : J32 loin de J31 et de J53 (§ 7)</td>
+<td>Placement › Component Clearance</td>
+<td><code>InComponent('J32')</code> contre <code>InComponent('J31') or InComponent('J53')</code></td>
+<td>40 mm au moins (<em>proposé</em>)</td>
+<td>À ajuster à la taille de la carte. J31 et J32 sont en plus placés dans deux rooms de bord opposées.</td>
+</tr>
+<tr>
+<td>R16</td>
+<td>BP : protection au pied du MCF (§ 4.3)</td>
+<td>Placement › Room Definition (garder à l'intérieur)</td>
+<td>Composants de protection de PAS0/PAS1 dans une room à 10 mm au plus des broches 28/29</td>
+<td>10 mm (<em>proposé</em>)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="93-controles-hors-drc-relecture">9.3 Contrôles hors DRC (relecture)</h3>
+<p>Ces points ne se traduisent pas en règle native. Ils sont vérifiés à la relecture, puis sur les Gerber :</p>
+<ul>
+<li>présence de la fente, et ligne de fuite qui la contourne (§ 3.2). Si la version d'Altium utilisée dispose d'une règle de ligne de fuite, elle est saisie avec la valeur D_iso ;</li>
+<li>retour de chaque TVS vers <code>GND_BUS</code> en 5 mm au plus, ou par vias directes (§ 4.1 et § 5) ;</li>
+<li>absence du plan logique <code>GND</code> sous Z1, et liaison <code>GND_BUS</code> – <code>GND</code> par NT1 seulement (§ 6.2) ;</li>
+<li>fiches techniques des composants de barrière : isolation renforcée (§ 3.4) ;</li>
+<li>routage de <code>Z2_I2C</code> en couche interne avec garde de masse (§ 4.5, recommandé) ;</li>
+<li>revue de BOM :<ul>
+<li>TVS de ligne : 50 pF au plus, VRWM, fuite ;</li>
+<li>PTC : tension, courant de maintien à 50 °C ;</li>
+<li>tensions assignées en aval de la TVS +15 V ;</li>
+<li>valeurs de Rs1 et Rs2, pull-ups du BP ;</li>
+</ul>
+</li>
+<li>sérigraphie du plot 0 V ;</li>
+<li>contrôle des distances sur les Gerber (vérification de la tâche 6.4).</li>
+</ul>
+<h2 id="10-tracabilite">10. Traçabilité</h2>
+<table>
+<thead>
+<tr>
+<th>Règle</th>
+<th>Exigence (spec)</th>
+<th>Vérification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Distances Z2/Z3 et Z1/Z3, fente (§ 3.2)</td>
+<td><code>i2c-bus-surge-protection</code>, « Compatibilité TBTS » (scénario « Distance d'isolement en révision E »)</td>
+<td>Gerber (tâches 6.4 et 6.5) ; essai d'isolement à 500 V continu, 100 MΩ au moins</td>
+</tr>
+<tr>
+<td>Barrière Z1/Z2 de 8 mm (§ 3.1)</td>
+<td><code>aux-box-interconnect</code>, « Module d'isolement pour BA déportés »</td>
+<td>Gerber du MIB (tâche 6.7)</td>
+</tr>
+<tr>
+<td>Ordre des protections, courant de broche (§ 4)</td>
+<td><code>i2c-bus-surge-protection</code>, « Courant injecté dans les broches I2C borné » et « Écrêtage coordonné des lignes SDA et SCL »</td>
+<td>Échantillon instrumenté (tâche 6.4) ; injections de la tâche 7.16</td>
+</tr>
+<tr>
+<td>Chaîne du BP (§ 4.3)</td>
+<td>Idem : MCF à −0,3 V au moins, 44 à 50 Ω entre J31 et U19</td>
+<td>Tâche 6.5 ; <code>NR-board-sc944d-1</code></td>
+</tr>
+<tr>
+<td>Niveaux et compatibilité (§ 1, § 4.2)</td>
+<td>« Niveaux I2C conservés à 50 kHz »</td>
+<td><code>NR-board-sc944d-1</code></td>
+</tr>
+<tr>
+<td>+15 V (§ 5)</td>
+<td>« Protection de l'alimentation +15 V du bus » et « Marges de tension des composants d'alimentation »</td>
+<td><code>NR-board-sc944d-9</code> ; revue de BOM</td>
+</tr>
+<tr>
+<td><code>GND_BUS</code> et plot 0 V (§ 6)</td>
+<td><code>aux-box-interconnect</code>, « 0 V équipotentiels à basse impédance dans un coffret » (800 A et 250 A)</td>
+<td>Tâche 6.6</td>
+</tr>
+<tr>
+<td>Défaillance d'un élément de protection en premier</td>
+<td>« Défaillance maîtrisée sous contrainte excessive »</td>
+<td>Tâche 7.19</td>
+</tr>
+<tr>
+<td>Faisceau (§ 8)</td>
+<td><code>aux-box-interconnect</code>, « Câblage du bus dans un coffret » et « Aucune liaison au PE et repérage du 0 V »</td>
+<td>Contrôle du coffret ; guide d'installation (tâche 8.4)</td>
+</tr>
+</tbody>
+</table>
+<p>Tous les essais se font <strong>sur banc</strong>, sur des échantillons dédiés, jamais sur une armoire en service.</p>
+<h2 id="11-reste-a-faire">11. Reste à faire</h2>
+<ul>
+<li>[ ] Calculer la distance d'isolement renforcé (§ 3.3), et la consigner sur #7.</li>
+<li>[ ] Relire ce document, et trancher les valeurs <em>proposées</em> ainsi que le point ouvert du § 4.2.</li>
+<li>[ ] Saisir les classes, les rooms et les règles R1 à R16 dans les projets SC940D, SC941C, SC942C et SC944D, puis exporter les fichiers <code>.RUL</code>.</li>
+<li>[ ] Reprendre les mêmes règles dans le projet de la carte d'interconnexion et dans celui du MIB, une fois leur outil de CAO fixé.</li>
+<li>[ ] Faire relire la saisie, avec un ERC et une DRC sans erreur, et tracer la relecture sur #7.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.expand", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

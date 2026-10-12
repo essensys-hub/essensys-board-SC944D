@@ -1,0 +1,1532 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation technique du module SC944D (Projet Essensys).">
+      
+      
+        <meta name="author" content="Essensys Team">
+      
+      
+        <link rel="canonical" href="https://essensys-hub.github.io/essensys-board-SC944D/adr/0001-generation-3-rs485-isole/">
+      
+      
+        <link rel="prev" href="../../retouche-foudre/">
+      
+      
+        <link rel="next" href="../../rev-e-regles-conception/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Décisions (ADR) - Documentation SC944D</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#adr-0001-bus-bp-ba-de-generation-3-en-rs-485-isole" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../.." title="Documentation SC944D" class="md-header__button md-logo" aria-label="Documentation SC944D" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Documentation SC944D
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Décisions (ADR)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/essensys-hub/essensys-board-SC944D/" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    essensys-board-SC944D
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Documentation SC944D" class="md-nav__button md-logo" aria-label="Documentation SC944D" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Documentation SC944D
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/essensys-hub/essensys-board-SC944D/" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    essensys-board-SC944D
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../firmware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Firmware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../i2c/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocoles I2C
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../retouche-foudre/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retouche foudre
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Décisions (ADR)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Décisions (ADR)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#statut" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Statut
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contexte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contexte
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contexte">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-bus-actuel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le bus actuel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ce-que-levenement-a-montre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ce que l'événement a montré
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ce-que-le-change-en-cours-apporte-et-ses-limites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ce que le change en cours apporte, et ses limites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-declencheur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le déclencheur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contraintes-permanentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contraintes permanentes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#criteres-de-decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Critères de décision
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#options-considerees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Options considérées
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Décision
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Décision">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#couche-physique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Couche physique
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peripheriques-et-broches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Périphériques et broches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-de-et-cas-du-sc941c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signal DE et cas du SC941C
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adressage-9-bits-adden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adressage 9 bits (ADDEN)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debits-possibles-avec-le-quartz-de-20-mhz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Débits possibles avec le quartz de 20 MHz
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trames-et-crc-conserves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trames et CRC conservés
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#console-espion-sur-telnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Console Espion sur telnet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compatibilite-et-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compatibilité et migration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consequences" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conséquences
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alternatives-ecartees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alternatives écartées
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#points-a-verifier-avant-lacceptation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Points à vérifier avant l'acceptation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Références
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rev-e-regles-conception/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Règles rév. E
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../downloads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Téléchargements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#statut" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Statut
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contexte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contexte
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contexte">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-bus-actuel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le bus actuel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ce-que-levenement-a-montre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ce que l'événement a montré
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ce-que-le-change-en-cours-apporte-et-ses-limites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ce que le change en cours apporte, et ses limites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-declencheur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le déclencheur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contraintes-permanentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contraintes permanentes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#criteres-de-decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Critères de décision
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#options-considerees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Options considérées
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Décision
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Décision">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#couche-physique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Couche physique
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peripheriques-et-broches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Périphériques et broches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-de-et-cas-du-sc941c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signal DE et cas du SC941C
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adressage-9-bits-adden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adressage 9 bits (ADDEN)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debits-possibles-avec-le-quartz-de-20-mhz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Débits possibles avec le quartz de 20 MHz
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trames-et-crc-conserves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trames et CRC conservés
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#console-espion-sur-telnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Console Espion sur telnet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compatibilite-et-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compatibilité et migration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consequences" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conséquences
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alternatives-ecartees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alternatives écartées
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#points-a-verifier-avant-lacceptation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Points à vérifier avant l'acceptation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Références
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="adr-0001-bus-bp-ba-de-generation-3-en-rs-485-isole">ADR 0001 : bus BP ↔ BA de génération 3 en RS-485 isolé</h1>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Statut</td>
+<td><strong>Proposé</strong></td>
+</tr>
+<tr>
+<td>Date</td>
+<td>2026-10-11</td>
+</tr>
+<tr>
+<td>Feature</td>
+<td><code>i2c-surge-protection-2026-10-007</code> (tâche 6.8)</td>
+</tr>
+<tr>
+<td>Ticket</td>
+<td><a href="https://github.com/essensys-hub/essensys-board-SC944D/issues/1">essensys-hub/essensys-board-SC944D#1</a>, sub-issue <a href="https://github.com/essensys-hub/essensys-board-SC944D/issues/7">#7</a></td>
+</tr>
+<tr>
+<td>Décideurs</td>
+<td>Mainteneurs d'essensys-hub, par la relecture et le merge de cet ADR</td>
+</tr>
+<tr>
+<td>Portée</td>
+<td>Génération 3 uniquement. Ce change ne réalise rien de cette décision.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="statut">Statut</h2>
+<p><strong>Proposé.</strong> L'ADR passe à « Accepté » après relecture et merge, ce qui est la vérification de la tâche 6.8. Il ne modifie ni les cartes révision D ou E, ni les firmwares en service, ni le protocole HTTP legacy IoT.</p>
+<h2 id="contexte">Contexte</h2>
+<h3 id="le-bus-actuel">Le bus actuel</h3>
+<ul>
+<li><strong>Maître.</strong> Le boîtier principal SC944D (BP) pilote le bus avec un MCF52259, par le module I2C0 sur les broches 28 (SCL) et 29 (SDA), à travers le traducteur de niveau U19 (PCA9306) et le connecteur J31.</li>
+<li><strong>Esclaves.</strong> Les boîtiers auxiliaires (BA) SC940D, SC942C et SC941C, aux adresses 0x11, 0x12 et 0x13, utilisent le module SSP esclave du PIC16F946 sur RC6 (SCL) et RC7 (SDA).</li>
+<li><strong>Câblage.</strong> Le bus tourne à 50 kHz. Il est chaîné par J1/J2, qui portent aussi le +15 V et le 0 V.</li>
+<li><strong>Trames.</strong> Le BP écrit CMD, DATA et un CRC-16 de 2 octets. Il relit ensuite 5 octets (écho de CMD, écho du CRC, CRC de la réponse), ou 6 avec l'octet <code>comm_stat</code> du firmware BA 1.8.</li>
+</ul>
+<h3 id="ce-que-levenement-a-montre">Ce que l'événement a montré</h3>
+<p>Une installation touchée le 9 août 2026 a perdu un BA, et le BP n'a plus reçu de réponse d'aucun BA. L'analyse (<code>design.md</code>, Context) établit les points suivants :</p>
+<ul>
+<li>les îlots TBTS du BP et des BA ne sont reliés que par le câble de bus. Au-delà de 6,3 à 7,8 V d'écart entre leurs 0 V, SDA et SCL deviennent des chemins parallèles au fil 0 V. Ce seuil est atteint vers 20 A en onde 8/20 ;</li>
+<li>en I2C non isolé, un BA non alimenté tient SDA et SCL entre 0,6 et 3 V, car son PIC est réalimenté par ses diodes de protection. Il bloque tout le bus ;</li>
+<li>le module SSP de base du PIC16F946 n'offre pas de contrôle logiciel de l'ACK ;</li>
+<li>le BSP I2C de production du BP est perdu, et un rebuild réintroduit des attentes infinies.</li>
+</ul>
+<h3 id="ce-que-le-change-en-cours-apporte-et-ses-limites">Ce que le change en cours apporte, et ses limites</h3>
+<p>Le change <code>i2c-surge-protection-2026-10-007</code> garde l'I2C. Il apporte :</p>
+<ul>
+<li>des retouches des cartes ;</li>
+<li>l'étoile 0 V ;</li>
+<li>l'isolement de l'Ethernet du BP ;</li>
+<li>la révision E avec la carte d'interconnexion pour le coffret unique ;</li>
+<li>le module d'isolement par BA (MIB) pour les BA déportés ;</li>
+<li>la résilience du firmware.</li>
+</ul>
+<p>Trois limites restent propres à l'I2C :</p>
+<ul>
+<li>le MIB est qualifié jusqu'à 3 m de câble, avec un plafond de 400 pF côté bus ;</li>
+<li>sans MIB, le confinement d'un BA non alimenté reste manuel ;</li>
+<li>la carte d'interconnexion rend les 0 V équipotentiels mais ne coupe aucun chemin.</li>
+</ul>
+<h3 id="le-declencheur">Le déclencheur</h3>
+<p>L'approvisionnement du PIC16F946 est tendu. Son remplacement imposera de réécrire le firmware des BA. C'est le bon moment pour changer de couche physique, et le design (D9) retient pour cela le RS-485 isolé. Cet ADR formalise la décision.</p>
+<h3 id="contraintes-permanentes">Contraintes permanentes</h3>
+<ul>
+<li>TBTS : aucune liaison entre le 0 V et le PE.</li>
+<li>Protocole HTTP legacy IoT inchangé, y compris le codage de l'index 12 (<code>comm_faults</code>).</li>
+<li>Essais sur banc uniquement, jamais sur une armoire en service.</li>
+<li>Aucun BP n'est reflashé avec un build non qualifié.</li>
+</ul>
+<h2 id="criteres-de-decision">Critères de décision</h2>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Question posée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>C1. Immunité</strong></td>
+<td>L'option coupe-t-elle la boucle galvanique entre îlots, données et alimentation comprises ? Que devient le bus quand un nœud est mort ou non alimenté ? Quelle longueur de câble admet-elle ?</td>
+</tr>
+<tr>
+<td><strong>C2. Coût par carte</strong></td>
+<td>Quel surcoût de BOM par nœud (estimation hors assemblage) ?</td>
+</tr>
+<tr>
+<td><strong>C3. Compatibilité PIC16F946 / MCF52259</strong></td>
+<td>Les périphériques et les broches existent-ils sur les deux microcontrôleurs, sans conflit ?</td>
+</tr>
+<tr>
+<td><strong>C4. Firmware</strong></td>
+<td>Quelle part réécrire ? Les trames, le CRC et la couche application sont-ils conservés ? La dépendance au BSP I2C perdu disparaît-elle ?</td>
+</tr>
+<tr>
+<td><strong>C5. Approvisionnement du PIC16F946</strong></td>
+<td>L'option permet-elle de garder le PIC16F946 pendant la transition, puis de choisir librement son successeur ?</td>
+</tr>
+</tbody>
+</table>
+<h2 id="options-considerees">Options considérées</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>A. RS-485 isolé</strong></th>
+<th>B. CAN isolé</th>
+<th>C. I2C isolé permanent (isolateur par nœud)</th>
+<th>D. I2C non isolé + carte d'interconnexion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>C1. Immunité</strong></td>
+<td>Barrière par nœud (données et alimentation). Liaison différentielle. Un transceiver non alimenté est en haute impédance : un nœud mort libère le bus. Câbles longs possibles, donc BA déportés sans limite de 3 m.</td>
+<td>Barrière par nœud. Liaison différentielle. En plus, le confinement des erreurs du protocole CAN (état <em>bus-off</em>) retire de lui-même un nœud défaillant.</td>
+<td>Barrière par nœud. Mais 3 m au plus et 400 pF côté bus. La libération du bus par un nœud mort repose sur l'astuce VCC1 et sur un superviseur, soit trois points de défaillance de plus par nœud.</td>
+<td>Aucune coupure. Le seuil d'équilibrage monte vers 875 A en onde 8/20 avec les plots 0 V, mais seulement dans un coffret unique. Un BA non alimenté bloque toujours le bus.</td>
+</tr>
+<tr>
+<td><strong>C2. Coût par carte</strong> (estimation)</td>
+<td>Transceiver isolé de 5 à 12 €, plus une alimentation isolée du nœud de 20 à 40 €.</td>
+<td>Du même ordre que A, plus un contrôleur CAN externe (MCP2515) ou un microcontrôleur avec CAN.</td>
+<td>ISO1640 de 4 à 6 €, plus la même alimentation isolée, plus un superviseur. Sous forme de MIB : environ 50 à 85 € par BA (150 à 250 € pour trois).</td>
+<td>Rien par carte au-delà de la révision E ; 60 à 100 € par coffret pour la carte d'interconnexion.</td>
+</tr>
+<tr>
+<td><strong>C3. Compatibilité</strong></td>
+<td>PIC16F946 : AUSART sur RC6/RC7, mêmes broches que le SSP, avec détection d'adresse 9 bits (ADDEN). MCF52259 : UART2 en fonction alternative des broches 28/29. Signal DE à trouver sur chaque BA (voir plus bas).</td>
+<td>PIC16F946 : pas de contrôleur CAN. Un MCP2515 en SPI demande SDO sur RC4, qui sert d'entrée TOR (<code>ENTREE16</code> dans <code>hard.h</code>). MCF52259 : contrôleur FlexCAN présent (vecteurs FlexCAN du PSP MCF5225).</td>
+<td>Inchangée : SSP et I2C0 conservés.</td>
+<td>Inchangée.</td>
+</tr>
+<tr>
+<td><strong>C4. Firmware</strong></td>
+<td>Couche liaison réécrite des deux côtés. Trames, CRC-16 et couche application conservés. Pilote série MQX standard, déjà utilisé par le BP pour l'écran et la téléinformation, à la place du BSP I2C perdu. Console Espion à déplacer.</td>
+<td>Couche liaison réécrite. Les trames de plus de 8 octets (configurations : jusqu'à 19 octets avec le code et le CRC, dont 16 de données pour TPS_EXTINCTION) doivent être segmentées : les trames ne sont plus conservées telles quelles.</td>
+<td>Aucun changement de protocole. Le superviseur est à concevoir. Le pilote I2C à attentes bornées reste nécessaire (tâche 5.1).</td>
+<td>Aucun, au-delà du travail en cours (tâches 5.x).</td>
+</tr>
+<tr>
+<td><strong>C5. Approvisionnement</strong></td>
+<td>Fonctionne avec le PIC16F946 pendant la transition, et avec tout successeur doté d'un UART. L'adressage 9 bits est courant, et s'émule sinon par parité forcée.</td>
+<td>Interdit de garder le PIC16F946 sans retouche de carte. Impose un successeur avec CAN sur tous les BA à la fois.</td>
+<td>Le successeur doit être un esclave I2C tolérant l'étirement d'horloge. Les particularités du SSP sont reconduites.</td>
+<td>Idem C.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="decision">Décision</h2>
+<p><strong>Proposée : la génération 3 du bus BP ↔ BA utilise un RS-485 isolé, semi-duplex et multipoint, avec un adressage 9 bits.</strong> Les trames, le CRC-16 et les adresses sont conservés.</p>
+<p>Jusqu'à la génération 3, les solutions du change en cours restent la référence : révision E avec carte d'interconnexion dans un coffret unique, MIB pour les BA déportés.</p>
+<h3 id="couche-physique">Couche physique</h3>
+<ul>
+<li>Paire A/B et commun, en multipoint semi-duplex. Terminaison de 120 Ω aux deux extrémités. Polarisation de repos (<em>fail-safe</em>) en un seul point, au BP.</li>
+<li>TVS de ligne asymétrique (SM712, −7 V / +12 V) côté ligne de chaque nœud.</li>
+<li>Un <strong>transceiver isolé par nœud</strong>, BP compris, et une <strong>alimentation isolée par nœud</strong>. L'alimentation est soit un convertisseur isolé alimenté par le +15 V du bus, soit une alimentation locale de classe II. Le choix se fait à la conception, en gardant la relance des BA par TE2.</li>
+<li>Candidats relevés : TI ISO1410, ADI ADM2587E (alimentation isolée du côté ligne intégrée), MAX14943. Ils sont à qualifier.</li>
+<li>La barrière suit la règle des cartes à isolation intégrée : 8 mm sans cuivre entre Z1 et Z2 (voir <a href="../../rev-e-regles-conception/">les règles de conception de la révision E</a>, § 3.1).</li>
+</ul>
+<h3 id="peripheriques-et-broches">Périphériques et broches</h3>
+<ul>
+<li><strong>BP.</strong> L'UART2 est prise en fonction alternative des broches 28/29, qui portent aujourd'hui SCL et SDA de l'I2C0. UTXD2 remplace SCL et URXD2 remplace SDA. C'est le seul UART libérable :<ul>
+<li>l'UART0 (<code>ittya:</code>) sert à l'écran, à 9 600 bit/s ;</li>
+<li>l'UART1 (<code>ittyb:</code>) sert à la téléinformation, à 1 200 bit/s ;</li>
+<li>l'UART2 (<code>ittyc:</code>) sert aujourd'hui à la console Espion.</li>
+</ul>
+</li>
+<li><strong>BA.</strong> L'AUSART du PIC16F946 utilise RC6 (TX) et RC7 (RX), les broches du SSP actuel (SCL et SDA). Le SSP est désactivé (SSPEN = 0).</li>
+</ul>
+<h3 id="signal-de-et-cas-du-sc941c">Signal DE et cas du SC941C</h3>
+<ul>
+<li><strong>BP.</strong> La direction est commandée par une sortie GPIO dédiée, sur le modèle de la liaison semi-duplex de l'écran, avec attente de fin d'émission par <code>IO_IOCTL_SERIAL_WAIT_FOR_TC</code> (<code>C/Ecran.c</code> de client-essensys-legacy). La sortie UA3 n'est pas disponible : c'est déjà la direction de l'écran (<code>BP_O_ECRAN_DIRECTION</code>, <code>H/application.h</code>). Une sortie libre du MCF52259 reste à identifier (voir les points à vérifier). La commande automatique de RTS du module UART du MCF52259 est une variante, à vérifier.</li>
+<li><strong>SC940D et SC942C.</strong> DE est pris sur une broche libre du PIC : RB1 sur le SC940D, RA1 ou RE2 sur le SC942C, d'après les schémas, à reconfirmer. Il ne faut pas confondre ces broches avec les macros <code>RB1_*</code> de <code>hard.h</code>, qui désignent des sorties relais.</li>
+<li>
+<p><strong>SC941C.</strong> Aucune broche n'est libre. Le SC941C reçoit donc un <strong>montage à direction automatique</strong> :</p>
+<ul>
+<li>l'émetteur est activé par TXD lui-même, et ne pilote la ligne que pendant les bits à 0 ;</li>
+<li>l'état 1 et le repos sont imposés par la polarisation de repos du bus ;</li>
+<li>le récepteur reste actif, si bien que le PIC reçoit son propre écho, que le firmware ignore ou utilise pour détecter une collision.</li>
+</ul>
+<p>Ce montage exige une polarisation franche et un débit modéré. Il se valide sur banc au débit retenu. Un transceiver isolé à direction automatique intégrée est une alternative, s'il en existe un qui convient.
+- <strong>Risque.</strong> Un nœud dont l'émetteur reste actif bloque encore le bus : c'est l'équivalent de SCL tenue basse. Le chien de garde du BA 1.8 est conservé, et une limitation matérielle de la durée d'émission (monostable sur DE) est à étudier.</p>
+</li>
+</ul>
+<h3 id="adressage-9-bits-adden">Adressage 9 bits (ADDEN)</h3>
+<ul>
+<li>Chaque caractère compte 11 bits : start, 8 bits de données, 9ᵉ bit, stop.</li>
+<li>Le BP émet l'adresse du BA visé comme <strong>caractère d'adresse</strong> (9ᵉ bit à 1). Les adresses 0x11, 0x12 et 0x13 sont conservées. Viennent ensuite CMD, DATA et le CRC, en caractères de données (9ᵉ bit à 0).</li>
+<li>Sur chaque BA, RX9 = 1 et ADDEN = 1 : l'AUSART n'interrompt le PIC que sur un caractère d'adresse.<ul>
+<li>Sur sa propre adresse, le BA remet ADDEN à 0, reçoit la trame, puis remet ADDEN à 1.</li>
+<li>Les autres BA ne sont pas réveillés par les octets de données. Un octet de donnée égal à une adresse n'est donc jamais pris pour elle.</li>
+</ul>
+</li>
+<li><strong>Fin de trame.</strong> En I2C, la condition de STOP ou de START répété marque la fin d'une écriture. En RS-485, elle est détectée par un silence d'au moins deux caractères (environ 1,15 ms à 19 200 bit/s), ou par le caractère d'adresse suivant. La trame reste validée par son CRC-16, comme aujourd'hui. La disponibilité d'un temporisateur du PIC pour mesurer ce silence est à vérifier.</li>
+<li>
+<p><strong>Côté BP.</strong> Le pilote série MQX du MCF52xx gère déjà le mode multipoint :</p>
+<ul>
+<li>parités <code>IO_SERIAL_PARITY_MULTI_ADDRESS</code> et <code>IO_SERIAL_PARITY_MULTI_DATA</code> ;</li>
+<li>adresse de station réglée par <code>IO_IOCTL_SERIAL_SET_ADDRESS_DEVICE</code> ;</li>
+<li>filtrage en réception dans <code>serl_int_mcf52xx.c</code>.</li>
+</ul>
+<p>Proposition à valider sur banc : la réponse du BA commence par l'adresse du BP en caractère d'adresse, ce qui active le récepteur du BP en mode multipoint. La parité forcée (<code>MARK</code> / <code>SPACE</code>) produit les mêmes caractères sur la ligne et constitue une variante.</p>
+</li>
+</ul>
+<h3 id="debits-possibles-avec-le-quartz-de-20-mhz">Débits possibles avec le quartz de 20 MHz</h3>
+<p>Côté BA, l'AUSART est réglé avec BRGH = 1, et le débit vaut 20 MHz / (16 × (SPBRG + 1)). Côté BP, l'horloge système est de 80 MHz (<code>BSP_SYSTEM_CLOCK</code>) et le diviseur arrondi vaut 80 MHz / (32 × débit).</p>
+<table>
+<thead>
+<tr>
+<th>Débit visé</th>
+<th>PIC16F946 (SPBRG, écart)</th>
+<th>MCF52259 (diviseur, écart)</th>
+<th>Écart entre les deux</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9 600 bit/s</td>
+<td>129, +0,16 %</td>
+<td>260, +0,16 %</td>
+<td>0 %</td>
+<td>Possible, sans intérêt</td>
+</tr>
+<tr>
+<td><strong>19 200 bit/s</strong></td>
+<td>64, +0,16 %</td>
+<td>130, +0,16 %</td>
+<td><strong>0 %</strong></td>
+<td><strong>Retenu par défaut</strong></td>
+</tr>
+<tr>
+<td>38 400 bit/s</td>
+<td>32, −1,36 %</td>
+<td>65, +0,16 %</td>
+<td>1,5 %</td>
+<td>Admis si le besoin de débit le justifie</td>
+</tr>
+<tr>
+<td>57 600 bit/s</td>
+<td>21, −1,36 %</td>
+<td>43, +0,94 %</td>
+<td>2,3 %</td>
+<td>Écarté</td>
+</tr>
+<tr>
+<td>« 115 200 » bit/s</td>
+<td>10, −1,36 %</td>
+<td>22, −1,36 %</td>
+<td>0 % (113 636 bit/s des deux côtés)</td>
+<td>Non retenu sans essai</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Tolérance.</strong> Sur un caractère de 11 bits, l'écart total doit rester bien sous environ 4 %, pour que le bit de stop soit échantillonné correctement. On s'en tient à 2 % au plus. C'est pourquoi 38 400 bit/s reste admis, et 57 600 bit/s est écarté.</li>
+<li><strong>Cas de 113 636 bit/s.</strong> Ce débit tombe juste des deux côtés. Mais il ne laisse au PIC qu'environ 480 cycles d'instruction par caractère (5 MIPS), et il contraint le montage à direction automatique du SC941C.</li>
+<li><strong>Charge du bus.</strong> Une trame ACTIONS (4 octets écrits, 5 lus, deux caractères d'adresse, soit 11 caractères) dure environ 6,3 ms à 19 200 bit/s, contre environ 2 ms en I2C à 50 kHz. La trame la plus longue, TPS_EXTINCTION (19 octets écrits, 5 lus, deux caractères d'adresse, soit 26 caractères), dure environ 15 ms. Le BP n'émet que sur changement d'état, avec une interrogation de présence toutes les 30 à 60 s (design D8). La marge reste donc large.</li>
+</ul>
+<h3 id="trames-et-crc-conserves">Trames et CRC conservés</h3>
+<ul>
+<li><strong>Écriture.</strong> CMD, DATA et CRC-16 sont inchangés octet pour octet. Le CRC est calculé de la même façon (<code>crc.c</code>).</li>
+<li><strong>Réponse.</strong> L'écho de CMD, l'écho du CRC, le CRC de la réponse et l'octet <code>comm_stat</code> du BA 1.8 sont inchangés.</li>
+<li><strong>Adresse.</strong> Seul l'octet d'adresse change de forme : il passe du premier octet I2C au caractère dont le 9ᵉ bit est à 1.</li>
+<li><strong>Couche application.</strong> Elle est conservée sans changement :<ul>
+<li><code>ba.c</code> ;</li>
+<li>les files par BA ;</li>
+<li>la resynchronisation ;</li>
+<li>les états OK, SUSPECT et ABSENT ;</li>
+<li>l'index 12.</li>
+</ul>
+</li>
+<li><strong>Protocole HTTP legacy IoT.</strong> Il n'est pas modifié. L'index 12 garde son codage : bits 0x04, 0x08 et 0x10 pour les BA.</li>
+</ul>
+<h3 id="console-espion-sur-telnet">Console Espion sur telnet</h3>
+<ul>
+<li><strong>Aujourd'hui.</strong> La console Espion écrit sur le canal d'entrée-sortie par défaut, <code>ittyc:</code>, c'est-à-dire l'UART2 à 9 600 bit/s. <code>C/main.c</code> exige que ce canal soit défini. Son connecteur n'est pas monté en série : il faut souder J102 et R109/R110.</li>
+<li><strong>En génération 3.</strong> L'UART2 est réutilisée pour le bus. La console passe donc sur une <strong>session telnet</strong>, par le serveur telnet de la pile réseau RTCS. Le canal par défaut est redirigé vers un périphérique nul ou vers la session, et le contrôle de compilation de <code>main.c</code> est adapté.</li>
+<li>
+<p><strong>Sécurité.</strong> Telnet circule en clair, et la console peut agir sur la carte. Elle est donc :</p>
+<ul>
+<li>désactivée par défaut, et activée localement ;</li>
+<li>limitée au réseau local ;</li>
+<li>sans commande d'action sans authentification ;</li>
+<li>protégée par un secret propre à chaque BP, plutôt que par la constante actuelle du source.</li>
+</ul>
+<p>La revue <code>security-gate</code> est obligatoire.
+- <strong>Gain.</strong> Le diagnostic n'exige plus de souder un connecteur.</p>
+</li>
+</ul>
+<h3 id="compatibilite-et-migration">Compatibilité et migration</h3>
+<ul>
+<li>I2C et RS-485 ne cohabitent pas sur un même bus.</li>
+<li>Une installation passe en génération 3 entièrement, BP et BA ensemble. À défaut, le BP de génération 3 garde un port I2C distinct pour les BA existants, sur le second module I2C du MCF52259 si son multiplexage le permet. Ce point est à étudier.</li>
+<li>Tous les BA sont reflashés par ICSP, avec un <code>.hex</code> par type, après lecture de l'EEPROM.</li>
+</ul>
+<h2 id="consequences">Conséquences</h2>
+<p><strong>Positives.</strong></p>
+<ul>
+<li>La boucle galvanique entre îlots est coupée nœud par nœud, données et alimentation comprises.</li>
+<li>Un BA mort ou non alimenté libère le bus : le confinement devient automatique sans MIB.</li>
+<li>Les BA déportés ne sont plus limités à 3 m, et ni le plafond de 400 pF ni le superviseur du MIB ne s'appliquent plus.</li>
+<li>Le pilote série MQX standard remplace le BSP I2C perdu. Ce pilote est déjà éprouvé sur le BP, pour l'écran et la téléinformation.</li>
+<li>Les trames, le CRC, la couche application et le protocole HTTP sont conservés : les tests <code>NR-board-sc944d-5</code>, <code>-6</code>, <code>-7</code> et <code>-11</code> restent applicables.</li>
+<li>Le choix du successeur du PIC16F946 devient indépendant de la couche physique.</li>
+</ul>
+<p><strong>Négatives et coûts.</strong></p>
+<ul>
+<li>La couche liaison est réécrite des deux côtés, et tous les BA sont reflashés.</li>
+<li>Il faut une nouvelle génération de cartes, avec transceiver et alimentation isolés : 25 à 50 € par nœud (estimation).</li>
+<li>Le montage à direction automatique du SC941C est à concevoir et à qualifier.</li>
+<li>La console Espion passe sur telnet, avec la revue de sécurité qui va avec.</li>
+<li>Un échange ACTIONS dure environ 6,3 ms au lieu de 2 ms.</li>
+<li>La migration se fait par installation complète, ou avec un port I2C de compatibilité.</li>
+</ul>
+<p><strong>Risques résiduels.</strong></p>
+<ul>
+<li>Un émetteur bloqué tient encore le bus. Parades : chien de garde, et limitation matérielle de la durée d'émission à étudier.</li>
+<li>Les TVS de ligne restent nécessaires contre les surtensions différentielles.</li>
+</ul>
+<h2 id="alternatives-ecartees">Alternatives écartées</h2>
+<ul>
+<li>
+<p><strong>B. CAN isolé.</strong> Il offre le meilleur confinement des erreurs, mais :</p>
+<ul>
+<li>le PIC16F946 n'a pas de contrôleur CAN ;</li>
+<li>un MCP2515 en SPI entre en conflit sur RC4 ;</li>
+<li>il impose le successeur du PIC sur tous les BA à la fois ;</li>
+<li>il oblige à segmenter les trames de plus de 8 octets.</li>
+</ul>
+<p>Cette option est à reconsidérer si un microcontrôleur avec CAN est adopté pour tous les BA en même temps.
+- <strong>C. I2C isolé permanent.</strong> C'est la solution du MIB pour les BA déportés. Elle reste limitée à environ 3 m et à 400 pF. Elle dépend d'un superviseur et de l'astuce VCC1 pour libérer le bus, et elle reconduit les particularités du SSP.
+- <strong>D. I2C non isolé avec carte d'interconnexion.</strong> C'est la solution de la révision E dans un coffret unique, et elle le reste. Mais elle ne coupe rien, ne traite pas les BA déportés, et laisse un BA non alimenté bloquer le bus.
+- <strong>Déjà écartés par le design :</strong>
+- l'I2C différentiel PCA9615, non isolé, qui ne tolère que 2,5 V de décalage de masse ;
+- le LTC4331, point à point et non isolé ;
+- l'étoile active TCA9548A, qui demande un recâblage et du firmware ;
+- le tampon TCA4307 par nœud, déconseillé en architecture à nœud commun.</p>
+</li>
+</ul>
+<h2 id="points-a-verifier-avant-lacceptation">Points à vérifier avant l'acceptation</h2>
+<ol>
+<li>Sur le manuel de référence du MCF52259, le multiplexage des broches 28/29 en UTXD2/URXD2 (fonction alternative de PAS0/PAS1), et la disponibilité d'un second module I2C pour un port de compatibilité.</li>
+<li>Sur le schéma du SC944D et dans <code>H/application.h</code>, une sortie GPIO libre du MCF52259 pour le DE du bus : UA3 est déjà la direction de l'écran.</li>
+<li>Sur banc, le mode multipoint du pilote MQX en interruption : passage du mode adresse au mode données à chaque trame, retournement de la ligne, attentes bornées.</li>
+<li>Sur les schémas, les broches libres pour DE (RB1 du SC940D, RA1 ou RE2 du SC942C).</li>
+<li>Sur banc, au débit retenu, le montage à direction automatique du SC941C.</li>
+<li>Un temporisateur du PIC16F946 libre pour détecter la fin de trame.</li>
+<li>Le choix du transceiver isolé, et l'architecture d'alimentation des nœuds (convertisseur isolé ou alimentation locale de classe II), en gardant la relance par TE2.</li>
+<li>La revue <code>security-gate</code> de la console sur telnet.</li>
+<li>La stratégie de migration : bascule par installation complète, ou port I2C de compatibilité.</li>
+</ol>
+<h2 id="references">Références</h2>
+<ul>
+<li><code>openspec/changes/i2c-surge-protection-2026-10-007/design.md</code> : D6 (carte d'interconnexion et MIB), D8 (firmware), D9 (génération 3).</li>
+<li>Specs du change : <code>i2c-bus-surge-protection</code>, <code>i2c-bus-fault-containment</code>, <code>aux-box-interconnect</code>.</li>
+<li><a href="../../rev-e-regles-conception/">Règles de conception de la révision E</a>.</li>
+<li>Code du projet :<ul>
+<li>client-essensys-legacy : <code>C/Ecran.c</code> (liaison semi-duplex de l'écran), <code>C/EspionRS.c</code>, <code>C/main.c</code>, <code>C/crc.c</code>, <code>H/application.h</code> ;</li>
+<li>essensys-gcc : <code>bp/bsp/m52259evb/</code> (<code>gpio_init.c</code>, <code>init_uart2.c</code>, <code>m52259evb.h</code>) et pilote série MQX <code>serl_int_mcf52xx.c</code> ;</li>
+<li>sources BA 1.7 : <code>hard.h</code> (RC4 = <code>ENTREE16</code>).</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

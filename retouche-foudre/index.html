@@ -1,0 +1,1541 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation technique du module SC944D (Projet Essensys).">
+      
+      
+        <meta name="author" content="Essensys Team">
+      
+      
+        <link rel="canonical" href="https://essensys-hub.github.io/essensys-board-SC944D/retouche-foudre/">
+      
+      
+        <link rel="prev" href="../i2c/">
+      
+      
+        <link rel="next" href="../adr/0001-generation-3-rs485-isole/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Retouche foudre - Documentation SC944D</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#retouche-foudre-du-sc944d-note-de-schema" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href=".." title="Documentation SC944D" class="md-header__button md-logo" aria-label="Documentation SC944D" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Documentation SC944D
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Retouche foudre
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/essensys-hub/essensys-board-SC944D/" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    essensys-board-SC944D
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Documentation SC944D" class="md-nav__button md-logo" aria-label="Documentation SC944D" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Documentation SC944D
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/essensys-hub/essensys-board-SC944D/" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    essensys-board-SC944D
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firmware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Firmware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../i2c/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocoles I2C
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retouche foudre
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retouche foudre
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-contexte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Contexte
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Contexte">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-interface-dorigine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Interface d'origine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-remarque-sur-la-bom-csv-dorigine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Remarque sur la BOM CSV d'origine
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-synthese-des-modifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Synthèse des modifications
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-detail-des-modifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Détail des modifications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Détail des modifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-d33-et-d34-smf5v0a-e3-08-tache-32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 D33 et D34 : SMF5V0A-E3-08 (tâche 3.2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-15-v-de-j31-ptc-a-la-place-de-l31-ajout-de-drf1-tache-33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 +15 V de J31 : PTC à la place de L31, ajout de DRF1 (tâche 3.3)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-u16-lm317-a-la-place-du-ld1117-tache-35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 U16 : LM317 à la place du LD1117 (tâche 3.5)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-option-renforcee-tache-37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Option renforcée (tâche 3.7)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-risque-residuel-sur-u19-sans-option" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Risque résiduel sur U19 sans option
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-exceptions-de-marge-assumees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Exceptions de marge assumées
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Procédure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-criteres-de-verification-taches-32-a-38" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Critères de vérification (tâches 3.2 à 3.8)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-variante-des-ba-et-cohabitation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Variante des BA et cohabitation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-points-ouverts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Points ouverts
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/0001-generation-3-rs485-isole/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Décisions (ADR)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rev-e-regles-conception/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Règles rév. E
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../downloads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Téléchargements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-contexte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Contexte
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Contexte">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-interface-dorigine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Interface d'origine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-remarque-sur-la-bom-csv-dorigine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Remarque sur la BOM CSV d'origine
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-synthese-des-modifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Synthèse des modifications
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-detail-des-modifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Détail des modifications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Détail des modifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-d33-et-d34-smf5v0a-e3-08-tache-32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 D33 et D34 : SMF5V0A-E3-08 (tâche 3.2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-15-v-de-j31-ptc-a-la-place-de-l31-ajout-de-drf1-tache-33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 +15 V de J31 : PTC à la place de L31, ajout de DRF1 (tâche 3.3)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-u16-lm317-a-la-place-du-ld1117-tache-35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 U16 : LM317 à la place du LD1117 (tâche 3.5)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-option-renforcee-tache-37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Option renforcée (tâche 3.7)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-risque-residuel-sur-u19-sans-option" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Risque résiduel sur U19 sans option
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-exceptions-de-marge-assumees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Exceptions de marge assumées
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Procédure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-criteres-de-verification-taches-32-a-38" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Critères de vérification (tâches 3.2 à 3.8)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-variante-des-ba-et-cohabitation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Variante des BA et cohabitation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-points-ouverts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Points ouverts
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="retouche-foudre-du-sc944d-note-de-schema">Retouche foudre du SC944D : note de schéma</h1>
+<p>Cette note décrit la variante « retouche foudre » du boîtier principal SC944D (BP), révision D. La retouche se fait sur un BP déposé, à l'établi, sans refaire de circuit imprimé.</p>
+<table>
+<thead>
+<tr>
+<th>Référence</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Change OpenSpec</td>
+<td><code>i2c-surge-protection-2026-10-007</code> (<code>openspec/changes/i2c-surge-protection-2026-10-007/</code>, décisions D2 et D3 du <code>design.md</code>)</td>
+</tr>
+<tr>
+<td>Ticket</td>
+<td><a href="https://github.com/essensys-hub/essensys-board-SC944D/issues/1">essensys-hub/essensys-board-SC944D#1</a></td>
+</tr>
+<tr>
+<td>Tâches</td>
+<td>3.1 à 3.10 pour le BP, 2.9 pour les BA</td>
+</tr>
+<tr>
+<td>BOM de la variante</td>
+<td><code>BOM_retouche-foudre.csv</code>, à la racine du dépôt</td>
+</tr>
+<tr>
+<td>Carte N2 « étoile 0 V » (tâche 4.1)</td>
+<td>Dépôt dédié <a href="https://github.com/essensys-hub/essensys-i2c-etoile-0v">essensys-i2c-etoile-0v</a> : projet KiCad, BOM, Gerber, ERC/DRC</td>
+</tr>
+<tr>
+<td>BOM d'origine</td>
+<td><code>BOM_[No Variations].csv</code>, inchangée</td>
+</tr>
+<tr>
+<td>Schéma</td>
+<td><code>SC944D/Assembly/SC944D_Schematic.pdf</code> : page 7 (Liaison Boîtiers Auxiliaires), page 3 (Alimentation 2/2), page 2 (Alimentation 1/2)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="1-contexte">1. Contexte</h2>
+<p>Le 9 août 2026, une surtension d'origine atmosphérique a touché une installation Essensys. Un boîtier auxiliaire (BA) a été mis hors service, et le BP ne reçoit plus de réponse d'aucun BA. L'analyse du change montre des défauts communs à tout le parc. Sur le BP, ce sont les suivants :</p>
+<ul>
+<li>le courant injecté par le bus vers le traducteur de niveau U19 n'est pas limité ;</li>
+<li>BA_ALIM sort sur J31-4 sans TVS, sans fusible et sans PTC ;</li>
+<li>U16 fonctionne déjà hors marge en régime nominal.</li>
+</ul>
+<p>Les retouches décrites ici corrigent ces défauts sur les cartes en service. Elles ne remplacent pas les autres volets du change, qui restent nécessaires : liaison équipotentielle du coffret (N2 ou N1, tâches 4.x), isolement de l'Ethernet du BP, firmware (tâches 5.x) et révision E.</p>
+<h3 id="11-interface-dorigine">1.1 Interface d'origine</h3>
+<p>D'après la page 7 du schéma, le fichier de placement et la BOM « DM » au format Excel de <code>SC944D/Assembly/</code> :</p>
+<div class="highlight"><pre><span></span><code>MCF52259 br. 28 (SCL) / br. 29 (SDA) : 3,3 V, VIN max 4,0 V, VIL 1,155 V, aucune protection sur 55 mm
+   │  R157 (SCL) / R158 (SDA) 4,7 kΩ vers +3V3S
+U19 PCA9306DCUT : 7 V max ; −0,5 V min, ou 50 mA max en entrée
+   │  R156 (SCL) / R155 (SDA) 1 kΩ vers +5VS        C80 (SCL) / C79 (SDA) 18 pF, non montés
+L30 (SCL) / L32 (SDA) : ferrite Würth 742792643, 0603, 0,35 Ω, 400 mA
+   │  D33 (SCL) / D34 (SDA) : SMF5V0A-GS08 vers le 0 V
+J31 (Würth 66200421122) : 1 = BA_SDA, 2 = BA_SCL, 3 = 0 V, 4 = BA_ALIM
+
++15VS ─ T32 (NTD2955G, commandé par TE2) ─ +15VSP ─ L31 (ferrite 1812, 8 A, repère « 1A current ») ─ J31-4
+                                             └─ U16 LD1117STR-E (entrée 15 V max) ─ +12VSP
+                                                   R66 = 115 Ω (OUT–ADJ), R88 = 1 kΩ (ADJ–0 V)
+</code></pre></div>
+<p>La diode interne de T32 va de +15VSP (drain) vers +15VS (source). Quand +15VSP dépasse +15VS, elle conduit et expose +15VS, donc U2 et C110, à la tension présente sur J31-4.</p>
+<h3 id="12-remarque-sur-la-bom-csv-dorigine">1.2 Remarque sur la BOM CSV d'origine</h3>
+<p><code>BOM_[No Variations].csv</code> ne liste que 331 des 491 repères physiques du fichier de placement <code>SC944D/Assembly/SC944D_Pick'nPlace.csv</code>. Elle compte 339 repères, dont 8 pseudo-repères : DOC1, MIR1 à MIR3, NOTE1 à NOTE3 et SI1. Il y manque notamment toute l'interface du bus : J31, D33, D34, L30, L31, L32, R154 à R158, U19, C86 et C87. Les valeurs d'origine de cette note viennent donc du fichier de placement, de la BOM « DM » et du schéma.</p>
+<p>La variante recopie la BOM CSV ligne pour ligne, avec une seule ligne modifiée : U16 est retiré de la ligne LD1117STR-E. Les lignes de la retouche sont ajoutées à la fin du fichier. Compléter la BOM CSV d'origine sort du périmètre de ce change.</p>
+<h2 id="2-synthese-des-modifications">2. Synthèse des modifications</h2>
+<table>
+<thead>
+<tr>
+<th>Repère</th>
+<th>Fonction</th>
+<th>Avant</th>
+<th>Après</th>
+<th>Tâche</th>
+<th>Statut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D33, D34</td>
+<td>Écrêteurs de BA_SCL et BA_SDA</td>
+<td>SMF5V0A-GS08</td>
+<td>SMF5V0A-E3-08</td>
+<td>3.2</td>
+<td>Base</td>
+</tr>
+<tr>
+<td>U19</td>
+<td>Traducteur de niveau</td>
+<td>PCA9306DCUT</td>
+<td>Inchangé ; remplacé à l'identique si son test de 1.8 échoue ou si D33/D34 ont claqué</td>
+<td>3.2</td>
+<td>Conditionnel, hors BOM</td>
+</tr>
+<tr>
+<td>L31</td>
+<td>Élément série de BA_ALIM</td>
+<td>Ferrite 1812 Würth 74279226101</td>
+<td>PTC CMS 1812 de 30 V au moins, à dimensionner</td>
+<td>3.3 (a)</td>
+<td>Base</td>
+</tr>
+<tr>
+<td>DRF1 (ajout)</td>
+<td>Écrêteur de BA_ALIM</td>
+<td>—</td>
+<td>SMAJ16A entre J31-4 et J31-3, côté soudure</td>
+<td>3.3 (a)</td>
+<td>Base</td>
+</tr>
+<tr>
+<td>U16</td>
+<td>Régulateur de +12VSP</td>
+<td>LD1117STR-E</td>
+<td>LM317 en SOT-223 (LM317DCYR)</td>
+<td>3.5</td>
+<td>Base</td>
+</tr>
+<tr>
+<td>R66</td>
+<td>Résistance OUT–ADJ de U16</td>
+<td>115 Ω</td>
+<td>Inchangée</td>
+<td>3.5</td>
+<td>—</td>
+</tr>
+<tr>
+<td>R155, R156</td>
+<td>Pull-ups côté bus</td>
+<td>1 kΩ</td>
+<td>2,2 kΩ, ou 1,5 kΩ selon 2.6</td>
+<td>3.7</td>
+<td><strong>OPTION</strong></td>
+</tr>
+<tr>
+<td>L30, L32</td>
+<td>Élément série des lignes</td>
+<td>Ferrite 0603 Würth 742792643</td>
+<td>47 Ω anti-impulsion, Panasonic ERJ-P03J470V</td>
+<td>3.7</td>
+<td><strong>OPTION</strong></td>
+</tr>
+<tr>
+<td>C79, C80 (empreintes)</td>
+<td>Écrêteur secondaire côté U19</td>
+<td>Non montés (18 pF)</td>
+<td>BAT54S</td>
+<td>3.7</td>
+<td><strong>OPTION</strong></td>
+</tr>
+</tbody>
+</table>
+<p>DRF1 est un repère propre à la retouche : le circuit imprimé SI944D n'a pas d'empreinte pour cet écrêteur. Dans la BOM de la variante, les lignes de l'option renforcée ont un nom qui commence par <code>OPTION_</code> et une description qui commence par « OPTION RENFORCÉE ».</p>
+<p>En <strong>variante (b)</strong> de la tâche 3.3, un module sur rail DIN protège le +15 V en aval de J31. Le BP garde alors L31 d'origine, et DRF1 n'est pas posée (section 3.2).</p>
+<h2 id="3-detail-des-modifications">3. Détail des modifications</h2>
+<h3 id="31-d33-et-d34-smf5v0a-e3-08-tache-32">3.1 D33 et D34 : SMF5V0A-E3-08 (tâche 3.2)</h3>
+<ul>
+<li><strong>Même composant électrique.</strong> VRWM 5 V, VBR de 6,4 à 7,1 V, environ 1120 pF, VC de 9,2 V à 21,7 A en onde 10/1000. Seule la référence de commande change : le suffixe GS08 ne figure plus dans le tableau de commande du fabricant.</li>
+<li><strong>Remplacement systématique sur un BP déposé après l'événement.</strong> Un écrêteur qui a conduit peut garder une fuite ou un court-circuit latent. Un court-circuit sur une ligne bloque tout le bus.</li>
+<li><strong>Pas d'écrêteur 5 V plus puissant</strong> (SMBJ5.0A, SMF4L5.0A). Leur fuite peut atteindre 800 µA. Avec quatre écrêteurs par ligne sous les 769 Ω de pull-ups équivalentes, environ 2,5 V seraient perdus sur le niveau haut.</li>
+<li><strong>Limite.</strong> Un bus préparé pour un module d'isolement par BA (MIB) exige au contraire des écrêteurs de 50 pF au plus à la place de D33/D34. Ce cas relève d'une retouche dédiée ou de la révision E, pas de cette variante.</li>
+</ul>
+<h3 id="32-15-v-de-j31-ptc-a-la-place-de-l31-ajout-de-drf1-tache-33">3.2 +15 V de J31 : PTC à la place de L31, ajout de DRF1 (tâche 3.3)</h3>
+<p><strong>Avant.</strong> BA_ALIM part de +15VSP par la seule ferrite L31 (6 mΩ, 8 A). Une surtension sur J31-4 atteint directement +15VSP, donc U16, C98 et les sorties alimentées par +15VSP (pages 13 et 16 à 19 du schéma). Par la diode interne de T32, elle atteint aussi +15VS, donc U2 et C110.</p>
+<p><strong>Règle de topologie (décision D3).</strong> Une TVS d'alimentation finit en court-circuit. Elle doit donc se trouver en aval d'un limiteur réarmable propre au nœud qu'elle protège. Une TVS seule sur J31-4 éteindrait tous les BA en mourant.</p>
+<p><strong>Variante (a), retenue dans la BOM.</strong></p>
+<ul>
+<li><strong>PTC CMS 1812 sur l'empreinte de L31.</strong><ul>
+<li>Tension maximale de 30 V au moins. Elle couvre la tension d'écrêtage crête de la SMAJ16A (26 V).</li>
+<li>Courant de maintien à 50 °C d'au moins 1,5 fois le courant de BA_ALIM mesuré, relais monostables collés. Ce courant est la somme des courants d'entrée des BA raccordés, mesurés par type à la tâche 2.1. Le courant de maintien se lit sur la courbe de déclassement en température de la fiche technique, et non sur la valeur à 23 °C de l'en-tête.</li>
+<li><strong>À dimensionner selon la mesure de la tâche 2.1</strong> : aucune consommation fiable des BA n'existe dans le dossier. À titre d'ordre de grandeur, une hypothèse de 2 à 5 W par BA donne 0,5 à 1,1 A pour trois BA. Le courant de maintien visé serait alors de 0,75 à 1,65 A à 50 °C.</li>
+<li>Les PTC 1812 de 30 V au moins ont en général un courant de maintien faible. Si aucune n'atteint le seuil, la variante (b) s'impose.</li>
+<li>La chute de tension dans la PTC, à sa résistance maximale après un premier déclenchement, doit laisser BA_ALIM à 14 V ou plus au dernier BA.</li>
+</ul>
+</li>
+<li><strong>SMAJ16A (DRF1)</strong>, soudée côté soudure sur fils courts, la cathode sur J31-4 et l'anode sur J31-3, donc en aval de la PTC. Ce composant figure déjà dans la BOM du BP (D8, D63).<ul>
+<li>VRWM de 16 V, au moins égale à la tension nominale du nœud (environ 15,2 V).</li>
+<li>VBR de 17,8 V au minimum ; écrêtage entre 19 et 26 V selon le courant.</li>
+</ul>
+</li>
+<li><strong>Effets attendus.</strong><ul>
+<li>J31-4 est borné vers 19 à 26 V, alors qu'il ne l'était pas du tout.</li>
+<li>Une DRF1 en court-circuit fait déclencher la PTC au lieu d'effondrer +15VSP.</li>
+<li>Pendant un déclenchement, +15VS s'affaisse jusqu'à l'ouverture de la PTC : il faut s'attendre à un redémarrage du BP.</li>
+</ul>
+</li>
+<li><strong>Montage.</strong> Une PTC déclenchée dépasse 100 °C. Elle ne doit pas être enfermée sous une gaine thermorétractable au contact d'autres conducteurs.</li>
+<li><strong>Sélectivité avec N2.</strong> Avec l'étoile 0 V N2, chaque port porte sa propre PTC. Un court-circuit sur un port ne doit pas déclencher la PTC de L31 (tâche 4.4) : son courant de maintien se choisit aussi en fonction des PTC de port.</li>
+<li>
+<p><strong>Sélectivité en chaîne.</strong> Sans N2, les BA retouchés portent leur propre PTC à la place de R79 (R93 sur le SC941C, R84 sur le SC942C ; tâche 2.3). Un court-circuit franc sur +Vin d'un BA ne doit priver d'alimentation que ce BA : la PTC du BA doit déclencher avant celle de L31. Deux conditions, à vérifier sur les courbes des fiches techniques lors du choix des références (tâche 2.3) :</p>
+<ul>
+<li>le courant de maintien de la PTC du BA est nettement inférieur à celui de la PTC de L31 ;</li>
+<li>au courant de court-circuit, le temps de déclenchement de la PTC du BA est plus court que celui de la PTC de L31.</li>
+</ul>
+<p>L'essai « écrêteur d'un BA en court-circuit » de <code>NR-board-sc944d-9</code> le vérifie sur banc.</p>
+</li>
+</ul>
+<p><strong>Variante (b), module sur rail DIN.</strong></p>
+<ul>
+<li>Un module est intercalé entre J31 et les BA : une PTC radiale, puis une TVS (SMAJ16A) entre les fils +15 V et 0 V.</li>
+<li>Exemple de PTC radiale : la famille Bourns MF-R, déjà présente dans la BOM (F5). Le MF-R110 tient 1,10 A à 23 °C et environ 0,85 A à 50 °C. On prend un MF-R135 ou un MF-R160 si nécessaire.</li>
+<li>Cette variante n'est admise que si un court-circuit de J31-4 est tenu sans limiteur sur le BP (essai sur banc de la tâche 3.3).</li>
+<li>Le BP garde alors L31 d'origine, et DRF1 n'est pas posée : une TVS sans limiteur en amont violerait la règle de topologie.</li>
+<li>Comme toute protection du coffret, le module n'a aucun raccordement au PE.</li>
+</ul>
+<h3 id="33-u16-lm317-a-la-place-du-ld1117-tache-35">3.3 U16 : LM317 à la place du LD1117 (tâche 3.5)</h3>
+<ul>
+<li><strong>Défaut d'origine.</strong><ul>
+<li>L'entrée du LD1117 tient 15 V au maximum. +15VSP vaut environ 15 V en nominal (15,17 V théoriques en sortie de U12, page 2) : il n'y a aucune marge.</li>
+<li>Une fois DRF1 posée, l'écrêtage de J31-4 (19 à 26 V) atteint +15VSP à travers la PTC. Il détruirait le LD1117.</li>
+</ul>
+</li>
+<li><strong>LM317 en SOT-223</strong> (référence proposée : Texas Instruments LM317DCYR).<ul>
+<li>Même brochage : 1 = ADJ, 2 = OUT, 3 = IN, languette = OUT.</li>
+<li>Le LM317 est limité à 40 V entre son entrée et sa sortie. Avec 26 V en entrée et 12 V en sortie, l'écart n'est que de 14 V.</li>
+<li>La spec exige une tension d'entrée assignée d'au moins 22,8 V (1,5 × 15,2 V) : c'est satisfait.</li>
+</ul>
+</li>
+<li><strong>R66 = 115 Ω et R88 = 1 kΩ sont inchangées.</strong><ul>
+<li>Tension de sortie : 1,25 V × (1 + 1000 / 115) = 12,12 V. Le courant d'ajustement (environ 50 µA dans R88) ajoute environ 0,05 V : +12VSP vaut environ 12,2 V.</li>
+<li>Aux extrêmes de la référence du LM317 (1,20 à 1,30 V), la sortie couvre environ 11,7 à 12,7 V, à la limite haute de la plage de la tâche 3.5 (12,1 V ± 5 %, soit 11,5 à 12,7 V). D'où la mesure obligatoire.</li>
+<li>Charge minimale : R66 impose 1,25 V / 115 Ω = 10,9 mA, au-dessus des 10 mA que le LM317 exige au plus.</li>
+</ul>
+</li>
+<li><strong>Dissipation inchangée</strong> (régulateur linéaire) : environ (15,2 − 12,1) V × 0,25 A ≈ 0,78 W au courant maximal noté page 3. C'est l'ordre de grandeur de la note de la page 3 (0,75 W, SOT-223 donné pour 1,5 W).</li>
+<li><strong>Point à vérifier sur banc.</strong><ul>
+<li>La chute minimale du LM317 (environ 2 V) dépasse celle du LD1117 (environ 1,1 V). En nominal, l'écart d'environ 3 V suffit.</li>
+<li>Sur batterie avec J58 ouvert, +15VSP peut descendre à 10,5 V (note de la page 16). Aucun des deux régulateurs ne tient alors 12,1 V, et le LM317 donne une sortie plus basse, d'environ 0,5 à 1 V.</li>
+<li>Il faut vérifier sur banc que le convertisseur isolé U4, alimenté par +12VSP, fonctionne encore dans ce cas.</li>
+</ul>
+</li>
+</ul>
+<h3 id="34-option-renforcee-tache-37">3.4 Option renforcée (tâche 3.7)</h3>
+<p><strong>Conditions.</strong> L'option n'est posée que si deux mesures l'autorisent :</p>
+<ul>
+<li>le temps de montée mesuré à la tâche 2.6, avec les pull-ups d'origine de 1 kΩ, est d'au plus 2,97 µs ;</li>
+<li>le niveau bas émis par le BP et mesuré au PIC du BA le plus éloigné (tâche 3.6) est inférieur à 1,2 V.</li>
+</ul>
+<p>Les trois éléments vont ensemble. Avec les pull-ups de 1 kΩ, 47 Ω au BP plus 47 Ω au BA donneraient 0,88, 0,97 et 1,09 V au MCF pour ΔVg = 0, 0,1 et 0,25 V. Cette combinaison est refusée par la décision D1.</p>
+<table>
+<thead>
+<tr>
+<th>Temps de montée mesuré (1 kΩ)</th>
+<th>R155/R156</th>
+<th>Pull-ups équivalentes (avec les trois 10 kΩ des BA)</th>
+<th>Facteur sur le temps de montée</th>
+<th>Temps de montée attendu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>≤ 2,3 µs</td>
+<td>2,2 kΩ (Vishay CRCW06032K20FKEA)</td>
+<td>769 → 1325 Ω</td>
+<td>× 1,72</td>
+<td>≤ 3,96 µs</td>
+</tr>
+<tr>
+<td>De 2,3 à 2,97 µs</td>
+<td>1,5 kΩ (Vishay CRCW06031K50FKEA)</td>
+<td>769 → 1034 Ω</td>
+<td>× 1,34</td>
+<td>≤ 3,99 µs</td>
+</tr>
+<tr>
+<td>&gt; 2,97 µs</td>
+<td>1 kΩ conservées, option non appliquée</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>Le temps de montée attendu reste ainsi sous le plafond de 4 µs de la spec.</p>
+<ul>
+<li><strong>R155/R156.</strong> À 2,2 kΩ, le courant à l'état bas passe de 6,4 à 3,9 mA. Les BA ne peuvent passer à 100 Ω (tâche 3.8) qu'avec des pull-ups de 2,2 kΩ ; avec 1,5 kΩ, ils restent à 47 Ω.</li>
+<li><strong>L30/L32 remplacées par 47 Ω anti-impulsion.</strong> La ferrite (0,35 Ω) ne limite rien à l'échelle de la microseconde. La résistance de 47 Ω limite le courant vers l'écrêteur secondaire et vers U19.</li>
+<li>
+<p><strong>BAT54S sur C79 (BA_SDA) et C80 (BA_SCL).</strong> Une BAT54S par ligne, montée « en l'air » sur l'empreinte du condensateur non monté, côté U19 :</p>
+<ul>
+<li>broche 1 (anode) sur la pastille GND ;</li>
+<li>broche 3 (point commun) sur la pastille de la ligne ;</li>
+<li>broche 2 (cathode) reliée à +5VS par un fil court, sur la pastille haute de R155 (pour C79) ou de R156 (pour C80).</li>
+</ul>
+<p>Le brochage se vérifie au testeur de diodes avant et après la pose. Les quelques pF ajoutés par ligne sont négligeables devant les 2 à 3 nF du bus.</p>
+</li>
+<li>
+<p><strong>Effet chiffré</strong>, pour une tension d'écrêtage de D33/D34 de 12 V en onde 8/20.</p>
+<ul>
+<li><strong>Injection positive.</strong> (12 − 5,7) V / 47 Ω ≈ 135 mA dans la BAT54S. U19 reste vers 5,8 V, sous ses 7 V. 5,7 V correspond à +5VS plus la chute directe de la BAT54S à ce courant.</li>
+<li><strong>Injection négative à −2,5 V.</strong> (2,5 − 0,6) V / 47 Ω ≈ 40 mA. U19 descend vers −0,6 V pour environ 40 mA. C'est admis par le maximum absolu du PCA9306, qui borne la tension d'entrée à −0,5 V <strong>ou</strong> son courant à 50 mA.</li>
+<li><strong>Écart admis.</strong> Une injection résiduelle d'environ −0,5 V subsiste sur les broches 28/29 du MCF, dont la limite est −0,3 V. Elle est consignée comme écart admis jusqu'à la révision E, qui ajoute une protection au pied du MCF.</li>
+<li><strong>Rail +5VS.</strong> Un régulateur à découpage n'absorbe pas de courant entrant. L'impulsion est absorbée par la consommation et les découplages de +5VS. La montée de +5VS pendant l'injection se relève sur l'échantillon de banc de la tâche 3.7.</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-risque-residuel-sur-u19-sans-option">4. Risque résiduel sur U19 sans option</h2>
+<div class="admonition warning">
+<p class="admonition-title">BP retouché sans option renforcée</p>
+<p>Le BP garde L30/L32 (ferrites de 0,35 Ω) et ses pull-ups de 1 kΩ. Rien ne limite alors le courant entre D33/D34 et U19 à l'échelle de la microseconde.</p>
+</div>
+<ul>
+<li><strong>Injection positive.</strong> D33/D34 écrêtent vers 9 à 14 V en onde 8/20, à quelques dizaines d'ampères, alors que U19 tient 7 V au maximum : U19 partage le courant avec l'écrêteur.</li>
+<li><strong>Injection négative.</strong> D33/D34 conduisent en direct jusqu'à environ −2,5 V à 50 A. U19 tolère −0,5 V, ou 50 mA en entrée. L'impulsion peut traverser le transistor passant de U19 jusqu'aux broches 28/29 du MCF, dont la limite est −0,3 V.</li>
+<li><strong>Ce qui réduit l'exposition sans la supprimer.</strong><ul>
+<li>La liaison équipotentielle du coffret relève le seuil du courant d'équilibrage. Avec N2, le gain est d'au moins 4 fois la référence. Avec N1, posée à défaut, il est d'au moins 3 fois en onde 8/20 et 2 fois sur un front raide.</li>
+<li>L'isolement de l'Ethernet du BP coupe le seul lien métallique direct de l'îlot vers des équipements reliés au PE.</li>
+</ul>
+</li>
+<li><strong>Consignation.</strong> Ce risque est consigné sur la fiche de la carte jusqu'à son passage en révision E, et l'étiquette du BP porte « sans option » (tâche 3.10).</li>
+<li><strong>Règle pour les BA.</strong> Avec un BP sans option, tous les BA restent à 47 Ω. Le passage à 100 Ω est exclu.</li>
+</ul>
+<h2 id="5-exceptions-de-marge-assumees">5. Exceptions de marge assumées</h2>
+<p>La règle de la spec veut que tout composant relié au +15 V du bus, à +15VS ou à +15VSP ait une tension assignée d'au moins 1,5 fois sa tension nominale. Les écrêteurs, les limiteurs réarmables et les bobines de relais suivent leurs propres règles. Les exceptions suivantes sont assumées :</p>
+<table>
+<thead>
+<tr>
+<th>Composant</th>
+<th>Contrainte</th>
+<th>Situation</th>
+<th>Levée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U2 du BP (LMR12010, VIN de 20 V en fonctionnement, 24 V en absolu)</td>
+<td>Sous +15VS (environ 15,2 V), soit environ 1,3 fois au lieu de 1,5 fois</td>
+<td>Exception assumée, prévue par la spec</td>
+<td>Révision E</td>
+</tr>
+<tr>
+<td>U2 et C110 (22 µF / 25 V) du BP</td>
+<td>Tension d'écrêtage de J31-4 (19 à 26 V), reportée sur +15VS par la diode interne de T32</td>
+<td><strong>Listés en exception tant que la tâche 3.4 n'est pas faite.</strong> La tâche 3.4 mesure +15VS sur un échantillon de banc pendant que DRF1 conduit. Au-delà de 24 V, une protection de +15VS est ajoutée à la retouche, ou l'exception est maintenue</td>
+<td>Tâche 3.4, puis révision E</td>
+</tr>
+<tr>
+<td>U1 des BA retouchés (LMR12010, sous 14,3 V)</td>
+<td>20 V en fonctionnement ; environ 25 V après D3 au courant crête de la TVS du BA</td>
+<td>Exception assumée, listée dans la note de retouche de chaque BA (tâche 2.9)</td>
+<td>Révision E des BA (LMR16006)</td>
+</tr>
+<tr>
+<td>Broches 28/29 du MCF52259 (BP en option renforcée)</td>
+<td>Injection résiduelle d'environ −0,5 V, pour une limite de −0,3 V</td>
+<td>Écart admis</td>
+<td>Révision E du BP</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Ne pas confondre les U1.</strong> L'exception sur U1 concerne le régulateur des BA. U1 du BP est le DRV8801PWP : il n'est pas concerné.</li>
+<li><strong>+15VS ne peut pas se décharger dans C109.</strong> +15VS n'est relié au +15 V de l'alimentation qu'à travers D45 (PMEG4050EP), et à VBATT qu'à travers T14 (page 2). L'énergie injectée par la diode interne de T32 ne peut donc pas s'écouler vers C109 (1000 µF) : seuls les découplages de +15VS l'absorbent. C'est pourquoi la mesure de 3.4 est nécessaire.</li>
+<li><strong>Point relevé lors de la rédaction, absent du design.</strong><ul>
+<li>C98 (1 µF / 25 V, à l'entrée de U16) et les autres charges de +15VSP sont directement sur le nœud que DRF1 écrête à travers la PTC. Ces charges comprennent les sorties alimentées par +15VSP, pages 13 et 16 à 19 du schéma.</li>
+<li>Au courant crête, ces composants voient jusqu'à environ 26 V. C98 respecte la règle de 1,5 fois (25 V ≥ 22,8 V), mais pas cette valeur crête.</li>
+<li>Il est proposé de relever aussi +15VSP lors de la mesure de la tâche 3.4. Au-delà de 25 V, C98 rejoint la liste des exceptions ou passe en 50 V. Les bobines de relais sont exclues de la règle.</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-procedure">6. Procédure</h2>
+<div class="admonition danger">
+<p class="admonition-title">Contraintes permanentes</p>
+<ul>
+<li>Ne jamais piloter une armoire réelle pendant les essais. Les essais se font <strong>sur banc uniquement</strong>.</li>
+<li>Les injections, les courts-circuits et les essais jusqu'à la défaillance se font sur des <strong>échantillons de banc</strong>. Un BP destiné à une installation ne reçoit que des contrôles non destructifs : mesures hors tension, niveaux et temps de montée.</li>
+<li>TBTS : aucune liaison entre le 0 V et le PE, ni par la retouche, ni par le module DIN, ni par un renfort 0 V.</li>
+<li>Ne jamais reflasher le BP avec un build non qualifié. En cas de remplacement du MCF, flasher uniquement le <code>.S19</code> 099-37.</li>
+<li>La retouche est purement matérielle : le protocole HTTP legacy IoT n'est pas touché.</li>
+</ul>
+</div>
+<ol>
+<li><strong>Préalables.</strong><ul>
+<li>L'installation est consignée (tâche 1.5) et le BP est déposé.</li>
+<li>L'isolement à 500 V continu est mesuré (tâche 1.6).</li>
+<li>La fiche de mesures de la tâche 1.8 liste les composants défaillants.</li>
+<li>À l'établi, le BP sous tension est alimenté par une alimentation de laboratoire flottante de 22 à 24 V.</li>
+</ul>
+</li>
+<li><strong>Sauvegarde BDM (tâche 3.1)</strong>, avant toute retouche.<ul>
+<li>Sauvegarder la flash du BP par BDM, puis la comparer au <code>.S19</code> de production <code>SC944D/Prog/099-37/BP_MQX_ETH 20170116 save 099-37.elf_BOOT_CRC.S19</code>.</li>
+<li>Archiver la sauvegarde, et documenter l'identité ou l'écart.</li>
+<li>Le <code>.S19</code> 099-37 sert de retour arrière.</li>
+</ul>
+</li>
+<li><strong>D33/D34 (tâche 3.2)</strong> : remplacement par des SMF5V0A-E3-08. U19 n'est remplacé que si son test de 1.8 a échoué ou si D33/D34 ont claqué.</li>
+<li><strong>+15 V de J31 (tâche 3.3)</strong> : variante (a), avec la PTC sur L31 et DRF1 ; ou variante (b), avec le module DIN. Le choix dépend du courant de maintien disponible.</li>
+<li><strong>U16 (tâche 3.5)</strong> : remplacement par un LM317 en SOT-223. R66 et R88 restent en place.</li>
+<li><strong>Renfort 0 V éventuel.</strong> Si N2 ou N1 est prévu (tâches 4.1 et 4.5), souder pendant la dépose la queue de cochon AWG20 sur la broche traversante J31-3. Avec N1, les anodes de D33/D34 rejoignent le même point.</li>
+<li><strong>Option renforcée (tâche 3.7).</strong><ul>
+<li>Elle n'est posée que si les mesures des tâches 2.6 et 3.6 sont disponibles et l'autorisent.</li>
+<li>Sinon, le BP est remis en service « sans option », et l'option attend une prochaine dépose.</li>
+</ul>
+</li>
+<li><strong>Contrôle visuel.</strong> Les éléments rapportés (DRF1, PTC, BAT54S) ne doivent pas réduire les 5,5 mm d'isolement que le BP s'impose vis-à-vis des circuits 230 V. Inspection à la loupe, comme pour le relevé de la tâche 2.11.</li>
+<li><strong>Étiquetage (tâche 3.10).</strong> L'étiquette porte « retouche foudre », puis :<ul>
+<li>« option 2,2 kΩ », « option 1,5 kΩ » ou « sans option » ;</li>
+<li>« +15 V : PTC L31 » ou « +15 V : module DIN ».</li>
+</ul>
+</li>
+<li>
+<p><strong>Fiche de la carte.</strong> Elle consigne :</p>
+<ul>
+<li>la référence de la sauvegarde BDM et le résultat de la comparaison ;</li>
+<li>les composants remplacés ;</li>
+<li>la référence et le courant de maintien de la PTC, et le courant de BA_ALIM mesuré ;</li>
+<li>+12VSP mesuré ;</li>
+<li>la valeur de R155/R156, le temps de montée et les niveaux bas ;</li>
+<li>le risque résiduel sur U19 si l'option n'est pas posée.</li>
+</ul>
+<p>La fiche reste dans le dossier privé de l'installation. Seule une synthèse anonymisée est publiée, après accord.</p>
+</li>
+<li>
+<p><strong>Remise en service.</strong> Remontage et mesures de la tâche 1.11 (ΔVg, niveaux), puis renvoi des configurations de tous les BA (tâche 1.12).</p>
+</li>
+</ol>
+<p>La mesure de +15VS de la tâche 3.4 se fait sur un <strong>échantillon de banc</strong> retouché selon la variante (a), jamais sur le BP de l'installation. Son résultat met à jour la liste des exceptions (section 5).</p>
+<h2 id="7-criteres-de-verification-taches-32-a-38">7. Critères de vérification (tâches 3.2 à 3.8)</h2>
+<table>
+<thead>
+<tr>
+<th>Tâche</th>
+<th>Vérification</th>
+<th>Où</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3.2</td>
+<td>J31 débranché, écart d'au plus 50 mV entre +5VS et chaque ligne (fuite ≤ 50 µA sous la pull-up de 1 kΩ) ; EN de U19 entre 3,6 et 4,4 V ; test fonctionnel de U19 réussi dans les deux sens</td>
+<td>BP retouché</td>
+</tr>
+<tr>
+<td>3.3</td>
+<td>BA_ALIM de 14 V ou plus au dernier BA</td>
+<td>Installation</td>
+</tr>
+<tr>
+<td>3.3</td>
+<td>Court-circuit de J31-4 à J31-3 pendant 60 s sans dégradation, y compris sans limiteur sur le BP en variante (b) ; BA_ALIM revient en 120 s au plus (procédure de <code>NR-board-sc944d-9</code>)</td>
+<td>Échantillon de banc</td>
+</tr>
+<tr>
+<td>3.4</td>
+<td>+15VS mesurée et consignée pendant que DRF1 conduit son courant d'essai. Au-delà de 24 V, protection de +15VS ou exception pour U2 et C110. Relevé proposé : +15VSP, pour C98</td>
+<td>Échantillon de banc</td>
+</tr>
+<tr>
+<td>3.5</td>
+<td>+12VSP à 12,1 V ± 5 % sous +15VSP nominal</td>
+<td>BP retouché</td>
+</tr>
+<tr>
+<td>3.6</td>
+<td>Niveau bas émis par le BP, mesuré au PIC du BA le plus éloigné, inférieur à 1,2 V. Sinon, l'option est exclue et les BA restent à 47 Ω</td>
+<td>Installation</td>
+</tr>
+<tr>
+<td>3.7</td>
+<td>Hors tension, 44 à 50 Ω entre chaque ligne de J31 et U19</td>
+<td>BP retouché</td>
+</tr>
+<tr>
+<td>3.7</td>
+<td>Injection à +12 V : U19 côté bus ≤ 7,0 V et broche 29 du MCF ≤ 4,0 V. Injection à −2,5 V : U19 ≥ −0,5 V ou courant d'entrée ≤ 50 mA, et tension de la broche 28 consignée</td>
+<td>Échantillon de banc</td>
+</tr>
+<tr>
+<td>3.7</td>
+<td>Temps de montée inférieur à 4 µs ; niveaux de <code>NR-board-sc944d-1</code> au vert</td>
+<td>Installation</td>
+</tr>
+<tr>
+<td>3.8</td>
+<td>BA à 100 Ω seulement avec R155/R156 à 2,2 kΩ, 3.6 au vert et ΔVg ≤ 0,1 V. Contrôles : 95 à 105 Ω hors tension ; niveau bas au MCF &lt; 0,85 V et au PIC &lt; 1,2 V, sinon retour à 47 Ω ; courant de broche ≤ 20 mA sur un échantillon de banc instrumenté</td>
+<td>BA et banc</td>
+</tr>
+</tbody>
+</table>
+<h2 id="8-variante-des-ba-et-cohabitation">8. Variante des BA et cohabitation</h2>
+<p><strong>Retouches des BA.</strong> Elles font l'objet d'une variante de BOM « retouche foudre » et d'une note de schéma dans les dépôts essensys-board-SC940, essensys-board-SC941C et essensys-board-SC942C (tâche 2.9). En résumé :</p>
+<ul>
+<li>R1/R2 (R1/R3 sur le SC941C) passent de 0 Ω à 47 Ω anti-impulsion en 0805, ou à 100 Ω en option.</li>
+<li>Une PTC de 30 V au moins remplace R79 (R93 sur le SC941C, R84 sur le SC942C).</li>
+<li>Une TVS de 16 V est posée sur les pastilles de C40 (C42 sur le SC942C), entre +Vin et le 0 V, jamais sur +VBUS.</li>
+<li>C2 passe en 10 µF / 35 V X5R, et D6 en Schottky 40 V.</li>
+<li>Option : BAT54S sur C23/C25 (C24/C26 sur le SC941C, C27/C29 sur le SC942C).</li>
+<li>L'exception assumée sur U1 est listée dans chaque note.</li>
+</ul>
+<p><strong>Cohabitation avec le BP</strong> (d'après le design, Migration Plan) :</p>
+<table>
+<thead>
+<tr>
+<th>Configuration du BP</th>
+<th>BA admis</th>
+<th>Règle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BP retouché sans option</td>
+<td>Tous les BA à 47 Ω, et les BA d'origine jusqu'à leur prochaine dépose</td>
+<td>Risque résiduel sur U19 consigné jusqu'à la révision E</td>
+</tr>
+<tr>
+<td>BP en option renforcée, 1,5 kΩ</td>
+<td>BA à 47 Ω</td>
+<td>Pas de BA à 100 Ω</td>
+</tr>
+<tr>
+<td>BP en option renforcée, 2,2 kΩ</td>
+<td>BA à 47 Ω ; BA à 100 Ω avec BAT54S si ΔVg ≤ 0,1 V et niveaux au vert</td>
+<td>Si le BP perd son option, les BA à 100 Ω reviennent à 47 Ω</td>
+</tr>
+<tr>
+<td>BP d'origine</td>
+<td>BA d'origine ou retouchés à 47 Ω</td>
+<td>À retoucher à la prochaine dépose</td>
+</tr>
+</tbody>
+</table>
+<h2 id="9-points-ouverts">9. Points ouverts</h2>
+<ul>
+<li><strong>Référence de la PTC et choix entre les variantes (a) et (b)</strong>, après la mesure du courant des BA (tâche 2.1). La ligne de la BOM reste « à dimensionner » jusque-là.</li>
+<li><strong>Résultat de la tâche 3.4</strong> : il fixe la liste définitive des exceptions sur U2 et C110, ainsi que sur C98 si +15VSP est relevé.</li>
+<li><strong>Comportement de +12VSP et de U4</strong> avec le LM317, sur batterie avec J58 ouvert.</li>
+<li><strong>BOM CSV d'origine incomplète</strong> (section 1.2) : les lignes de la variante qui couvrent des repères absents de cette BOM sont des ajouts, et non des remplacements de lignes.</li>
+<li><strong>Révision E du BP (tâche 6.5)</strong>. Elle lève les exceptions et le risque résiduel décrits ici, avec :<ul>
+<li>une protection au pied du MCF ;</li>
+<li>47 Ω et un écrêteur secondaire entre J31 et U19 ;</li>
+<li>des TVS de ligne de 50 pF au plus ;</li>
+<li>un eFuse et une SMCJ16A sur le +15 V ;</li>
+<li>des régulateurs +12VSP et U2 dont l'entrée tient au moins 40 V.</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.expand", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

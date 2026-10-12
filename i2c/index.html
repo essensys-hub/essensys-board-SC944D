@@ -1,0 +1,1516 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation technique du module SC944D (Projet Essensys).">
+      
+      
+        <meta name="author" content="Essensys Team">
+      
+      
+        <link rel="canonical" href="https://essensys-hub.github.io/essensys-board-SC944D/i2c/">
+      
+      
+        <link rel="prev" href="../firmware/">
+      
+      
+        <link rel="next" href="../retouche-foudre/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Protocoles I2C - Documentation SC944D</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#protocole-i2c-bp-ba" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href=".." title="Documentation SC944D" class="md-header__button md-logo" aria-label="Documentation SC944D" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Documentation SC944D
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Protocoles I2C
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/essensys-hub/essensys-board-SC944D/" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    essensys-board-SC944D
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Documentation SC944D" class="md-nav__button md-logo" aria-label="Documentation SC944D" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Documentation SC944D
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/essensys-hub/essensys-board-SC944D/" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    essensys-board-SC944D
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firmware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Firmware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocoles I2C
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocoles I2C
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-physique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture physique
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tache-de-dialogue-du-bp-boitiers_task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tâche de dialogue du BP (Boitiers_task)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tâche de dialogue du BP (Boitiers_task)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ordre-de-traitement-envoi-sur-changement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ordre de traitement : envoi sur changement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firmware-des-ba" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Firmware des BA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#format-des-trames" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Format des trames
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Format des trames">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecriture-bp-ba" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Écriture (BP → BA)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#codes-de-trame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codes de trame
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lecture-ba-bp-acquittement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture (BA → BP) : acquittement
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gestion-des-erreurs-firmware-099-37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gestion des erreurs (firmware 099-37)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protections-recuperation-et-resynchronisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protections, récupération et resynchronisation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Protections, récupération et resynchronisation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etat-actuel-bp-099-37-ba-v17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        État actuel (BP 099-37, BA v1.7)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evolutions-prevues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Évolutions prévues
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regles-dexploitation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Règles d'exploitation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recuperation-des-valeurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Récupération des valeurs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faq-technique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FAQ technique
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FAQ technique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#peut-on-forcer-la-lecture-de-letat-dun-relais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Peut-on forcer la lecture de l'état d'un relais ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../retouche-foudre/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retouche foudre
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/0001-generation-3-rs485-isole/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Décisions (ADR)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rev-e-regles-conception/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Règles rév. E
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../downloads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Téléchargements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-physique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture physique
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tache-de-dialogue-du-bp-boitiers_task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tâche de dialogue du BP (Boitiers_task)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tâche de dialogue du BP (Boitiers_task)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ordre-de-traitement-envoi-sur-changement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ordre de traitement : envoi sur changement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firmware-des-ba" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Firmware des BA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#format-des-trames" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Format des trames
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Format des trames">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecriture-bp-ba" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Écriture (BP → BA)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#codes-de-trame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codes de trame
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lecture-ba-bp-acquittement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lecture (BA → BP) : acquittement
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gestion-des-erreurs-firmware-099-37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gestion des erreurs (firmware 099-37)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protections-recuperation-et-resynchronisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protections, récupération et resynchronisation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Protections, récupération et resynchronisation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etat-actuel-bp-099-37-ba-v17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        État actuel (BP 099-37, BA v1.7)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evolutions-prevues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Évolutions prévues
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regles-dexploitation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Règles d'exploitation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recuperation-des-valeurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Récupération des valeurs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faq-technique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FAQ technique
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FAQ technique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#peut-on-forcer-la-lecture-de-letat-dun-relais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Peut-on forcer la lecture de l'état d'un relais ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="protocole-i2c-bp-ba">📡 Protocole I2C (BP ↔ BA)</h1>
+<p>Cette page décrit la liaison I2C entre le boîtier principal <strong>SC944D</strong> (BP, maître) et les trois boîtiers auxiliaires (BA, esclaves) : <strong>SC940D</strong>, <strong>SC942C</strong> et <strong>SC941C</strong>.</p>
+<p>Elle décrit le firmware de production du BP <strong>099-37</strong> et le firmware des BA <strong>v1.7</strong>. Les sources du BP se trouvent dans <code>SC944D/Prog/099-37/BP_MQX_ETH</code> ; elles correspondent à celles du dépôt <code>client-essensys-legacy</code>, dont seuls l'encodage et quelques commentaires diffèrent. Les sources des BA se trouvent dans les dépôts <code>essensys-board-SC940</code>, <code>-SC941C</code> et <code>-SC942C</code>, dossier <code>Prog/code_ba (fichiers sources 1.7)</code>. Les références de code sont données sous la forme <code>fichier:ligne</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Corrections d'octobre 2026</p>
+<p>Cette page a été corrigée dans le cadre du change OpenSpec <code>i2c-surge-protection-2026-10-007</code> (ticket <a href="https://github.com/essensys-hub/essensys-board-SC944D/issues/1">#1</a>) :</p>
+<ul>
+<li>le bus tourne à <strong>50 kHz</strong>, et non à 100 kHz ;</li>
+<li>le code de la trame ACTIONS vaut <strong>5</strong>, et non 1 ;</li>
+<li>les BA répondent aux adresses <strong>0x11 à 0x13</strong> ;</li>
+<li>les commandes d'éclairage et de volets passent par la trame <strong>FORCAGE_SORTIES</strong>, et non par la trame ACTIONS.</li>
+</ul>
+</div>
+<h2 id="architecture-physique">Architecture physique</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Élément</th>
+<th style="text-align: left;">Valeur</th>
+<th style="text-align: left;">Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Contrôleur</td>
+<td style="text-align: left;">I2C0 du MCF52259, pilote MQX en mode interrogé (<code>"i2c0:"</code>)</td>
+<td style="text-align: left;"><code>H/application.h:3</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Vitesse</td>
+<td style="text-align: left;"><strong>50 kHz</strong> (<code>IO_IOCTL_I2C_SET_BAUD</code> avec 50000)</td>
+<td style="text-align: left;"><code>C/ba.c:88</code>, <code>C/ba_i2c.c:106</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Adresse de station du BP</td>
+<td style="text-align: left;">0x10</td>
+<td style="text-align: left;"><code>H/application.h:8</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Adresses des BA</td>
+<td style="text-align: left;">0x11 + numéro du BA, soit <strong>0x11, 0x12 et 0x13</strong></td>
+<td style="text-align: left;"><code>H/application.h:9-11</code>, <code>C/ba_i2c.c:178</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Connecteur du BP</td>
+<td style="text-align: left;">J31, connecteur unique du bus : 1 SDA, 2 SCL, 3 0 V, 4 BA_ALIM (+15 V)</td>
+<td style="text-align: left;">Schéma, page « Liaison boîtiers auxiliaires »</td>
+</tr>
+<tr>
+<td style="text-align: left;">Connecteurs des BA</td>
+<td style="text-align: left;">J1 et J2 câblés en parallèle, même brochage que J31 : les BA sont chaînés</td>
+<td style="text-align: left;">Schémas des BA</td>
+</tr>
+<tr>
+<td style="text-align: left;">Niveaux</td>
+<td style="text-align: left;">MCF52259 en 3,3 V ; U19 (PCA9306) translate vers 5 V côté bus</td>
+<td style="text-align: left;">Schéma</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">N° de BA (firmware BP)</th>
+<th style="text-align: left;">Constante</th>
+<th style="text-align: left;">Adresse</th>
+<th style="text-align: left;">Carte</th>
+<th style="text-align: left;">Bit de l'index 12</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;"><code>uc_BOITIER_PIECES_VIE</code></td>
+<td style="text-align: left;">0x11</td>
+<td style="text-align: left;">SC940D (pièces de vie)</td>
+<td style="text-align: left;">0x04</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;"><code>uc_BOITIER_CHAMBRES</code></td>
+<td style="text-align: left;">0x12</td>
+<td style="text-align: left;">SC942C (chambres)</td>
+<td style="text-align: left;">0x08</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>uc_BOITIER_PIECES_EAU</code></td>
+<td style="text-align: left;">0x13</td>
+<td style="text-align: left;">SC941C (pièces d'eau)</td>
+<td style="text-align: left;">0x10</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Adresse d'un BA.</strong> Elle est fixée à la compilation du firmware BA (<code>I2C_ADDR</code> dans <code>hard.h</code>, selon la macro <code>TYPE_*</code> choisie). Un BA programmé avec le fichier d'un autre type répond donc à la mauvaise adresse : chaque BA ne reçoit que le <code>.hex</code> de son type.</li>
+<li><strong>Variateurs SC943.</strong> Ce sont des cartes filles des BA. Ils ne sont pas adressés sur ce bus.</li>
+<li>
+<p><strong>Caractéristiques électriques</strong>, déduites des schémas et des BOM :</p>
+<ul>
+<li>pull-ups : 1 kΩ côté bus du BP (R155/R156) en parallèle avec 10 kΩ sur chaque BA, soit environ 769 Ω ;</li>
+<li>capacité de 2 à 3 nF par ligne, fixée par les quatre TVS SMF5V0A de chaque ligne et non par le câble ;</li>
+<li>temps de montée de 0 à 3,45 V : 1,4 à 3,2 µs.</li>
+</ul>
+<p>Le détail des composants est dans <a href="../hardware/#interface-du-bus-des-boitiers-auxiliaires-j31">Hardware</a>.</p>
+</li>
+</ul>
+<h2 id="tache-de-dialogue-du-bp-boitiers_task">Tâche de dialogue du BP (<code>Boitiers_task</code>)</h2>
+<p>La tâche <code>Boitiers_task</code> (<code>C/ba.c</code>) dialogue avec les BA. Elle s'appuie sur la fonction de transaction <code>sl_fct_write_polled()</code> (<code>C/ba_i2c.c</code>).</p>
+<ul>
+<li><strong>Ordonnancement.</strong> La tâche a la priorité 8 et une tranche de temps de 50 ms (<code>MQX_TIME_SLICE_TASK</code>, <code>C/main.c:71</code>). Elle boucle en continu (<code>for(;;)</code>, puis <code>_sched_yield()</code>) : les 50 ms sont une tranche de temps, pas une période.</li>
+<li><strong>Pause après chaque transaction.</strong> Chaque transaction est suivie d'une pause de 100 ms (<code>_time_delay(100)</code>, <code>C/ba_i2c.c:508</code>), même en cas d'erreur, pour laisser au BA le temps de traiter la trame. Le bus porte donc au plus une trame toutes les 100 ms environ, tous BA confondus.</li>
+<li><strong>Accès exclusif.</strong> Chaque transaction est protégée par le sémaphore <code>lock_I2C</code>.</li>
+<li><strong>Téléchargement.</strong> Aucun dialogue n'a lieu pendant un téléchargement de firmware (<code>uc_DownloadEnCoursBloquerI2CVersBA</code>).</li>
+</ul>
+<h3 id="ordre-de-traitement-envoi-sur-changement">Ordre de traitement : envoi sur changement</h3>
+<p>Le BP n'envoie une trame que lorsqu'une valeur change. À chaque passage de boucle, il traite dans cet ordre :</p>
+<pre class="mermaid"><code>graph TD
+    Debut(("Passage de boucle")) --&gt; A{"Pour chaque BA : octet ACTIONS&lt;br/&gt;différent du dernier acquitté ?"}
+    A -- oui --&gt; TA["Trame ACTIONS (code 5)"]
+    A -- non --&gt; F
+    TA --&gt; F{"Message de forçage&lt;br/&gt;dans la file BA_QUEUE_ID ?"}
+    F -- oui --&gt; TF["Trame FORCAGE_SORTIES (code 1)"]
+    F -- non --&gt; C
+    TF --&gt; C{"Pour chaque BA : configuration&lt;br/&gt;modifiée dans Tb_Echange ?"}
+    C -- oui --&gt; TC["Trames CONF_SORTIES (2),&lt;br/&gt;TPS_EXTINCTION (3), TPS_ACTION (4)"]
+    C -- non --&gt; S
+    TC --&gt; S["Mise à jour des défauts&lt;br/&gt;uc_Defboitier1 à 3"]
+    S --&gt; Y["_sched_yield()"]
+    Y --&gt; Debut</code></pre>
+<ol>
+<li><strong>ACTIONS</strong> (<code>C/ba.c:157-212</code>). L'octet commandé est comparé à l'octet acquitté (<code>Tb_Actions_Cde_BA</code> et <code>Tb_Actions_Ack_BA</code>). Il porte trois indicateurs :<ul>
+<li><code>Secouru</code> : mode secouru ou redémarrage programmé du BP ; le BA sauvegarde alors son état ;</li>
+<li><code>BloqueVolets</code> : blocage des volets ;</li>
+<li><code>ForceAllumage</code> : allumage forcé, par exemple en cas d'alarme.</li>
+</ul>
+</li>
+<li><strong>FORCAGE_SORTIES</strong> (<code>C/ba.c:214-300</code>). Les ordres d'allumage, d'extinction, d'ouverture et de fermeture sont préparés par la tâche principale (notamment <code>C/Scenario.c</code>, <code>C/reveil.c</code> et <code>C/anemo.c</code>) dans <code>us_Tb_Echangeboitier</code>. <code>vd_UpdateOrdresPilotageSortiesBA()</code> les transmet ensuite à la tâche BA par un message. La tâche traite un message par passage.</li>
+<li><strong>Configuration</strong> (<code>C/ba.c:302-481</code>). Le BP compare la zone <code>Variateurs_PDV_Conf</code> → <code>Volets_PDE_Temps</code> de <code>Tb_Echange</code> à sa copie locale (<code>uc_Tb_Borniers_Data</code>). Il envoie la trame correspondante au BA dont une valeur a changé.</li>
+<li><strong>Surveillance</strong> (<code>C/ba.c:483-511</code>). Mise à jour des indicateurs de défaut de chaque BA (voir <a href="#gestion-des-erreurs-firmware-099-37">Gestion des erreurs</a>).</li>
+</ol>
+<h3 id="firmware-des-ba">Firmware des BA</h3>
+<p>Les BA sont passifs. Le module SSP du PIC16F946 reçoit la trame sous interruption et contrôle sa longueur et son CRC (<code>slavenode.c</code>). Il la copie ensuite dans un tampon de commande (<code>CmdBuf</code>), que la boucle principale applique aux relais et aux sorties. Le BA renvoie ensuite l'acquittement décrit plus bas.</p>
+<h2 id="format-des-trames">Format des trames</h2>
+<p>Chaque échange est une transaction atomique <strong>écriture puis lecture</strong>, avec une condition de redémarrage (<em>repeated start</em>) entre les deux.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant BP as SC944D (maître)
+    participant BA as BA (esclave)
+
+    BP-&gt;&gt;BA: START, adresse + écriture
+    BP-&gt;&gt;BA: Code de trame (1 octet)
+    BP-&gt;&gt;BA: Données (1, 8 ou 16 octets)
+    BP-&gt;&gt;BA: CRC-16 (2 octets)
+    BP-&gt;&gt;BA: REPEATED START, adresse + lecture
+    BA--&gt;&gt;BP: Écho du code de trame (1 octet)
+    BA--&gt;&gt;BP: Écho du CRC reçu (2 octets)
+    BA--&gt;&gt;BP: CRC-16 de la réponse (2 octets)
+    BP-&gt;&gt;BA: STOP</code></pre>
+<h3 id="ecriture-bp-ba">Écriture (BP → BA)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Octet</th>
+<th style="text-align: left;">Contenu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">Code de trame (1 à 5)</td>
+</tr>
+<tr>
+<td style="text-align: left;">1 à n</td>
+<td style="text-align: left;">Données : 1, 8 ou 16 octets selon le code</td>
+</tr>
+<tr>
+<td style="text-align: left;">n + 1</td>
+<td style="text-align: left;">CRC-16, poids faible</td>
+</tr>
+<tr>
+<td style="text-align: left;">n + 2</td>
+<td style="text-align: left;">CRC-16, poids fort</td>
+</tr>
+</tbody>
+</table>
+<p>Le CRC-16 est calculé sur le code et les données (<code>C/crc.c</code>) : valeur initiale 0xFFFF, polynôme réfléchi 0xA001, soit le CRC-16/MODBUS.</p>
+<h3 id="codes-de-trame">Codes de trame</h3>
+<p>Côté BP, les codes sont définis par l'énumération <code>enum_CODE_TRAMES</code> (<code>H/global.h:516</code>). Côté BA, <code>slavenode.c</code> en définit une copie (<code>C_FORCAGE_SORTIES</code> à <code>C_ACTIONS</code>). Le code de trame fixe la longueur attendue par le BA.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Code</th>
+<th style="text-align: left;">Constante BP</th>
+<th style="text-align: left;">Octets de données</th>
+<th style="text-align: left;">Longueur totale</th>
+<th style="text-align: left;">Contenu des données</th>
+<th style="text-align: left;">Déclenchement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;"><code>uc_TRAME_BA_FORCAGE_SORTIES</code></td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">1 et 3 : sorties simples à éteindre (poids faible, puis fort) ; 2 et 4 : sorties simples à allumer ; 5 et 6 : variateurs à éteindre et à allumer ; 7 et 8 : volets à ouvrir et à fermer</td>
+<td style="text-align: left;">Message de la tâche principale</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>uc_TRAME_BA_CONF_SORTIES</code></td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">Mode des 8 variateurs : 0 = TOR avec rampe, 1 = gradateur, 2 = TOR sans rampe</td>
+<td style="text-align: left;">Changement d'un <code>Variateurs_xxx_Conf</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>uc_TRAME_BA_TPS_EXTINCTION</code></td>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">Temps d'extinction des 16 sorties simples : 1 à 255 min, 0 = pas d'extinction automatique</td>
+<td style="text-align: left;">Changement d'un <code>Lampes_xxx_Temps</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;"><code>uc_TRAME_BA_TPS_ACTION</code></td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">Temps d'action des 8 volets ou stores : 1 à 255 s</td>
+<td style="text-align: left;">Changement d'un <code>Volets_xxx_Temps</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;"><code>uc_TRAME_BA_ACTIONS</code></td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">Indicateurs <code>Secouru</code>, <code>BloqueVolets</code>, <code>ForceAllumage</code></td>
+<td style="text-align: left;">Changement de l'octet commandé</td>
+</tr>
+</tbody>
+</table>
+<p>Avec le BA v1.7, l'extinction est prioritaire sur l'allumage dans la trame FORCAGE_SORTIES, pour les sorties simples comme pour les variateurs.</p>
+<h3 id="lecture-ba-bp-acquittement">Lecture (BA → BP) : acquittement</h3>
+<p>Juste après l'écriture, le BP lit 5 octets (<code>C/ba_i2c.c:342</code> et <code>371</code>).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Octet</th>
+<th style="text-align: left;">Contenu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">Écho du code de trame reçu</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Écho du CRC reçu, poids faible</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Écho du CRC reçu, poids fort</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">CRC-16 des octets 0 à 2, poids faible</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">CRC-16 des octets 0 à 2, poids fort</td>
+</tr>
+</tbody>
+</table>
+<p>Le BP vérifie trois points (<code>C/ba_i2c.c:382-431</code>) :</p>
+<ol>
+<li>il a reçu 5 octets ;</li>
+<li>l'écho du code correspond au code émis ;</li>
+<li>le CRC de la réponse est valide, puis l'écho du CRC est égal au CRC émis. Si le CRC d'une trame reçue est faux, le BA renvoie un écho de CRC nul, que le BP rejette.</li>
+</ol>
+<p>Cette lecture est un <strong>acquittement protocolaire</strong>. Elle ne remonte aucun état physique : ni l'état des relais, ni celui des entrées.</p>
+<h2 id="gestion-des-erreurs-firmware-099-37">Gestion des erreurs (firmware 099-37)</h2>
+<p><strong>Compteur d'échecs.</strong> Chaque BA a un compteur d'échecs consécutifs (<code>Tb_Com_BA[n].o_Repete</code>), commun à tous les types de trame. Il augmente à chaque transaction en échec et revient à 0 à la première transaction réussie avec ce BA.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Seuil</th>
+<th style="text-align: left;">Constante</th>
+<th style="text-align: left;">Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">6ᵉ échec consécutif</td>
+<td style="text-align: left;"><code>uc_I2C_NB_REPETE_AV_ERREUR</code> = 5 (<code>H/global.h:499</code>)</td>
+<td style="text-align: left;">Le BA est déclaré en défaut (<code>st_EchangeStatus.uc_Defboitier1</code> à <code>3</code>), donc dans l'index 12.</td>
+</tr>
+<tr>
+<td style="text-align: left;">21ᵉ échec consécutif</td>
+<td style="text-align: left;"><code>uc_I2C_NB_REPETE</code> = 20 (<code>H/global.h:500</code>)</td>
+<td style="text-align: left;">La trame est <strong>abandonnée</strong> : l'octet ACTIONS est marqué acquitté (<code>C/ba.c:202-209</code>), le message de forçage est libéré, le drapeau de configuration est effacé. Le compteur reste bloqué à 21 : le défaut persiste jusqu'à la prochaine transaction réussie.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Blocage du bus.</strong> Le BSP I2C de production signale un blocage par <code>uc_FlagBlocageDetecte</code>. La transaction suivante réinitialise alors le pilote (<code>C/ba_i2c.c:70-163</code>) :</p>
+<ul>
+<li><code>fclose</code> puis <code>fopen</code> ;</li>
+<li>réglage de la vitesse, du mode maître et de l'adresse de station ;</li>
+<li>jusqu'à 50 essais (<code>uc_NB_REINIT_MAX</code>, <code>H/global.h:701</code>).</li>
+</ul>
+<p>Aucune impulsion d'horloge n'est émise pour libérer un esclave bloqué.</p>
+<p><strong>Index 12.</strong> L'index 12 de la table d'échange (<code>Information</code>, <code>H/TableEchange.h:245</code>) est exposé au serveur sous le nom <code>comm_faults</code>. Il est recalculé par <code>vd_MAJEtatBPDansTableEchange()</code> (<code>C/main.c:1004-1016</code>) :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Bit</th>
+<th style="text-align: left;">Masque</th>
+<th style="text-align: left;">Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0x01</td>
+<td style="text-align: left;">Défaut de communication du compteur (téléinformation)</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0x02</td>
+<td style="text-align: left;">Défaut de communication de l'IHM (non géré par 099-37)</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">0x04</td>
+<td style="text-align: left;">Défaut de communication du BA 0x11 (SC940D)</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">0x08</td>
+<td style="text-align: left;">Défaut de communication du BA 0x12 (SC942C)</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">0x10</td>
+<td style="text-align: left;">Défaut de communication du BA 0x13 (SC941C)</td>
+</tr>
+</tbody>
+</table>
+<p>Les critères de défaut des BA portent sur <code>(index 12 &amp; 0x1C)</code>.</p>
+<h2 id="protections-recuperation-et-resynchronisation">Protections, récupération et resynchronisation</h2>
+<h3 id="etat-actuel-bp-099-37-ba-v17">État actuel (BP 099-37, BA v1.7)</h3>
+<p><strong>Protection matérielle des lignes.</strong></p>
+<ul>
+<li><strong>Côté BP.</strong> D33/D34 (SMF5V0A) écrêtent vers 9 à 14 V en onde 8/20, au-delà des 7 V que tolère U19 (PCA9306). Les broches 28/29 du MCF52259 ne sont protégées ni par une résistance série ni par un écrêteur.</li>
+<li><strong>Côté BA.</strong> R1/R2 valent 0 Ω : la diode interne du PIC conduit avant la TVS D1/D2, sans limitation de courant.</li>
+<li><strong>Alimentation.</strong> Le +15 V du bus (BA_ALIM) n'a ni TVS, ni fusible, ni PTC.</li>
+</ul>
+<p>Le détail est dans <a href="../hardware/">Hardware</a>.</p>
+<p><strong>Pas de récupération de bus.</strong> La reprise se limite à <code>fclose</code>/<code>fopen</code>, jusqu'à 50 fois. Le BP n'émet ni les neuf impulsions d'horloge ni le STOP qui libéreraient un esclave figé au milieu d'un octet.</p>
+<p><strong>Abandon marqué acquitté.</strong> Au 21ᵉ échec consécutif, la commande en cours est abandonnée sans avoir été appliquée :</p>
+<ul>
+<li>l'octet ACTIONS est marqué acquitté ;</li>
+<li>un ordre de forçage est perdu ;</li>
+<li>une trame de configuration n'est jamais renvoyée : la copie locale du BP a déjà pris la nouvelle valeur (<code>C/ba.c:313-316</code>).</li>
+</ul>
+<p>Après une panne, un BA peut donc garder une configuration périmée sans que rien ne le signale. Un BA dont le PIC a été remplacé repart avec une mémoire de configuration vierge, et ses variateurs avec le mode par défaut.</p>
+<p><strong>Index 12 mis à jour après une commande seulement.</strong> Le compteur d'échecs n'évolue qu'à l'occasion d'une transaction :</p>
+<ul>
+<li>un BA qui disparaît n'est signalé qu'après six transactions en échec, donc seulement si une commande lui est adressée ;</li>
+<li>un BA signalé en défaut le reste jusqu'à la prochaine commande réussie.</li>
+</ul>
+<p><strong>Firmware BA v1.7.</strong></p>
+<ul>
+<li>Pas de chien de garde : <code>__CONFIG(HS &amp; WDTDIS)</code> (<code>main.c:17</code>).</li>
+<li>Aucun traitement d'erreur du module SSP (<code>slavenode.c:361</code>). Un PIC figé avec CKP = 0 retient SCL jusqu'à une coupure d'alimentation.</li>
+<li>Une trame reçue alors que le tampon de commande est occupé est écartée (<code>slavenode.c:258-274</code>). Le BA renvoie pourtant un écho et un CRC valides : le BP la considère comme acquittée. La pause de 100 ms entre deux transactions rend ce cas rare.</li>
+</ul>
+<p><strong>Un BA non alimenté bloque le bus.</strong> Son PIC, réalimenté par ses diodes de protection, tient SDA et SCL entre 0,6 et 3 V environ. Un écrêteur de ligne en court-circuit a le même effet. Les autres BA ne répondent plus tant qu'il reste raccordé, et ni le BP ni son firmware ne peuvent libérer le bus.</p>
+<p><strong>Pilote I2C de production perdu.</strong> Le BSP I2C de production, celui qui comportait des attentes bornées, est perdu. Un rebuild depuis les sources actuelles réintroduit cinq boucles d'attente infinies : voir <a href="../firmware/#programmation-du-bp-et-retour-arriere">Firmware</a>.</p>
+<h3 id="evolutions-prevues">Évolutions prévues</h3>
+<p>Le change OpenSpec <a href="https://github.com/essensys-hub/essensys-board-SC944D/tree/main/openspec/changes/i2c-surge-protection-2026-10-007"><code>i2c-surge-protection-2026-10-007</code></a> décrit les évolutions (ticket <a href="https://github.com/essensys-hub/essensys-board-SC944D/issues/1">#1</a>). Ses exigences sont dans <code>specs/</code> ; les plus importantes sont reprises ci-dessous. Une fois la feature terminée, le change sera archivé sous <code>openspec/changes/archive/</code>.</p>
+<p><strong>Firmware du BP.</strong></p>
+<ol>
+<li>
+<p><strong>Pilote I2C reconstitué, préalable bloquant.</strong> Le pilote MQX est réécrit dans <code>essensys-gcc</code>, avec des attentes bornées :</p>
+<ul>
+<li>2 ms au plus par attente, ou deux fois l'étirement d'horloge mesuré sur un BA 1.7 s'il dépasse 1 ms ;</li>
+<li>20 ms au plus par transaction.</li>
+</ul>
+<p>Un bus bloqué ne fige plus les échanges HTTP, la téléinformation ni les scénarios. D'ici là, aucun nouveau build n'est flashé.
+2. <strong>Récupération de bus.</strong> Si SDA ou SCL est basse alors que le bus devrait être libre, le BP tente une récupération dans les 100 ms :
+- jusqu'à neuf impulsions d'horloge ;
+- une condition STOP ;
+- la réinitialisation du contrôleur.</p>
+<p>Il fait au plus une tentative par seconde. La communication reprend en moins de 10 s après la disparition du défaut.
+3. <strong>Commandes conservées jusqu'à leur acquittement.</strong> Une commande n'est plus jamais marquée acquittée sans l'être. Le BP garde le dernier état demandé de chaque sortie :
+- un état maintenu est appliqué au retour du BA, quel que soit son âge ;
+- une commande de volet ou une commande impulsionnelle expire après un délai configurable, de 5 min par défaut. Elle est alors signalée comme expirée.
+4. <strong>Resynchronisation.</strong> Le BP renvoie la configuration complète du BA et l'état demandé de ses sorties :
+- au démarrage du BP ;
+- à chaque retour d'un BA à l'état OK ;
+- quand un BA 1.8 signale un redémarrage.</p>
+<p>Chaque trame est acquittée en moins de 10 s.
+5. <strong>Télémétrie.</strong> Chaque BA a un état de santé : OK, SUSPECT ou ABSENT. Le BP interroge la présence de chaque BA au moins toutes les 60 s, même sans commande. L'index 12 reflète cet état en moins de 120 s, <strong>avec son codage actuel</strong>. La console de diagnostic compte les récupérations, les cycles d'alimentation et les commandes expirées.
+6. <strong>Cycle d'alimentation des BA en dernier recours</strong> (sortie TE2) :
+- seulement après 60 s de blocage persistant ;
+- au moins 1 h entre deux cycles, et au plus 3 cycles par 24 h, avec un compteur conservé à travers un redémarrage ;
+- aucun nouveau cycle après un cycle sans effet ;
+- aucun cycle si le cavalier J58 est déclaré ouvert.</p>
+</li>
+</ol>
+<p><strong>Firmware des BA, version 1.8.</strong> Il est programmé par ICSP, avec un <code>.hex</code> par type de carte. Il apporte :</p>
+<ul>
+<li>un chien de garde : un PIC figé relâche SCL en moins de 2 s ;</li>
+<li>le traitement des erreurs du module SSP ;</li>
+<li>un timeout SSP de 50 ms ;</li>
+<li>un NACK quand le tampon de commande est occupé ;</li>
+<li>un sixième octet de lecture, <code>comm_stat</code>, qui signale un redémarrage.</li>
+</ul>
+<p>Le BP 099-37 ignore cet octet. Les quatre combinaisons BP 099-37 ou modifié, BA 1.7 ou 1.8, restent compatibles.</p>
+<p><strong>Protocole.</strong> Le protocole HTTP legacy IoT entre le BP et le serveur n'est pas modifié.</p>
+<p><strong>Matériel.</strong></p>
+<ul>
+<li>Retouches de court terme : voir <a href="../hardware/#variante-retouche-foudre">Hardware</a> et la <a href="../retouche-foudre/">note de schéma « retouche foudre »</a>.</li>
+<li>Interconnexion équipotentielle du coffret, Ethernet du BP isolé galvaniquement, puis révision E des cartes (<a href="../rev-e-regles-conception/">règles de conception</a>).</li>
+<li>Module d'isolement (MIB) pour les BA déportés : un BA isolé et non alimenté laisse alors le bus libre sans intervention.</li>
+<li>Pour la génération 3, le choix d'un RS-485 isolé est consigné dans un <a href="../adr/0001-generation-3-rs485-isole/">ADR</a>.</li>
+</ul>
+<h3 id="regles-dexploitation">Règles d'exploitation</h3>
+<p>Ces règles s'appliquent dès maintenant à tout le parc, quel que soit le firmware.</p>
+<ul>
+<li><strong>Un BA non alimenté ou hors service ne reste jamais raccordé au bus.</strong> Débrancher son câble de bus, ou ouvrir le cavalier de son port sur une étoile 0 V. Les BA étant chaînés par J1/J2, retirer le câble d'un BA coupe aussi les BA situés en aval : les rebrancher directement, ou le signaler.</li>
+<li><strong>Un BA préparé pour un module d'isolement</strong>, dont les TVS de ligne D1/D2 ont été déposées, n'est jamais raccordé directement au bus.</li>
+<li>
+<p><strong>Après une panne, renvoyer les configurations de tous les BA.</strong> Cela vaut aussi après une réparation, un remplacement de PIC ou une intervention sur le bus. Le firmware 099-37 ne renvoie une configuration que si sa valeur change. Pour chaque paramètre (modes des variateurs, temps d'extinction, temps des volets) :</p>
+<ol>
+<li>modifier sa valeur ;</li>
+<li>attendre l'acquittement ;</li>
+<li>revenir à sa valeur d'origine.</li>
+</ol>
+<p>Corriger le mode des variateurs dont le PIC a été remplacé. Vérifier ensuite que chaque BA acquitte une commande et que <code>(index 12 &amp; 0x1C)</code> reste à 0.
+- <strong>Renvoyer les commandes émises pendant un défaut.</strong> Une commande émise pendant qu'un BA était en défaut a pu être abandonnée : la renvoyer une fois le BA revenu.
+- <strong>Diagnostiquer avec l'index 12.</strong> Un bit de <code>(index 12 &amp; 0x1C)</code> désigne le BA concerné. Si les trois bits sont positionnés ensemble, le bus est probablement tenu : un BA non alimenté, une ligne en court-circuit ou U19 hors service.
+- <strong>Programmation.</strong> Le BP ne reçoit que l'image 099-37 (voir <a href="../firmware/#programmation-du-bp-et-retour-arriere">Firmware</a>). Un BA ne reçoit que le <code>.hex</code> v1.7 de son type, après lecture de son EEPROM.
+- <strong>Essais.</strong>
+- Les essais et les injections se font sur banc, sur des échantillons dédiés, jamais sur une armoire en service.
+- Le 0 V du bus n'est jamais relié au PE : l'installation reste en TBTS.</p>
+</li>
+</ul>
+<h2 id="recuperation-des-valeurs">Récupération des valeurs</h2>
+<p>Le système est en <strong>boucle ouverte</strong> au niveau I2C :</p>
+<ul>
+<li>le SC944D <strong>sait</strong> ce qu'il a demandé, par la table <code>Tb_Echange</code> ;</li>
+<li>il <strong>sait</strong> que la trame est arrivée intacte, par l'acquittement et son CRC ;</li>
+<li>il <strong>ne lit pas</strong> l'état réel d'une sortie : il ne sait pas si un relais est collé ou une ampoule grillée.</li>
+</ul>
+<p>Quand le serveur demande l'état des lumières, le SC944D renvoie donc la valeur de sa mémoire, c'est-à-dire l'état commandé.</p>
+<h2 id="faq-technique">FAQ technique</h2>
+<h3 id="peut-on-forcer-la-lecture-de-letat-dun-relais">Peut-on forcer la lecture de l'état d'un relais ?</h3>
+<p><strong>Non.</strong> Le protocole ne prévoit aucune commande de lecture seule ni de lecture d'état physique.</p>
+<ul>
+<li>La seule lecture (<code>fread</code>) suit systématiquement une écriture, dans <code>sl_fct_write_polled()</code>.</li>
+<li>Elle ne récupère que des données de protocole : l'écho du code et les CRC.</li>
+</ul>
+<p>Pour savoir si une lumière est allumée, le SC944D se fie à l'ordre qu'il a envoyé et à l'acquittement reçu. Le bus I2C n'offre aucune vérification matérielle.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.expand", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
