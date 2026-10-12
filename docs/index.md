@@ -11,7 +11,7 @@ Voici un aperçu des pages clés du schéma électronique :
 ![MCU](assets/images/schematic-05.png)
 *Microcontrôleur*
 
-![Connecteurs](assets/images/schematic-014.png)
+![Connecteurs](assets/images/schematic-14.png)
 *Connecteurs*
 
 > [!TIP]

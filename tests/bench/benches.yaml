@@ -1,0 +1,107 @@
+# Registre versionné des bancs d'essai du SC944D (tâche 7.2 du change
+# i2c-surge-protection-2026-10-007, issue essensys-hub/essensys-board-SC944D#1).
+#
+# Un banc est déclaré au lancement par ESSENSYS_BENCH=<identifiant>. Le harnais
+# (harnais_banc/registre.py) refuse, avant tout stimulus :
+#   - un identifiant absent de ce registre ;
+#   - un banc marqué « exemple: true » ;
+#   - un réseau de banc hors des réseaux de banc isolés déclarés ci-dessous ;
+#   - toute cible réseau qui n'est pas une adresse IP littérale de ce réseau : adresse du BP,
+#     serveur legacy de banc, et dans les paramètres des instruments toute valeur rangée sous une
+#     clé de cible (adresse, addr, host, hote, ip, serveur, server, url, endpoint, cible…), toute
+#     URL, toute ressource VISA TCPIP et toute adresse IPv4 ou IPv6 citée. Un nom d'hôte pourrait
+#     désigner un serveur de production ;
+#   - un pilote « maitre » dont le paramètre url n'a pas l'hôte et le port de serveur_legacy ;
+#   - toute carte dont la destination n'est pas « banc » ;
+#   - une alimentation du BP hors de 22 à 24 V.
+#
+# Dépôt public : aucune donnée d'installation, aucun chemin local, aucun numéro de série de
+# carte d'installation. Un banc réel est ajouté par une PR relue par un mainteneur, avec sa fiche
+# (tâche 7.1). Le banc n'est jamais raccordé au serveur de production ni à une armoire en service.
+
+version: 1
+
+# Réseaux de banc isolés. Par défaut, la seule plage 198.18.0.0/15, réservée par la RFC 2544 aux
+# essais d'équipements réseau et jamais utilisée par une installation. Tout réseau déclaré doit être
+# inclus dans 198.18.0.0/15 (IPv4) ou dans 2001:2::/48 (IPv6, RFC 5180) : les plages privées des
+# installations sont refusées. Ajouter un réseau exige une PR relue : il doit être physiquement
+# isolé, sans route vers Internet ni vers une installation.
+reseaux_banc_isoles:
+  - cidr: 198.18.0.0/15
+    description: Plage RFC 2544 d'essai d'équipements réseau, sans passerelle.
+
+bancs:
+  # Exemple documenté d'un banc fictif. Il décrit le format attendu ; le harnais refuse de
+  # l'exécuter (« exemple: true »). Les pilotes cités n'existent pas.
+  exemple-fictif:
+    exemple: true
+    description: Banc fictif de référence du format (BP et trois BA en chaîne, câbles 3 × 33 cm, 1 m, 3 m).
+    # Fiche du banc (tâche 7.1) : chemin relatif dans ce dépôt ou lien vers le dépôt. Ici fictive.
+    fiche: fiche fictive, sans objet
+    reseau:
+      cidr: 198.18.10.0/24
+      bp: 198.18.10.10
+      serveur_legacy: http://198.18.10.2:8080
+    # « chaine » : BP-J31 → BA → BA → BA ; « etoile » : étoile 0 V N2 ou carte d'interconnexion.
+    topologie: chaine
+    # BA du plus proche au plus éloigné du BP.
+    ordre_ba: [0x12, 0x13, 0x11]
+    # Sorties tout-ou-rien raccordées à des charges factices (aucune tension secteur), hors volets.
+    # La sortie témoin sert aux contrôles d'acquittement ; toutes servent à la consommation maximale.
+    ba:
+      0x11: {sortie_temoin: 1, sorties: [1, 2, 3, 4]}
+      0x12: {sortie_temoin: 1, sorties: [1, 2, 3, 4]}
+      0x13: {sortie_temoin: 1, sorties: [1, 2, 3, 4]}
+    # Volet témoin et sorties de son moteur (charges factices) : NR-board-sc944d-5.
+    volet_temoin: {ba: 0x13, volet: 1, sorties: [5, 6]}
+    delai_expiration_volet_s: 300
+    # Index dont la valeur varie à état identique (date, téléinformation…) : comparés par leur
+    # seul codage lors de la comparaison des échanges HTTP (NR-board-sc944d-11). Les requêtes sont
+    # comparées octet pour octet ; seuls ces index, les en-têtes listés ci-dessous, le GUID de
+    # /api/done/ et la valeur de Content-Length (rapportée à la longueur du corps) sont masqués.
+    indices_http_variables: []
+    entetes_http_variables: []
+    # Valeur de R155/R156 du BP du banc : 1000 (origine), 1500 ou 2200 (option renforcée).
+    pullup_bp_ohm: 1000
+    capacites:
+      - cavaliers_par_port
+      - sorties_15v_par_port
+      - court_circuit_15v
+      - firmware_essai_ba
+      - teleinfo
+      - scenario_temoin
+    # BA de banc équipé du firmware d'essai qui provoque les défauts (NR-3, -4, -6, -8, -13), et
+    # version de base de ce firmware : NR-6 (EEPROM vierge) et NR-8 exigent « 1.8 » (chien de garde,
+    # octet comm_stat). L'étirement d'horloge de NR-3 reproduit la durée maximale mesurée sur un BA
+    # 1.7 (tâche 5.1), quelle que soit la base.
+    ba_essai: 0x11
+    firmware_ba_essai: "1.8"
+    # Toutes les cartes du banc sont des échantillons de banc, jamais des cartes d'installation.
+    cartes:
+      BP: {destination: banc, echantillon_injection: false}
+      0x11: {destination: banc, echantillon_injection: false}
+      0x12: {destination: banc, echantillon_injection: false}
+      0x13: {destination: banc, echantillon_injection: false}
+    alimentations:
+      bp: {min_v: 22.0, max_v: 24.0, max_a: 2.0}
+      ba_seul: {min_v: 15.0, max_v: 15.0, max_a: 0.5}
+    instruments:
+      alimentation:
+        pilote: harnais_banc.pilotes.exemple:AlimentationExemple
+        parametres: {ressource: "TCPIP0::198.18.10.20::INSTR"}
+      oscilloscope:
+        pilote: harnais_banc.pilotes.exemple:OscilloscopeExemple
+        parametres: {ressource: "TCPIP0::198.18.10.21::INSTR"}
+      analyseur:
+        pilote: harnais_banc.pilotes.exemple:AnalyseurExemple
+        parametres: {hote: 198.18.10.22}
+      relais:
+        pilote: harnais_banc.pilotes.exemple:RelaisExemple
+        parametres: {url: "http://198.18.10.23"}
+      maitre:
+        pilote: harnais_banc.pilotes.exemple:ServeurLegacyBanc
+        parametres: {url: "http://198.18.10.2:8080"}
+      console:
+        pilote: harnais_banc.pilotes.exemple:ConsoleEspion
+        # Console Espion : UART2 du BP à 9600 bit/s, par un adaptateur USB isolé (README, TBTS).
+        parametres: {port_serie: /dev/ttyUSB0, debit: 9600}

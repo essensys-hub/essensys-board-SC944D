@@ -1,0 +1,92 @@
+{
+  "$schema": "./schema/feature.schema.json",
+  "id": "i2c-surge-protection-2026-10-007",
+  "title": "Protection foudre du bus I2C BP↔BA (SC944D/SC940D/SC941C/SC942C)",
+  "status": "proposed",
+  "owner": "nrineau",
+  "github": {
+    "issue": "essensys-hub/essensys-board-SC944D#1",
+    "project_item": "PVTI_lADODqt0Wc4BavHTzhAAsjk"
+  },
+  "git": {
+    "branch": "feat/i2c-surge-protection-2026-10-007",
+    "pr_url": null
+  },
+  "openspec": {
+    "change_id": "i2c-surge-protection-2026-10-007",
+    "path": "openspec/changes/i2c-surge-protection-2026-10-007",
+    "proposal": "openspec/changes/i2c-surge-protection-2026-10-007/proposal.md",
+    "design": "openspec/changes/i2c-surge-protection-2026-10-007/design.md",
+    "tasks": "openspec/changes/i2c-surge-protection-2026-10-007/tasks.md",
+    "specs": [
+      "openspec/changes/i2c-surge-protection-2026-10-007/specs/i2c-bus-surge-protection/spec.md",
+      "openspec/changes/i2c-surge-protection-2026-10-007/specs/i2c-bus-fault-containment/spec.md",
+      "openspec/changes/i2c-surge-protection-2026-10-007/specs/aux-box-interconnect/spec.md"
+    ]
+  },
+  "implementation": {
+    "paths": [
+      "SC944D/Assembly/SC944D_Schematic.pdf",
+      "SC944D/Prog/099-37/BP_MQX_ETH/C/ba_i2c.c",
+      "docs/i2c.md"
+    ],
+    "primary_surface": "ops"
+  },
+  "userguide": {
+    "pages": [
+      "docs/i2c.md"
+    ],
+    "language": "fr",
+    "i18n_keys": [],
+    "screenshots": []
+  },
+  "tests": {
+    "playwright": [],
+    "coverage_must_test": [
+      "NR-board-sc944d-1 niveaux I2C a 50 kHz",
+      "NR-board-sc944d-2 retrait d'un BA",
+      "NR-board-sc944d-3 ligne SDA ou SCL forcee basse",
+      "NR-board-sc944d-10 branchement a chaud d'un BA",
+      "NR-board-sc944d-12 endurance 72 h"
+    ],
+    "smoke_tags": [
+      "@nr"
+    ]
+  },
+  "release": {
+    "changelog_entry": "Protection foudre du bus I2C BP↔BA : limitation de courant et écrêtage coordonnés, +15 V protégé, étoile 0 V, Ethernet du BP isolé, récupération de bus côté firmware, révision E avec carte d'interconnexion équipotentielle.",
+    "target_tag": null,
+    "surfaces": [
+      "essensys-board-SC944D",
+      "essensys-board-SC940",
+      "essensys-board-SC941C",
+      "essensys-board-SC942C",
+      "client-essensys-legacy",
+      "essensys-gcc",
+      "essensys-doc",
+      "essensys-memory"
+    ],
+    "paths": [
+      "openspec/changes/i2c-surge-protection-2026-10-007/design.md"
+    ]
+  },
+  "security": {
+    "sca_tool": "dependabot",
+    "dependabot_alerts_url": null,
+    "last_scan_at": null,
+    "cve_findings": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "secret_scan": {
+      "status": "clean",
+      "tool": "gitleaks",
+      "last_scan_at": null
+    },
+    "muted_findings": [],
+    "threat_model_url": "openspec/changes/i2c-surge-protection-2026-10-007/design.md",
+    "owner_security": "nrineau"
+  }
+}
