@@ -177,7 +177,7 @@ Les tâches de ce groupe sont des opérations de maintenance manuelles, faites s
 
   Vérification : `NR-board-sc944d-8`, plus un BA 1.8 qui fonctionne avec un BP 099-37 (`NR-board-sc944d-11`) ; les PR dans les dépôts SC94x contiennent `Feature: i2c-surge-protection-2026-10-007` et `Refs essensys-hub/essensys-board-SC944D#1`.
 - [ ] 5.10 Corriger le build BA d'essensys-gcc (une seule macro `TYPE_*` par cible) ainsi que `ba/source/hard.h`. Vérification : le build produit trois `.hex`, et chacun n'acquitte que 0x11, 0x12 ou 0x13 sur banc.
-- [ ] 5.11 Proposer, puis ouvrir après confirmation, un ticket dans essensys-server-backend pour une alerte quand `system.comm_faults` n'est pas vide (`internal/armoire/decode.go`), sans modifier le protocole. Vérification : le ticket est créé et lié à #1.
+- [x] 5.11 Proposer, puis ouvrir après confirmation, un ticket dans essensys-server-backend pour une alerte quand `system.comm_faults` n'est pas vide (`internal/armoire/decode.go`), sans modifier le protocole. Vérification : le ticket est créé et lié à #1. Ticket : essensys-hub/essensys-server-backend#8.
 - [ ] 5.12 Qualifier un candidat firmware BP sur banc avant tout flash sur un BP en service : toute la suite NR au vert et `/checkup` vert. Le déployer ensuite sur un premier BP, après sauvegarde BDM, comme opération de maintenance manuelle : aucun harnais ni script NR ne vise ce BP. Vérification :
   - pendant 72 h, au moins une commande par BA chaque heure est envoyée et consignée, et `(index 12 & 0x1C)` reste à 0 ;
   - le retour arrière vers le `.S19` 099-37 a été essayé sur banc.
