@@ -112,7 +112,7 @@ Les tâches de ce groupe sont des opérations de maintenance manuelles, faites s
   - par port, une PTC suivie d'une TVS sur le +15 V ;
   - par port, un cavalier qui coupe SDA, SCL et +15 V en gardant le 0 V.
 
-  Livrable : schéma, BOM et Gerber publiés par une PR qui contient `Feature: i2c-surge-protection-2026-10-007` et `Refs #1`, avec un ERC et un DRC sans erreur.
+  Livrable : schéma, BOM et Gerber dans le dépôt dédié [essensys-i2c-etoile-0v](https://github.com/essensys-hub/essensys-i2c-etoile-0v), référencés par une PR qui contient `Feature: i2c-surge-protection-2026-10-007` et `Refs #1`, avec un ERC et un DRC sans erreur.
 - [ ] 4.2 Fabriquer les faisceaux AWG20 de 15 cm au plus, sertis à l'outil, avec le repère « 0 V TBTS – NE PAS RELIER À LA TERRE » aux deux extrémités des liaisons 0 V. Vérification : moins de 60 mΩ par conducteur, contacts compris, et repérage contrôlé.
 - [ ] 4.3 Mesurer sur banc le seuil d'équilibrage, en onde 8/20 puis sur un front de 1 Ipk/µs, entre le 0 V du BA en bout de chaîne et le 0 V du BP. La conduction est un courant de plus de 100 mA dans SDA ou SCL, à la sonde de courant au connecteur du BA en bout de chaîne. Faire d'abord la mesure sur la chaîne d'origine, qui sert de référence, puis avec N2. Vérification : avec N2, au moins 4 fois la référence dans les deux formes d'onde, et écart statique de 0 V d'au plus 0,05 V. Livrable : un rapport d'essai qui consigne les seuils, repris en 7.18.
 - [ ] 4.4 Valider sur banc la sélectivité des PTC de N2. Vérification :

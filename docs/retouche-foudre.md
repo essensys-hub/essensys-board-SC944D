@@ -8,6 +8,7 @@ Cette note décrit la variante « retouche foudre » du boîtier principal SC944
 | Ticket | [essensys-hub/essensys-board-SC944D#1](https://github.com/essensys-hub/essensys-board-SC944D/issues/1) |
 | Tâches | 3.1 à 3.10 pour le BP, 2.9 pour les BA |
 | BOM de la variante | `BOM_retouche-foudre.csv`, à la racine du dépôt |
+| Carte N2 « étoile 0 V » (tâche 4.1) | Dépôt dédié [essensys-i2c-etoile-0v](https://github.com/essensys-hub/essensys-i2c-etoile-0v) : projet KiCad, BOM, Gerber, ERC/DRC |
 | BOM d'origine | `BOM_[No Variations].csv`, inchangée |
 | Schéma | `SC944D/Assembly/SC944D_Schematic.pdf` : page 7 (Liaison Boîtiers Auxiliaires), page 3 (Alimentation 2/2), page 2 (Alimentation 1/2) |
 
